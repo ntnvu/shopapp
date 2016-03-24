@@ -1,6 +1,6 @@
 'use strict';
 
-function LoginController($scope, $ionicModal, $timeout, $rootScope) {
+function LoginController($scope, $ionicModal, $timeout) {
 
 
 
@@ -13,7 +13,7 @@ function LoginController($scope, $ionicModal, $timeout, $rootScope) {
         scope: $scope
     }).then(function(modal) {
             $scope.modal = modal;
-            $scope.login();
+//            $scope.login();
         });
 
     // Triggered in the login modal to close it
@@ -36,5 +36,8 @@ function LoginController($scope, $ionicModal, $timeout, $rootScope) {
             $scope.closeLogin();
         }, 1000);
     };
+
+
+
 }
-module.exports = ['$scope', '$ionicModal', '$timeout', "$rootScope", LoginController];
+module.exports = ['$scope', '$ionicModal', '$timeout', LoginController];

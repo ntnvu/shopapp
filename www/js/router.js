@@ -24,7 +24,7 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
             })
 
             .state('app.product', {
-                url: "/product",
+                url: "/products/:productId",
                 views: {
                     'menuContent': {
                         templateUrl: "js/modules/products/product.html",
