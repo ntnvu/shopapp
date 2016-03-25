@@ -4,7 +4,7 @@
 module.exports = ['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('app/playlists');
+        $urlRouterProvider.otherwise('newMenu/home');
         $stateProvider
             .state('app', {
                 url: "/app",
@@ -13,10 +13,30 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
                 controller: 'RegisterLoginController as registerloginController'
             })
 
+            .state('newMenu', {
+                url: "/newMenu",
+                abstract: true,
+                templateUrl: "js/layout/newMenu/newMenu.html",
+                controller: 'NewmenuController as newMenuController'
+            })
+
+            .state('newMenu.home', {
+                url: "/home",
+                templateUrl: "js/layout/newMenu/home.html",
+                controller: 'NewmenuController as newMenuController'
+            })
+
+            .state('player', {
+                url: "/player",
+                templateUrl: "js/layout/player/player.html",
+                controller: 'PlayerController as playerController'
+
+            })
+
             .state('app.products', {
                 url: "/products",
                 templateUrl: "js/modules/products/products.html",
-                controller: 'ProductsController as productsController',
+                controller: 'ProductsController as productsController'
 
             })
 

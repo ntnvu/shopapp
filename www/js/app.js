@@ -10,7 +10,8 @@ require('./modules/products/products');
 
 //module layout
 require('./layout/home/home');
-
+require('./layout/player/player');
+require('./layout/newMenu/newMenu');
 
 module.export = angular.module('starter', ['ionic', 'wu.masonry',
         //functions
@@ -19,7 +20,9 @@ module.export = angular.module('starter', ['ionic', 'wu.masonry',
         'playlists',
         'products',
         //layout
-        'home'
+        'home',
+        'player',
+        'newMenu'
     ])
     .config(require('./router'))
     .run(require('./app-main'));

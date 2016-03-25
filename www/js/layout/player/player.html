@@ -1,0 +1,17 @@
+<ion-view title="Player">
+    <ion-content>
+        <div class="form-inline">
+            <input class="form-control" type="text" ng-model="newPlayer" />
+            <button class="btn btn-default" ng-click="addPlayer(newPlayer)">Add</button>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="player in players">
+                <!-- We can now use player.likeScore instead of likeScore(player) -->
+                {{player.name}} L: {{player.likeScore()}} C:{{player.commentScore()}}
+                <a href="" ng-click="removePlayer(player)">
+                    <i class="glyphicon glyphicon-remove pull-right"></i>
+                </a>
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>
