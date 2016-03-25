@@ -1,9 +1,7 @@
-<ion-view view-title="Playlists">
-  <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
-        {{playlist.title}}
-      </ion-item>
-    </ion-list>
-  </ion-content>
+<ion-view title="Todos">
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="todo in todos" ui-sref='todo({todoId: todo.id})' ng-class='{done: todo.done}'>{{todo.name}}</ion-item>
+        </ion-list>
+    </ion-content>
 </ion-view>

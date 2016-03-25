@@ -1,0 +1,50 @@
+<ion-modal-view id="popup-login-register">
+    <ion-content scroll="false" class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+
+            <ion-tabs class="tabs-icon-only">
+
+                <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline">
+                    <!-- Tab 1 content -->
+                    <form ng-submit="doLogin()">
+                        <div class="list">
+                            <label class="item item-input">
+                                <span class="input-label">So dien thoai</span>
+                                <input type="text" ng-model="loginData.username">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">Mat khau</span>
+                                <input type="password" ng-model="loginData.password">
+                            </label>
+                            <label class="item">
+                                <button class="button button-block button-positive" type="submit">Dang nhap</button>
+                            </label>
+                        </div>
+                    </form>
+                </ion-tab>
+
+                <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">
+                    <!-- Tab 2 content -->
+                    <form ng-submit="doLogin()">
+                        <div class="list">
+                            <label class="item item-input">
+                                <span class="input-label">So dien thoai</span>
+                                <input type="text" ng-model="loginData.username">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">Mat khau</span>
+                                <input type="password" ng-model="loginData.password">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">Xac Nhan Mat khau</span>
+                                <input type="password" ng-model="loginData.password">
+                            </label>
+                            <label class="item">
+                                <button class="button button-block button-positive" type="submit">Dang ky</button>
+                            </label>
+                        </div>
+                    </form>
+                </ion-tab>
+
+            </ion-tabs>
+    </ion-content>
+</ion-modal-view>

@@ -4,33 +4,26 @@
 module.exports = ['$stateProvider', '$urlRouterProvider',
     function ($stateProvider, $urlRouterProvider) {
         // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise('app/products');
+        $urlRouterProvider.otherwise('app/playlists');
         $stateProvider
             .state('app', {
                 url: "/app",
                 abstract: true,
                 templateUrl: "js/modules/menu/menu.html",
-                controller: 'LoginController as loginController'
+                controller: 'RegisterLoginController as registerloginController'
             })
 
             .state('app.products', {
                 url: "/products",
-                views: {
-                    'menuContent': {
-                        templateUrl: "js/modules/products/products.html",
-                        controller: 'ProductsController as productsController'
-                    }
-                }
+                templateUrl: "js/modules/products/products.html",
+                controller: 'ProductsController as productsController',
+
             })
 
             .state('app.product', {
                 url: "/products/:productId",
-                views: {
-                    'menuContent': {
-                        templateUrl: "js/modules/products/product.html",
-                        controller: 'ProductsController as productsController'
-                    }
-                }
+                templateUrl: "js/modules/products/product.html",
+                controller: 'ProductsController as productsController'
             })
 
             .state('app.home', {
@@ -67,6 +60,11 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
                         templateUrl: "js/modules/playlists/playlists.html",
                         controller: 'PlaylistsController as playlistsController'
                     }
+                },
+                resolve: {
+                    todos: function(TodosService) {
+                        return TodosService.getTodos()
+                    }
                 }
             })
 
@@ -77,9 +75,15 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
                         templateUrl: "js/modules/playlists/playlist.html",
                         controller: 'PlaylistController as playlistController'
                     }
+                },
+                resolve: {
+                    todo: function($stateParams, TodosService) {
+                        return TodosService.getTodo($stateParams.todoId)
+                    }
                 }
             })
 
         ;
     }
-];
+]
+;

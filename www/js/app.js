@@ -4,7 +4,7 @@ require("angular-masonry");
 
 //module functions
 require('./modules/playlists/playlists');
-require('./modules/login/login');
+require('./modules/registerLogin/registerLogin');
 require('./modules/menu/menu');
 require('./modules/products/products');
 
@@ -12,16 +12,17 @@ require('./modules/products/products');
 require('./layout/home/home');
 
 
-
-
-module.export = angular.module('starter', ['ionic','wu.masonry',
+module.export = angular.module('starter', ['ionic', 'wu.masonry',
         //functions
         'menu',
-        'login',
+        'registerLogin',
         'playlists',
         'products',
         //layout
         'home'
-        ])
+    ])
     .config(require('./router'))
     .run(require('./app-main'));
+
+
+

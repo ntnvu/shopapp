@@ -10,9 +10,8 @@
 //        { title: 'Cowbell', id: 6 }
 //    ];
 //}
-
-function PlaylistsController($scope, todos) {
-    $scope.todos = todos;
+function PlaylistController($scope, todo) {
+    $scope.todo = todo;
 }
 
-module.exports = ['$scope',"todos", PlaylistsController];
+module.exports = ['$scope',"todo", PlaylistController];
