@@ -1,49 +1,41 @@
 "use strict"
 
 module.exports = angular.module("products.controller", [])
-    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state) {
-            $scope.filterType = [
-                {type: "hot", name: 'San pham hot'},
-                {type: "bestseller", name: 'San pham ban chay'},
-                {type: {
-                    lt: 50
-                }, name: 'Duoi 50.000'},
-                {type: {
-                    rand: [50, 100]
-                }, name: '50.000 den 100.000'},
-                {type: {
-                    rand: [100, 200]
-                }, name: '100.000 den 200.000'},
-                {type: {
-                    gt: 200
-                }, name: 'Tren 200.000'}
-            ];
+    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate','ProductService', 'ControlModalService','WishlistService',
+        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService) {
+            $scope.products = ProductService.productCurrent;
+            $scope.page = ProductService.page;
 
             $scope.openMenu = function () {
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
-            $scope.products = ProductService.productCurrent;
-            $scope.page = ProductService.page;
-            $scope.firstTime = 0;
+            $scope.loadMoreData = function () {
+                var type = $scope.currentcheckCtrl;
 
-            $scope.getProducts = function (type) {
-                type = JSON.stringify(type);
-                $scope.currentcheckCtrl = type;
-                ProductService.filterProduct(type).then(
+                var temppage = $scope.page.number;
+                temppage++;
+
+                ProductService.filterProduct(type, 1, temppage).then(
                     function (data) {
+                        var temp = $scope.products;
+                        temp = temp.concat(data);
+                        angular.copy(temp, $scope.products);//must use angular.copy
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+
                         angular.copy({
-                            number: 1
+                            number : temppage
                         }, $scope.page);
-                        angular.copy(data, $scope.products);//must use angular.copy than use "=" so it can continue binding to first service param
-                        if ($scope.firstTime)
-                            $state.go("products.list");
-                        $scope.firstTime = 1;
                     }
                 );
+            };
+
+            $scope.chooseProductOption = function(item){
+                ControlModalService.show('js/modules/cart/cart.html', 'CartController', 1, item);
             }
 
-            $scope.getProducts("hot");
+            $scope.addToWishlist = function(item){
+                WishlistService.addWishlist(item);
+            }
         }
     ]);

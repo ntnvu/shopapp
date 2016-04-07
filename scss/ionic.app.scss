@@ -33,9 +33,11 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 @import "partials/base";
 
 @import "layout/part/angular-deckgrid";
+@import "layout/part/float-button";
 
 @import "layout/home";
 @import "layout/product-template";
 @import "layout/single-product-template";
 @import "layout/list-product-template";
+@import "layout/popup-login-register";
 

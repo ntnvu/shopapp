@@ -1,0 +1,38 @@
+#popup-login-register {
+  bottom: 0;
+  height: 80%;
+  left: 0;
+  margin: auto;
+  min-height: inherit;
+  right: 0;
+  top: 0;
+  width: 80%;
+  .tabs {
+    bottom: auto;
+    top: 0;
+  }
+  .pane {
+    padding-top: 49px;
+  }
+  .tab-item {
+    color: #b0b0b0;
+    span {
+      border-bottom: 2px solid #b0b0b0;
+      padding-bottom: 3px;
+    }
+  }
+  .tab-item.tab-item-active {
+    color: #000;
+    span {
+      border-bottom: 2px solid #f94568;
+    }
+  }
+  .list .item {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin: auto;
+    padding-left: 0;
+    width: 85%;
+  }
+}

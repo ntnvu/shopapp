@@ -16,7 +16,7 @@ module.exports = angular.module('registerLogin.controller', [])
 
             $scope.closeLoginModal = function () {
                 $scope.closeModal();
-                $state.go('products.list');
+                $state.go('menu.products');
             }
 
             //login section
@@ -38,7 +38,7 @@ module.exports = angular.module('registerLogin.controller', [])
 //                    $state.go('tab.dash');
                         $localstorage.setObject("current_user", $scope.loginData);
                         $scope.closeModal();
-                        $state.go('products.list');
+                        $state.go('menu.products');
                     })
                     .error(function (data) {
                         console.log("do not Login");

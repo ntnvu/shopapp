@@ -9767,6 +9767,14 @@ a.button {
 .deckgrid .column-1-2 {
   width: 48%; }
 
+#float-button [data-mfb-label]:after {
+  display: none; }
+
+#float-button a i::before {
+  font-size: 27px;
+  position: relative;
+  top: 3px; }
+
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
   background-size: cover; }
@@ -9803,3 +9811,34 @@ a.button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; }
+
+#popup-login-register {
+  bottom: 0;
+  height: 80%;
+  left: 0;
+  margin: auto;
+  min-height: inherit;
+  right: 0;
+  top: 0;
+  width: 80%; }
+  #popup-login-register .tabs {
+    bottom: auto;
+    top: 0; }
+  #popup-login-register .pane {
+    padding-top: 49px; }
+  #popup-login-register .tab-item {
+    color: #b0b0b0; }
+    #popup-login-register .tab-item span {
+      border-bottom: 2px solid #b0b0b0;
+      padding-bottom: 3px; }
+  #popup-login-register .tab-item.tab-item-active {
+    color: #000; }
+    #popup-login-register .tab-item.tab-item-active span {
+      border-bottom: 2px solid #f94568; }
+  #popup-login-register .list .item {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    margin: auto;
+    padding-left: 0;
+    width: 85%; }

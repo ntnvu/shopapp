@@ -29,7 +29,7 @@ module.exports = angular.module("app.service", [])
         return {
             show: show
         }
-        function show(templeteUrl, controller, autoshow, parameters, options) {
+        function show(templeteUrl, controller, autoshow, parameters, options, wrapCalss) {
             // Grab the injector and create a new scope
             var deferred = $q.defer(),
                 ctrlInstance,
@@ -41,6 +41,7 @@ module.exports = angular.module("app.service", [])
                     backdropClickToClose: true,
                     hardwareBackButtonClose: true,
                     modalCallback: null
+
                 };
 
             options = angular.extend({}, defaultOptions, options);
@@ -56,6 +57,7 @@ module.exports = angular.module("app.service", [])
 
                     modalScope.openModal = function () {
                         modalScope.modal.show();
+                        modalScope.modal.addClass("addruine");
                         deferred.test = "aa";
                     };
 

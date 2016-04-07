@@ -1,0 +1,10 @@
+#float-button {
+  [data-mfb-label]:after{
+    display: none;
+  }
+  a i::before {
+    font-size: 27px;
+    position: relative;
+    top: 3px;
+  }
+}

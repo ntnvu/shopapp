@@ -7,6 +7,6 @@ module.exports = angular.module('checkout.controller', [])
 
             $scope.checkout = function(){
                 $localstorage.setNull("cart");
-                $state.go("products.list");
+                $state.go("menu.products");
             }
         }]);

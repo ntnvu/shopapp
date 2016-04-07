@@ -23,6 +23,15 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
         ;
 
         $stateProvider
+            .state('contact', {
+                url: "/conta",
+                abstract: true,
+                templateUrl: "js/modules/cart/cart.html",
+                controller: 'CartController'
+            })
+        ;
+
+        $stateProvider
             .state('login', {
                 url: "/login",
                 abstract: true,
@@ -46,51 +55,53 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
                 controller: 'NewmenuController'
             })
         ;
+
         $stateProvider
-            .state('products', {
-                url: "/products",
+            .state('menu', {
+                url: "/menu",
                 abstract: true,
+                templateUrl: "js/layout/menu/menu.html",
+                controller: 'MenuController'
+            })
+        ;
+
+        $stateProvider
+            .state('menu.products', {
+                url: "/products",
                 templateUrl: "js/layout/products/products.html",
                 controller: 'ProductsController'
             })
         ;
         $stateProvider
-            .state('products.list', {
-                url: "/list",
-                templateUrl: "js/layout/products/list.html",
-                controller: 'ProductsListController'
+            .state('menu.product', {
+                url: "/product/:index",
+                templateUrl: "js/layout/products/product.html",
+                controller: 'ProductController'
             })
         ;
         $stateProvider
-            .state('products.single', {
-                url: "/single/:index",
-                templateUrl: "js/layout/products/single.html",
-                controller: 'ProductsSingleController'
-            })
-        ;
-        $stateProvider
-            .state('products.cart_page', {
+            .state('menu.cart_page', {
                 url: "/cart_page",
                 templateUrl: "js/layout/cart_page/cart_page.html",
                 controller: 'CartPageController'
             })
         ;
         $stateProvider
-            .state('products.checkout', {
+            .state('menu.checkout', {
                 url: "/checkout",
                 templateUrl: "js/layout/checkout/checkout.html",
                 controller: 'CheckoutController'
             })
         ;
         $stateProvider
-            .state('products.checkout_edit', {
+            .state('menu.checkout_edit', {
                 url: "/checkout_edit",
                 templateUrl: "js/layout/checkout_edit/checkout_edit.html",
                 controller: 'CheckoutEditController'
             })
         ;
         $stateProvider
-            .state('products.wishlist', {
+            .state('menu.wishlist', {
                 url: "/wishlist",
                 templateUrl: "js/layout/wishlist/wishlist.html",
                 controller: 'WishlistController'

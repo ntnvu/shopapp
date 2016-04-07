@@ -9,7 +9,7 @@ module.exports = angular.module("home.controller", [])
                     ControlModalService.show('js/modules/registerLogin/registerLogin.html', 'RegisterLoginController', 1);
                 }else{
                     console.log(currentUser.username);
-                    $state.go('products.list');
+                    $state.go('menu.products');
                 }
             }, 2000);
 

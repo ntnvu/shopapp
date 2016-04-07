@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = angular.module("products.list.controller", [])
+module.exports = angular.module("menu.products.controller", [])
     .controller("ProductsListController", ['$scope', '$ionicSideMenuDelegate','ProductService', 'ControlModalService','WishlistService',
         function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService) {
             $scope.products = ProductService.productCurrent;
