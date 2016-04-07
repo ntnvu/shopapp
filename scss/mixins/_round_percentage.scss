@@ -1,0 +1,8 @@
+@function round_percentage($val1, $val2){
+  @if $val1 != 0{
+    @return floor(percentage($val1/$val2));
+  }
+  @else{
+    @return 0;
+  }
+}

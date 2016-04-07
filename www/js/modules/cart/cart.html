@@ -1,0 +1,46 @@
+<ion-modal-view id="popup-cart-prodOpt">
+    <ion-content scroll="false">
+        <div class="label">
+            <h4>Lua chon</h4>
+            <span>(mau sac, kich thuoc, so luong)</span>
+        </div>
+            <div class="list">
+                <label class="item item-input item-select item-light">
+                    <div class="input-label">
+                        Mau sac {{color}}
+                    </div>
+
+                    <select ng-model="optProd.color">
+                        <option value="yellow">Vang</option>
+                        <option value="red" selected>Do</option>
+                        <option value="oragne">Cam</option>
+                        <option value="blue">Xanh duong</option>
+                    </select>
+
+                </label>
+
+                <label class="item item-input item-select item-stable">
+                    <div class="input-label">
+                        Kich thuoc {{optProd.size}}
+                    </div>
+
+                    <select ng-model="optProd.size">
+                        <option value="S">S</option>
+                        <option value="M" selected>M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">So luong</span>
+                    <input type="text" ng-model="optProd.quantity">
+                </label>
+            </div>
+        <div>
+
+            <button class="button" data-ng-click="add_to_cart()">Nhap</button>
+            <button class="button" ng-click="closeModal()">Huy</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

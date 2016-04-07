@@ -1,5 +1,5 @@
 <ion-modal-view id="popup-login-register">
-    <ion-content scroll="false" class="tabs-striped tabs-top tabs-background-positive tabs-color-light">
+    <ion-content scroll="false" class="tabs-background-positive tabs-color-light">
 
         <ion-tabs class="tabs-icon-only">
 
@@ -17,10 +17,11 @@
                         </label>
                         <label class="item">
                             <button class="button button-block button-positive" type="submit">Dang nhap</button>
-                            <button class="button button-block button-positive" ng-click="closeLoginRegister()">Bo Qua</button>
+
                         </label>
                     </div>
                 </form>
+                <button class="button button-block button-positive" ng-click="closeLoginModal()">Bo Qua</button>
             </ion-tab>
 
             <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline">

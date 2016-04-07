@@ -1,30 +1,36 @@
 //module node
-require("angular");
-require("angular-masonry");
+//require("angular");
 
 //module functions
-require('./modules/playlists/playlists');
-require('./modules/registerLogin/registerLogin');
-require('./modules/menu/menu');
-require('./modules/products/products');
-
+require("./modules/registerLogin/registerLogin");
+require("./modules/cart/cart");
 //module layout
-require('./layout/home/home');
-require('./layout/player/player');
-require('./layout/newMenu/newMenu');
+require("./layout/home/home");
+require("./layout/newMenu/newMenu");
+require("./layout/products/products");
+require("./layout/cart_page/cart_page");
+require("./layout/checkout/checkout");
+require("./layout/checkout_edit/checkout_edit");
+require("./layout/wishlist/wishlist");
 
-module.export = angular.module('starter', ['ionic', 'wu.masonry',
+module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid',
         //functions
-        'menu',
         'registerLogin',
-        'playlists',
-        'products',
+        'cart',
+
         //layout
         'home',
-        'player',
-        'newMenu'
+        'newMenu',
+        'products',
+        'CartPage',
+        'checkout',
+        'checkoutEdit',
+        'wishlist'
     ])
     .config(require('./router'))
+    .config(function ($ionicConfigProvider) {
+        $ionicConfigProvider.platform.android.tabs.position("bottom");
+    })
     .run(require('./app-main'));
 
 

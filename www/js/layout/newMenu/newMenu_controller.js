@@ -1,6 +1,6 @@
 "use strict"
 
-module.exports = angular.module("newMenu.controller", ["newMenu.factory"])
+module.exports = angular.module("newMenu.controller", [])
     .controller("NewmenuController", ['$scope', '$ionicSideMenuDelegate', 'Movies',
         function($scope, $ionicSideMenuDelegate, Movies) {
             $scope.sorting = [{score: 9, name : 'Score more then 9'},

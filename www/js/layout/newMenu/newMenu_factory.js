@@ -26,8 +26,7 @@ module.exports = angular.module("newMenu.factory", [])
                     return entry.id == name;
                 })[0];
                 callback(movie);
-            },
-            hay: 1
+            }
         };
 
     });

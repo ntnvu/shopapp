@@ -1,0 +1,10 @@
+.masonry[data-columns] {
+  .item{
+    width: 48%;
+    margin: 5px 1%;
+    display: inline-block;
+    img{
+      width: 100%;
+    }
+  }
+}

@@ -9731,6 +9731,75 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+/*
+  $w: width of one element
+  $t: width of container
+  $n: number of column
+*/
+.ion-ios-heart.actived {
+  color: red; }
+
+.item .icon-top, .item .icon-bottom {
+  height: auto;
+  top: auto;
+  bottom: auto; }
+
+.item .icon-top {
+  top: 5px; }
+
+.item .icon-bottom {
+  bottom: 5px; }
+
+.deckgrid[deckgrid]::before {
+  /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
+  content: '2 .column.column-1-2';
+  font-size: 0;
+  /* See https://github.com/akoenig/angular-deckgrid/issues/14#issuecomment-35728861 */
+  visibility: hidden; }
+
+.deckgrid .column {
+  float: left;
+  margin: 0 1%; }
+
+.deckgrid .a-card img {
+  width: 100%; }
+
+.deckgrid .column-1-2 {
+  width: 48%; }
+
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
   background-size: cover; }
+
+#product-template .masonry-brick {
+  width: 40%;
+  margin: 0 2%; }
+  #product-template .masonry-brick img {
+    width: 100%; }
+
+#single-product-template .slider {
+  height: 100%;
+  text-align: center; }
+
+#single-product-template .scroll {
+  height: 100%; }
+
+#single-product-template .box {
+  width: 100%;
+  height: 100%; }
+  #single-product-template .box img {
+    width: 100%; }
+
+#single-product-template .related-product {
+  font-size: 1px; }
+  #single-product-template .related-product .slick-slide {
+    display: inline-block;
+    width: 31%;
+    margin: 0 1%; }
+    #single-product-template .related-product .slick-slide img {
+      width: 100%; }
+
+#list-product-template .thumb-footer h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }

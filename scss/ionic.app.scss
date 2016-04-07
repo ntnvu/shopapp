@@ -20,6 +20,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+//include mixins
+@import "mixins/media-query";
+@import "mixins/round_percentage";
+@import "mixins/fix_all_ie";
+@import "mixins/set_width_inline_block";
+@import "mixins/clearfix";
+@import "mixins/display_inline_block";
+
+//include part and layout
+@import "partials/base";
+
+@import "layout/part/angular-deckgrid";
+
 @import "layout/home";
 @import "layout/product-template";
+@import "layout/single-product-template";
+@import "layout/list-product-template";
 

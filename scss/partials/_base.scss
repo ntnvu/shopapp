@@ -1,0 +1,17 @@
+.ion-ios-heart.actived {
+  color: red;
+}
+
+.item {
+  .icon-top, .icon-bottom {
+    height: auto;
+    top: auto;
+    bottom: auto;
+  }
+  .icon-top {
+    top: 5px;
+  }
+  .icon-bottom {
+    bottom: 5px;
+  }
+}

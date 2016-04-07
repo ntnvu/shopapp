@@ -1,0 +1,14 @@
+@mixin display_inline_block(){
+  font-size: 1px;
+  line-height: 0;
+  &:after{
+    content: "";
+    width: 100%;
+    display: inline-block;
+  }
+  & > *{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

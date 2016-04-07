@@ -1,0 +1,29 @@
+/*
+  $w: width of one element
+  $t: width of container
+  $n: number of column
+*/
+@mixin set_width_inline_block($w, $t : 0, $n : 0){
+  width: $w;
+  $mg : 0;
+  @if ($t != 0){
+    @if($n == 0){
+      $n: round($t / $w); //number of element
+    }
+    $mg : ($t - ($n * $w)) / ($n - 1); //margin
+  }
+  @else{
+    $mg : 1%;
+  }
+  margin-left:$mg/2;
+  margin-right:$mg/2;
+  &:first-child{
+    margin-left: 0;
+  }
+  &:nth-child(#{$n}n){
+    margin-right: 0;
+  }
+  &:nth-child(#{$n}n + 1){
+    margin-left: 0;
+  }
+}

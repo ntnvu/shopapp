@@ -1,0 +1,69 @@
+<ion-view>
+    <ion-content>
+        <div id="single-product-template">
+            <div class="card card-gallery item">
+                <ion-slide-box on-slide-changed="slideHasChanged($index)" pager-click="navSlide(index)" auto-play="true"
+                               does-continue="true">
+                    <ion-slide>
+                        <div class="box blue"><img
+                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
+                                alt="A masonry brick"></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box yellow"><img
+                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
+                                alt="A masonry brick"></div>
+                    </ion-slide>
+                    <ion-slide>
+                        <div class="box pink"><img
+                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
+                                alt="A masonry brick"></div>
+                    </ion-slide>
+                </ion-slide-box>
+
+                <div class="thumb-footer">
+                    <h2>Pretty Hate Machine</h2>
+
+                    <p>Nine Inch Nails</p>
+                    <button class="enable-pointer-events button button-clear icon ion-bag ion-assertive"
+                            data-ng-click="chooseProductOption(product)"></button>
+                    <button class="button button-clear icon ion-ios-heart ion-assertive"
+                            ng-click="addToWishlist(product)"></button>
+                </div>
+
+                <div class="related-product">
+                    <slick infinite="true" slides-to-show="3" slides-to-scroll="3">
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                        <div>
+                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
+                                 alt="A masonry brick">
+                        </div>
+                    </slick>
+                </div>
+
+
+            </div>
+        </div>
+    </ion-content>
+
+
+</ion-view>
