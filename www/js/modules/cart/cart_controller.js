@@ -14,7 +14,6 @@ module.exports = angular.module('cart.controller', [])
             $scope.optProd = {};
 
             $scope.add_to_cart = function () {
-                console.log($localstorage.getObject("cart"));
                 $scope.cart = $scope.cart.concat({
                         id: parameters.id,
                         title: parameters.title,

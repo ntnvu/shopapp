@@ -1,7 +1,61 @@
-#list-product-template{
+#list-product-template {
+  .a-card {
+    background-color: #eaeaea;
+    border-radius: 7px;
+    margin: 10px 0;
+    overflow: hidden;
+  }
   .thumb-footer h4 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+  .info-wrap {
+    text-align: justify;
+    @include display_inline_block();
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+  .info-inner-l {
+    padding: 0 5px;
+    text-align: center;
+    .orange {
+      font-size: 18px;
+    }
+    .cross {
+      position: relative;
+      &:after {
+        background-color: #ccc;
+        content: "";
+        height: 1px;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 45%;
+        width: 90%;
+      }
+    }
+  }
+  .info-inner-r {
+    float: right;
+    button {
+      background-color: transparent;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      border: medium none;
+      height: 25px;
+      margin: 0 5px;
+      width: 25px;
+      &.add-cart {
+        background-image: url("../img/cart.png");
+      }
+      &.add-wishlist {
+        background-image: url("../img/wishlist.png");
+      }
+    }
   }
 }

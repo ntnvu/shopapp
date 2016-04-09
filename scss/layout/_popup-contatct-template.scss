@@ -1,0 +1,15 @@
+#popup-contatct-template{
+  bottom: 0;
+  height: 30%;
+  left: 0;
+  margin: auto;
+  min-height: inherit;
+  right: 0;
+  top: 0;
+  width: 80%;
+  .button-bar {
+    border-top: 1px solid #ccc;
+    bottom: 0;
+    position: absolute;
+  }
+}

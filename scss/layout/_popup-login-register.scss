@@ -27,12 +27,23 @@
       border-bottom: 2px solid #f94568;
     }
   }
-  .list .item {
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
+  .scroll {
+    height: 100%;
+  }
+  .second-list {
     margin: auto;
-    padding-left: 0;
     width: 85%;
+  }
+
+  .second-list .item {
+    border: medium none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .support-link {
+    color: #707070;
+    font-size: 13px;
+    font-weight: 100;
   }
 }

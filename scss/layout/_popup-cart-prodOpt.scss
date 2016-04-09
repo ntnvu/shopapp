@@ -1,0 +1,28 @@
+#popup-cart-prodOpt {
+  bottom: 0;
+  height: 80%;
+  left: 0;
+  margin: auto;
+  min-height: inherit;
+  right: 0;
+  top: 0;
+  width: 80%;
+  border-radius: 15px;
+
+  .button-bar {
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+.title-popup {
+  padding: 15px 0 30px;
+  text-align: center;
+  h4 {
+    font-size: 18px;
+    margin: 0;
+  }
+  span.note {
+    font-weight: 100;
+  }
+}

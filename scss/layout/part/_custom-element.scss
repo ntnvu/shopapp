@@ -1,0 +1,35 @@
+.custom-form {
+  .input-label {
+    font-size: 13px;
+    font-weight: 100;
+  }
+  .input-text {
+    font-size: 15px;
+  }
+  .list .item {
+    border-bottom: medium none;
+    border-left: medium none;
+    border-right: medium none;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+    width: 85%;
+  }
+}
+
+.custom-tab {
+  font-size: 15px;
+}
+
+.button-blue {
+  background-color: $light-bg;
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+
+.item-clear {
+  border: medium none;
+  padding: 0;
+}

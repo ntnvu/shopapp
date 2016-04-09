@@ -19,7 +19,7 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "../www/lib/ionic/scss/ionic";
 
 //include mixins
 @import "mixins/media-query";
@@ -34,10 +34,14 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 @import "layout/part/angular-deckgrid";
 @import "layout/part/float-button";
+@import "layout/part/custom-element";
 
 @import "layout/home";
 @import "layout/product-template";
 @import "layout/single-product-template";
 @import "layout/list-product-template";
 @import "layout/popup-login-register";
+@import "layout/popup-cart-prodOpt";
+@import "layout/popup-contatct-template";
+
 
