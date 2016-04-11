@@ -10,11 +10,8 @@
                     Mau sac
                 </div>
 
-                <select ng-model="optProd.color">
-                    <option value="yellow">Vang</option>
-                    <option value="red" selected>Do</option>
-                    <option value="oragne">Cam</option>
-                    <option value="blue">Xanh duong</option>
+                <select ng-model="choice.color" >
+                    <option data-ng-repeat='color in optProd.color' value="{{color}}">{{color}}</option>
                 </select>
 
             </label>
@@ -24,23 +21,20 @@
                     Kich thuoc
                 </div>
 
-                <select ng-model="optProd.size">
-                    <option value="S">S</option>
-                    <option value="M" selected>M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
+                <select ng-model="choice.size">
+                    <option data-ng-repeat='size in optProd.size' value="{{size}}">{{size}}</option>
                 </select>
             </label>
 
             <label class="item item-input">
                 <span class="input-label">So luong</span>
-                <input type="text" ng-model="optProd.quantity">
+                <input type="text" ng-model="choice.quantity">
             </label>
         </div>
-            <div class="button-bar">
-                <button class="button pink" data-ng-click="add_to_cart()">Nhap</button>
-                <button class="button pink" ng-click="closeModal()">Huy</button>
-            </div>
+        <div class="button-bar">
+            <button class="button pink" data-ng-click="add_to_cart()">Nhap</button>
+            <button class="button pink" ng-click="closeModal()">Huy</button>
+        </div>
 
 
     </ion-content>

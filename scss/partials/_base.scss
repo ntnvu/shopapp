@@ -6,11 +6,23 @@ $main-font: Roboto, sans-serif;
 .pink{
   color: #f94568;
 }
-.cross{
-  color: #acacac;
+.cross {
+  position: relative;
+  &:after {
+    background-color: #ccc;
+    content: "";
+    height: 1px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 45%;
+    width: 90%;
+  }
 }
 body{
   font: 15px $main-font;
+  background-color: #efefef;
 }
 .ion-ios-heart.actived {
   color: red;

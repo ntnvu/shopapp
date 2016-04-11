@@ -3,28 +3,23 @@
 module.exports = angular.module('cart.controller', [])
     .controller("CartController", ['$scope', 'parameters', '$localstorage',
         function ($scope, parameters, $localstorage) {
-//            $scope.productAttr = {
-//                color:["yellow", "red", "orange", "blue"],
-//                size:["S", "M", "L", "XL"]
-//            }
+            $scope.optProd = {
+                color:["yellow", "red", "orange", "blue"],
+                size:["S", "M", "L", "XL"]
+            };
 
-            $scope.cart = [];
-
-
-            $scope.optProd = {};
+            $scope.choice = {};
 
             $scope.add_to_cart = function () {
-                $scope.cart = $scope.cart.concat({
-                        id: parameters.id,
-                        title: parameters.title,
-                        thumb: parameters.img,
-                        color: $scope.optProd.color,
-                        size: $scope.optProd.size,
-                        quantity: $scope.optProd.quantity
-                    },
-                    $localstorage.getObject("cart"));
+                $localstorage.addObject("cart", {
+                    id: parameters.id,
+                    title: parameters.title,
+                    thumb: parameters.img,
+                    color: $scope.choice.color,
+                    size: $scope.choice.size,
+                    quantity: $scope.choice.quantity
+                });
 
-                $localstorage.setObject("cart", $scope.cart);
                 $scope.closeModal();
             }
 

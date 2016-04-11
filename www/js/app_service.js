@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = angular.module("app.service", [])
-    .factory('$localstorage', ['$window','$ionicHistory', function ($window, $ionicHistory) {
+    .factory('$localstorage', ['$window', '$ionicHistory', function ($window, $ionicHistory) {
         return {
             set: function (key, value) {
                 $window.localStorage[key] = value;
@@ -15,13 +15,58 @@ module.exports = angular.module("app.service", [])
             getObject: function (key) {
                 return JSON.parse($window.localStorage[key] || '{}');
             },
-            setNull: function(key){
-                this.setObject(key,{});
+            setNull: function (key) {
+                this.setObject(key, {});
             },
-            setNullAll: function(){
+            setNullAll: function () {
                 $window.localStorage.clear();
                 $ionicHistory.clearCache();
                 $ionicHistory.clearHistory();
+            },
+            addObject: function (key, value) {
+                console.log(value);
+                var value = new Array(value);
+                var arr = this.getObject(key);
+                if (arr.length > 0) {
+                    var shared = false;
+                    for (var i in arr) {
+                        if (arr[i].id == value[0].id) {
+                            shared = true;
+                            break;
+                        }
+                    }
+                    if (!shared) {
+                        value = value.concat(arr);
+                    }
+                    else{
+                        value = arr;
+                    }
+                }
+                this.setObject(key, value);
+            },
+            removeObject: function(key, id){
+                var arr = this.getObject(key);
+                for (var i in arr) {
+                    if (arr[i].id == id) {
+                        arr.splice(i, 1);
+                        break;
+                    }
+                }
+                this.setObject(key, arr);
+            },
+            mergeArray : function(arr1, arr2){
+                var arr3 = [];
+                for(var i in arr1){
+                    var shared = false;
+                    for (var j in arr2)
+                        if (arr2[j].id == arr1[i].id) {
+                            shared = true;
+                            break;
+                        }
+                    if(!shared) arr3.push(arr1[i])
+                }
+                arr3 = arr3.concat(arr2);
+                return arr3;
             }
         }
     }])

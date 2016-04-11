@@ -1,5 +1,5 @@
 <ion-view id="list-product-template">
-    <ion-content overflow-scroll="true" class="padding">
+    <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
             <div class="a-card">
                 <a href="#/menu/product/{{card.$index}}">
@@ -19,8 +19,6 @@
                         <button class="add-cart" data-ng-click="mother.chooseProductOption(card)" ng-class="{'actived' : card.added}"></button>
                         <button class="add-wishlist" ng-class="{'actived' : card.like}" ng-click="mother.addToWishlist(card)"></button>
                     </div>
-
-
                 </div>
             </div>
         </div>

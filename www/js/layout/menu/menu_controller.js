@@ -37,10 +37,8 @@ module.exports = angular.module("menu.controller", [])
                             disableBack: true
                         });
 
-                        angular.copy({
-                            number: 1
-                        }, $scope.page);
-                        angular.copy(data, $scope.products);//must use angular.copy than use "=" so it can continue binding to first service param
+                        angular.copy({number: 1}, $scope.page);
+                        angular.copy(data, $scope.products);//must use angular.copy instead use "=" so it can continue binding to first service param
                         if ($scope.firstTime)
                             $state.go("menu.products");
                         $scope.firstTime = 1;

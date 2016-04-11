@@ -25,18 +25,7 @@
       font-size: 18px;
     }
     .cross {
-      position: relative;
-      &:after {
-        background-color: #ccc;
-        content: "";
-        height: 1px;
-        left: 0;
-        margin: auto;
-        position: absolute;
-        right: 0;
-        top: 45%;
-        width: 90%;
-      }
+      color: #acacac;
     }
   }
   .info-inner-r {
