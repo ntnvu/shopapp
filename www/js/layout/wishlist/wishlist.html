@@ -13,3 +13,32 @@
         </ion-list>
     </ion-content>
 </ion-view>
+
+
+<ion-view id="list-product" class="list-product" cache-view="false">
+    <ion-content>
+        <ion-list class="padding">
+            <ion-item ng-repeat="item in wishlist" class="item">
+                <div class="thumb-wrap">
+                    <img ng-src="{{item.img}}">
+                </div>
+                <div class="info-wrap">
+                    <div class="title-wrap">
+                        <h2>{{item.title}}</h2>
+                    </div>
+                    <div class="price">
+                    <span class="cross">
+                        70000
+                    </span>
+                    <span class="orange">
+                        50000
+                    </span>
+                    </div>
+                </div>
+                <button class="delete icon-top" ng-click="removeFromWishlist(item)"></button>
+                <button class="add-cart icon-bottom" ng-click="chooseProductOption(item)" ng-class="{'actived' : item.like}"></button>
+            </ion-item>
+        </ion-list>
+        <button class="button button-positive button-block" ui-sref="products.checkout">Thanh toan</button>
+    </ion-content>
+</ion-view>

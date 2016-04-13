@@ -3,12 +3,11 @@
 module.exports = angular.module('wishlist.controller', [])
     .controller("WishlistController", ['$scope', '$localstorage','WishlistService','$state',
         function ($scope, $localstorage, WishlistService, $state) {
-            $localstorage.setNull();
+//            $localstorage.setNull("wishlist");
             $scope.wishlist = $localstorage.getObject("wishlist");
 
-            $scope.addToWishlist = function(item){
-                WishlistService.addWishlist(item);
+            $scope.removeFromWishlist = function(item){
+                WishlistService.removeWishlist(item);
+                $scope.wishlist = $localstorage.getObject("wishlist");
             }
-
-
         }]);

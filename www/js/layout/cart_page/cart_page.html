@@ -1,20 +1,27 @@
 <ion-view id="list-product" class="list-product" cache-view="false">
     <ion-content>
         <ion-list class="padding">
-            <ion-item ng-repeat="item in cartlist" class="item item-thumbnail-left item-icon-right">
-                <img ng-src="{{item.thumb}}">
-                <h2>{{item.title}}</h2>
-                <div class="price">
+            <ion-item ng-repeat="item in cartlist" class="item">
+                <div class="thumb-wrap">
+                    <img ng-src="{{item.img}}">
+                </div>
+                <div class="info-wrap">
+                    <div class="title-wrap">
+                        <h2>{{item.title}}</h2>
+                    </div>
+                    <div class="price">
                     <span class="cross">
                         70000
                     </span>
                     <span class="orange">
                         50000
                     </span>
+                    </div>
+                    <div class="detail-attr"><label>Mau</label> <span class="detail"><span>{{item.color}}</span></span></div>
+                    <div class="detail-attr"><label>Kich thuoc</label> <span class="detail"><span>{{item.size}}</span></span></div>
+                    <div class="detail-attr"><label>So luong</label> <span class="detail"><span>{{item.quantity}}</span></span></div>
                 </div>
-                <div class="detail-attr"><label>Mau</label> <span class="detail"><span>{{item.color}}</span></span></div>
-                <div class="detail-attr"><label>Kich thuoc</label> <span class="detail"><span>{{item.size}}</span></span></div>
-                <div class="detail-attr"><label>So luong</label> <span class="detail"><span>{{item.quantity}}</span></span></div>
+
                 <button class="delete icon-top" ng-click="removeFromCart(item)"></button>
                 <button class="add-wishlist icon-bottom" ng-click="addToWishlist(item)" ng-class="{'actived' : item.like}"></button>
             </ion-item>

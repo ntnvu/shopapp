@@ -6,15 +6,18 @@ module.exports = angular.module("app.service", [])
             set: function (key, value) {
                 $window.localStorage[key] = value;
             },
+
             get: function (key, defaultValue) {
                 return $window.localStorage[key] || defaultValue;
             },
+
             setObject: function (key, value) {
                 $window.localStorage[key] = JSON.stringify(value);
             },
             getObject: function (key) {
                 return JSON.parse($window.localStorage[key] || '{}');
             },
+
             setNull: function (key) {
                 this.setObject(key, {});
             },
@@ -23,8 +26,8 @@ module.exports = angular.module("app.service", [])
                 $ionicHistory.clearCache();
                 $ionicHistory.clearHistory();
             },
+
             addObject: function (key, value) {
-                console.log(value);
                 var value = new Array(value);
                 var arr = this.getObject(key);
                 if (arr.length > 0) {
@@ -44,16 +47,33 @@ module.exports = angular.module("app.service", [])
                 }
                 this.setObject(key, value);
             },
-            removeObject: function(key, id){
+
+            /*
+            * objArrNeedUpdate : is an array need update after main array is
+            * */
+            removeObject: function(key, item, objArrNeedUpdate){
                 var arr = this.getObject(key);
                 for (var i in arr) {
-                    if (arr[i].id == id) {
+                    if (arr[i].id == item.id) {
                         arr.splice(i, 1);
                         break;
                     }
                 }
                 this.setObject(key, arr);
+
+                //update value in array need update
+                var arr2 = this.getObject(objArrNeedUpdate);
+                if (arr2.length > 0) {
+                    for (var i in arr2) {
+                        if (arr2[i].id == item.id) {
+                            arr2[i] = item;
+                            break;
+                        }
+                    }
+                }
+                this.setObject(objArrNeedUpdate, arr2);
             },
+
             mergeArray : function(arr1, arr2){
                 var arr3 = [];
                 for(var i in arr1){
@@ -67,6 +87,17 @@ module.exports = angular.module("app.service", [])
                 }
                 arr3 = arr3.concat(arr2);
                 return arr3;
+            },
+            //input 2 array
+            //return array contain all elements which are in both array and update follow arr2
+            updateArray : function(arr1, arr2){
+                for(var i in arr1){
+                    for (var j in arr2)
+                        if (arr2[j].id == arr1[i].id) {
+                            arr1[i] = arr2[j];
+                        }
+                }
+                return arr1;
             }
         }
     }])

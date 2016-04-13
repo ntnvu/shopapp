@@ -21,9 +21,11 @@ module.exports = angular.module("products.factory", [])
                     else {
                         products = resp.data;
                     }
-//                    angular.extend(resp.data, $localstorage.getObject("wishlist"));
 
-                    deferred.resolve(resp.data);
+                    products = $localstorage.updateArray(products, $localstorage.getObject("wishlist"));
+                    products = $localstorage.updateArray(products, $localstorage.getObject("cart"));
+
+                    deferred.resolve(products);
                     // For JSON responses, resp.data contains the result
                 }, function (err) {
                     console.error('ERR', err);
