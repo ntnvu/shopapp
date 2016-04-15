@@ -4,6 +4,7 @@
     border-radius: 7px;
     margin: 10px 0;
     overflow: hidden;
+    border: 1px solid #ccc;
   }
   .thumb-footer h4 {
     overflow: hidden;
@@ -29,7 +30,6 @@
     }
   }
   .info-inner-r {
-    float: right;
     button {
       background-color: transparent;
       background-position: center center;
@@ -41,9 +41,15 @@
       width: 25px;
       &.add-cart {
         background-image: url("../img/cart.png");
+        &.actived{
+          background-image: url("../img/cart_added.png");
+        }
       }
       &.add-wishlist {
         background-image: url("../img/wishlist.png");
+        &.actived{
+          background-image: url("../img/wishlist_added.png");
+        }
       }
     }
   }

@@ -3,6 +3,7 @@
 module.exports = angular.module('CartPage.controller', [])
     .controller("CartPageController", ['$scope', '$localstorage', 'WishlistService', 'CartService',
         function ($scope, $localstorage, WishlistService, CartService) {
+
 //            $localstorage.setNull("cart");
             $scope.cartlist = $localstorage.getObject("cart");
 

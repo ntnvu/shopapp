@@ -1,37 +1,40 @@
-<ion-view>
+<ion-view id="list-product">
     <ion-content>
-        <ion-list>
+        <ion-list class="shipping-info">
             <ion-item>
-                <div>
-                    <a ui-sref="products.checkout_edit">Sua</a>
-                </div>
-                <h2>Dia chi giao hang</h2>
+                <button ui-sref="menu.checkout_edit">Sửa</button>
+                <h2>Địa Chỉ Giao Hàng</h2>
 
-                <p>900 Lac Long Quan</p>
+                <p>900, Lạc Long Quân, Q.11, HCM</p>
 
-                <h2>Chuyen hang</h2>
+                <h2>Chuyển Hàng</h2>
 
-                <p>Chuyen hang qua dich vu noi thanh</p>
+                <p>Gửi hàng qua dịch vụ - nội thành</p>
 
-                <h2>Thanh toan</h2>
+                <h2>Thanh Toán</h2>
 
-                <p>Thanh toan khi nhan hang</p>
+                <p>Thanh toán khi nhận hàng</p>
             </ion-item>
+        </ion-list>
+        <ion-list class="sum-wrap">
             <ion-item>
                 <div>
-                    <h2>Tong</h2>
-                    <span>200.000</span>
+                    <h2>Tổng</h2>
+
+                    <p>200.000</p>
                 </div>
                 <div>
-                    <h2>Phi giao hang</h2>
-                    <span>200.000</span>
+                    <h2>Phí Giao Hàng</h2>
+
+                    <p>20.000</p>
                 </div>
                 <div>
-                    <h2>Tong cong</h2>
-                    <span>200.000</span>
+                    <h2>Tổng Cộng</h2>
+
+                    <p>220.000</p>
                 </div>
             </ion-item>
         </ion-list>
-        <button class="button button-block button-positive" data-ng-click="checkout()">Thanh toan</button>
+        <button class="button no-radius button-block button-positive" data-ng-click="checkout()">Thanh toan</button>
     </ion-content>
 </ion-view>

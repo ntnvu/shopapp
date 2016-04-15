@@ -1,11 +1,23 @@
 $light-bg: #00aaf5;
 $main-font: Roboto, sans-serif;
-.orange{
+$pink: #f94568;
+.orange {
   color: #ff8a00;
 }
-.pink{
+
+.pink {
   color: #f94568;
 }
+
+.pink-bg {
+  background-color: #f94568;
+  color: #fff;
+}
+
+.pink-bg .left-buttons .button, .pink-bg .right-buttons .button {
+  color: #fff;
+}
+
 .cross {
   position: relative;
   &:after {
@@ -20,10 +32,16 @@ $main-font: Roboto, sans-serif;
     width: 90%;
   }
 }
-body{
+
+.bar-grey {
+  background-color: #d4d4d4;
+}
+
+body {
   font: 15px $main-font;
   background-color: #efefef;
 }
+
 .ion-ios-heart.actived {
   color: red;
 }
@@ -46,3 +64,6 @@ body{
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.no-radius {
+  border-radius: 0;
+}

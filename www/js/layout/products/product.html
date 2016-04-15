@@ -1,67 +1,84 @@
-<ion-view>
+<ion-view id="list-product-template">
     <ion-content>
         <div id="single-product-template">
-            <div class="card card-gallery item">
-                <ion-slide-box on-slide-changed="slideHasChanged($index)" pager-click="navSlide(index)" auto-play="true"
-                               does-continue="true">
-                    <ion-slide>
-                        <div class="box blue"><img
-                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
-                                alt="A masonry brick"></div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box yellow"><img
-                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
-                                alt="A masonry brick"></div>
-                    </ion-slide>
-                    <ion-slide>
-                        <div class="box pink"><img
-                                ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
-                                alt="A masonry brick"></div>
-                    </ion-slide>
-                </ion-slide-box>
+            <ion-list>
+                <ion-item>
+                    <ion-slide-box class="product-images" on-slide-changed="slideHasChanged($index)"
+                                   pager-click="navSlide(index)" auto-play="true"
+                                   does-continue="true">
+                        <ion-slide ng-repeat="item in product.images">
+                            <div class="box blue"><img
+                                    ng-src="{{item.url}}"
+                                    alt="A masonry brick"></div>
+                        </ion-slide>
+                    </ion-slide-box>
+                </ion-item>
+                <ion-item>
+                    <h2 class="title-product">Pretty Hate Machine</h2>
+                    <div class="info-wrap">
+                        <div class="info-inner-l">
 
-                <div class="thumb-footer">
-                    <h2>Pretty Hate Machine</h2>
+                            <div class="price-wrap">
+                                <div class="cross">
+                                    70000
+                                </div>
+                                <div class="orange">
+                                    50000
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-inner-r">
+                            <button class="add-cart" data-ng-click="chooseProductOption(product)"
+                                    ng-class="{'actived' : product.added}"></button>
+                            <button class="add-wishlist" ng-class="{'actived' : product.like}"
+                                    ng-click="addToWishlist(product)"></button>
+                        </div>
+                    </div>
+                </ion-item>
 
-                    <p>Nine Inch Nails</p>
-                    <button class="enable-pointer-events button button-clear icon ion-bag ion-assertive"
-                            data-ng-click="chooseProductOption(product)"></button>
-                    <button class="button button-clear icon ion-ios-heart ion-assertive"
-                            ng-click="addToWishlist(product)"></button>
+            </ion-list>
+            <ion-list>
+                <div class="bar bar-grey">
+                    <h4 class="title">Sản Phẩm Khác</h4>
                 </div>
+                <ion-item class="has-header">
+                    <div class="related-product">
+                        <slick infinite="true" slides-to-show="3" slides-to-scroll="3" init-onload="true" data="product.related">
+                            <div data-ng-repeat="item_img in product.related">
+                                <a>
+                                    <img ng-src="{{item_img.image_url}}" alt="A masonry brick">
+                                </a>
+                            </div>
+                            <!--<div>-->
+                                <!--<a>-->
 
-                <div class="related-product">
-                    <slick infinite="true" slides-to-show="3" slides-to-scroll="3">
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                        <div>
-                            <img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"
-                                 alt="A masonry brick">
-                        </div>
-                    </slick>
-                </div>
+                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"-->
+                                         <!--alt="A masonry brick">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<a>-->
+                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"-->
+                                         <!--alt="A masonry brick">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<a>-->
+                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"-->
+                                         <!--alt="A masonry brick">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div>-->
+                                <!--<a>-->
 
-
-            </div>
+                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"-->
+                                         <!--alt="A masonry brick">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                        </slick>
+                    </div>
+                </ion-item>
+            </ion-list>
         </div>
     </ion-content>
 

@@ -87,6 +87,13 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
             })
         ;
         $stateProvider
+            .state('menu.wishlist', {
+                url: "/wishlist",
+                templateUrl: "js/layout/wishlist/wishlist.html",
+                controller: 'WishlistController'
+            })
+        ;
+        $stateProvider
             .state('menu.checkout', {
                 url: "/checkout",
                 templateUrl: "js/layout/checkout/checkout.html",
@@ -100,13 +107,7 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
                 controller: 'CheckoutEditController'
             })
         ;
-        $stateProvider
-            .state('menu.wishlist', {
-                url: "/wishlist",
-                templateUrl: "js/layout/wishlist/wishlist.html",
-                controller: 'WishlistController'
-            })
-        ;
+
     }
 ]
 ;

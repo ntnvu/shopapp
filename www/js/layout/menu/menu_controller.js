@@ -33,10 +33,6 @@ module.exports = angular.module("menu.controller", [])
                 $scope.currentcheckCtrl = type;
                 ProductService.filterProduct(type).then(
                     function (data) {
-                        $ionicHistory.nextViewOptions({
-                            disableBack: true
-                        });
-
                         angular.copy({number: 1}, $scope.page);
                         angular.copy(data, $scope.products);//must use angular.copy instead use "=" so it can continue binding to first service param
                         if ($scope.firstTime)
@@ -53,6 +49,7 @@ module.exports = angular.module("menu.controller", [])
             $scope.show_cart = function(){
                 $state.go("menu.cart_page");
             }
+
             $scope.getProducts("hot");
         }
     ]);
