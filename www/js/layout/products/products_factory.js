@@ -14,7 +14,6 @@ module.exports = angular.module("products.factory", [])
                 value.id = value.entity_id;
                 temp.push(value);
             })
-            console.log(temp);
             return temp;
         }
 

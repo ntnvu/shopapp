@@ -8,6 +8,10 @@ module.exports = angular.module('registerLogin.controller', [])
                 console.log(LoginService.rec);
             }
 
+            $scope.$on('modal.hidden', function() {
+                $state.go('menu.products');
+            });
+
             $scope.loginData = {};
 
             $scope.openLoginModal = function () {

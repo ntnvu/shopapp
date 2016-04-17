@@ -15,6 +15,9 @@ module.exports = angular.module('wishlist.service', [])
             removeWishlist : function(item){
                 item.like = !item.like;
                 $localstorage.removeObject("wishlist", item, "cart");
+            },
+            isInWishlist : function(obj){
+
             }
         }
     });

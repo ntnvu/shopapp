@@ -16,7 +16,6 @@ module.exports = angular.module('cart.controller', [])
                 parameters.size = $scope.choice.size;
                 parameters.quantity = $scope.choice.quantity;
 
-                console.log(parameters);
 
                 CartService.addCart(parameters);
                 $scope.closeModal();

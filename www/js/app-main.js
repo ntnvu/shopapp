@@ -13,6 +13,10 @@ function AppMain($ionicPlatform){
             StatusBar.styleDefault();
         }
     });
+
+    $ionicPlatform.on('resume', function(){
+        alert("haha");
+    });
 }
 
 module.exports = ['$ionicPlatform', AppMain];

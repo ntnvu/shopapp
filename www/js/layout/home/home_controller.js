@@ -8,7 +8,6 @@ module.exports = angular.module("home.controller", [])
                 if(!currentUser.username){
                     ControlModalService.show('js/modules/registerLogin/registerLogin.html', 'RegisterLoginController', 1);
                 }else{
-                    console.log(currentUser.username);
                     $state.go('menu.products');
                 }
             }, 2000);

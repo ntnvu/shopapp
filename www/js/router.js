@@ -74,7 +74,7 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
         ;
         $stateProvider
             .state('menu.product', {
-                url: "/product/:index",
+                url: "/product/:id",
                 templateUrl: "js/layout/products/product.html",
                 controller: 'ProductController'
             })

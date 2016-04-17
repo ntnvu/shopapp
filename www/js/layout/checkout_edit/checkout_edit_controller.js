@@ -13,7 +13,6 @@ module.exports = angular.module('checkoutEdit.controller', [])
             $scope.optProd = {};
 
             $scope.add_to_cart = function () {
-                console.log($localstorage.getObject("cart"));
                 $scope.cart = $scope.cart.concat({
                     id: parameters.id,
                     thumb: parameters.img,

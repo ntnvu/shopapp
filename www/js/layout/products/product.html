@@ -1,13 +1,11 @@
-<ion-view id="list-product-template">
+<ion-view id="list-product-template" cache-view="false">
     <ion-content>
         <div id="single-product-template">
             <ion-list>
                 <ion-item>
-                    <ion-slide-box class="product-images" on-slide-changed="slideHasChanged($index)"
-                                   pager-click="navSlide(index)" auto-play="true"
-                                   does-continue="true">
+                    <ion-slide-box class="product-images" auto-play="true" does-continue="true">
                         <ion-slide ng-repeat="item in product.images">
-                            <div class="box blue"><img
+                            <div class="box"><img
                                     ng-src="{{item.url}}"
                                     alt="A masonry brick"></div>
                         </ion-slide>
@@ -45,7 +43,7 @@
                     <div class="related-product">
                         <slick infinite="true" slides-to-show="3" slides-to-scroll="3" init-onload="true" data="product.related">
                             <div data-ng-repeat="item_img in product.related">
-                                <a>
+                                <a ui-sref="menu.product({id : item_img.entity_id})">
                                     <img ng-src="{{item_img.image_url}}" alt="A masonry brick">
                                 </a>
                             </div>
