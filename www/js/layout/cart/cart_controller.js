@@ -1,10 +1,8 @@
 'use strict';
 
-module.exports = angular.module('CartPage.controller', [])
-    .controller("CartPageController", ['$scope', '$localstorage', 'WishlistService', 'CartService',
+module.exports = angular.module('cart.controller', [])
+    .controller("CartController", ['$scope', '$localstorage', 'WishlistService', 'CartService',
         function ($scope, $localstorage, WishlistService, CartService) {
-
-//            $localstorage.setNull("cart");
             $scope.cartlist = $localstorage.getObject("cart");
 
             $scope.addToWishlist = function(item){
@@ -15,4 +13,5 @@ module.exports = angular.module('CartPage.controller', [])
                 CartService.removeCart(item);
                 $scope.cartlist = $localstorage.getObject("cart");
             }
+
         }]);

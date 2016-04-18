@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = angular.module("product.controller", [])
-    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate','$timeout',
-        function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, $timeout) {
+    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService',
+        function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService) {
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
             $scope.product = {};
             $http.get(link_ajax + "/" + $stateParams.id).then(function (resp) {
@@ -27,6 +27,10 @@ module.exports = angular.module("product.controller", [])
 
             $scope.addToWishlist = function (item) {
                 WishlistService.addWishlist(item);
+            }
+
+            $scope.add_to_cart = function (item) {
+                CartService.addCart(item);
             }
 
             $scope.chooseProductOption = function (item) {

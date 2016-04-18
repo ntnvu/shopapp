@@ -14,24 +14,6 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
         ;
 
         $stateProvider
-            .state('cart', {
-                url: "/cart",
-                abstract: true,
-                templateUrl: "js/modules/cart/cart.html",
-                controller: 'CartController'
-            })
-        ;
-
-        $stateProvider
-            .state('contact', {
-                url: "/conta",
-                abstract: true,
-                templateUrl: "js/modules/cart/cart.html",
-                controller: 'CartController'
-            })
-        ;
-
-        $stateProvider
             .state('login', {
                 url: "/login",
                 abstract: true,
@@ -80,10 +62,10 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
             })
         ;
         $stateProvider
-            .state('menu.cart_page', {
-                url: "/cart_page",
-                templateUrl: "js/layout/cart_page/cart_page.html",
-                controller: 'CartPageController'
+            .state('menu.cart', {
+                url: "/cart",
+                templateUrl: "js/layout/cart/cart.html",
+                controller: 'CartController'
             })
         ;
         $stateProvider

@@ -9843,7 +9843,7 @@ body {
   border: medium none;
   padding: 0; }
 
-.view-button button {
+.view-button button, .grid-view {
   background-color: transparent;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -9854,7 +9854,7 @@ body {
   margin: 0 5px 0 3px;
   width: 27px;
   position: relative; }
-  .view-button button > span {
+  .view-button button > span, .grid-view > span {
     background-color: mediumslateblue;
     border-radius: 100%;
     bottom: -5px;
@@ -9865,6 +9865,9 @@ body {
     right: -5px;
     width: 17px; }
 
+.grid-view {
+  background-image: url("../img/grid_view.png"); }
+
 .view-wishlist {
   background-image: url("../img/wishlist_white.png"); }
 
@@ -9873,6 +9876,9 @@ body {
 
 #nav-bar-custom .icon {
   color: #fff; }
+
+#nav-bar-custom .hide.must-show {
+  display: block; }
 
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
@@ -10158,10 +10164,17 @@ body {
     box-sizing: border-box;
     display: inline-block;
     font-size: 14px;
-    min-width: 55px;
-    padding: 4px;
+    width: 55px;
+    height: 25px;
     text-align: center;
     vertical-align: middle; }
+    #list-product .detail input {
+      background-color: transparent;
+      border: medium none;
+      height: 100%;
+      padding: 0 5px;
+      text-align: center;
+      width: 100%; }
   #list-product .item-thumbnail-left > img:first-child {
     top: 15px; }
   #list-product ion-list.padding {

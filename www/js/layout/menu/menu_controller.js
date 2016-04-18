@@ -1,12 +1,28 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService,$localstorage) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', '$timeout',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, $timeout) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
+            $scope.cartNumber = $localstorage.getObject("cart").length;
+
+
+            $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+                if (toState.name == "menu.products") {
+                    $scope.showProductBackBtn = false;
+                }
+                else {
+                    $scope.showProductBackBtn = true;
+                }
+                console.log($scope.showProductBackBtn);
+            });
 
             $scope.$on('WishlistUpdate', function (event, data) {
                 $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
+            });
+
+            $scope.$on('CartUpdate', function (event, data) {
+                $scope.cartNumber = $localstorage.getObject("cart").length;
             });
 
             $scope.filterType = [
@@ -48,12 +64,12 @@ module.exports = angular.module("menu.controller", [])
                 );
             }
 
-            $scope.contact = function(){
+            $scope.contact = function () {
                 ControlModalService.show('js/modules/contact/contact.html', 'ContactController', 1);
             }
 
-            $scope.show_cart = function(){
-                $state.go("menu.cart_page");
+            $scope.show_cart = function () {
+                $state.go("menu.cart");
             }
 
             $scope.getProducts("hot");

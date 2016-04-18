@@ -3,14 +3,13 @@
 
 //module functions
 require("./modules/registerLogin/registerLogin");
-require("./modules/cart/cart");
 require("./modules/contact/contact");
 //module layout
 require("./layout/home/home");
 require("./layout/newMenu/newMenu");
 require("./layout/products/products");
 require("./layout/menu/menu");
-require("./layout/cart_page/cart_page");
+require("./layout/cart/cart");
 require("./layout/checkout/checkout");
 require("./layout/checkout_edit/checkout_edit");
 require("./layout/wishlist/wishlist");
@@ -18,7 +17,6 @@ require("./layout/wishlist/wishlist");
 module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid', 'ng-mfb', 'ionicLazyLoad',
         //functions
         'registerLogin',
-        'cart',
         'contact',
 
         //layout
@@ -26,7 +24,7 @@ module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid',
         'menu',
         'newMenu',
         'products',
-        'CartPage',
+        'cart',
         'checkout',
         'checkoutEdit',
         'wishlist',

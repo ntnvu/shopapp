@@ -17,9 +17,7 @@
                         50000
                     </span>
                     </div>
-                    <div class="detail-attr"><label>Mau</label> <span class="detail"><span>{{item.color}}</span></span></div>
-                    <div class="detail-attr"><label>Kich thuoc</label> <span class="detail"><span>{{item.size}}</span></span></div>
-                    <div class="detail-attr"><label>So luong</label> <span class="detail"><span>{{item.quantity}}</span></span></div>
+                    <div class="detail-attr"><label>So luong</label> <span class="detail"><input type="number" ng-model="item.quantity" value="{{item.quantity}}"/></span></div>
                 </div>
 
                 <button class="delete icon-top" ng-click="removeFromCart(item)"></button>

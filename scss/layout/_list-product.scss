@@ -103,10 +103,18 @@
     box-sizing: border-box;
     display: inline-block;
     font-size: 14px;
-    min-width: 55px;
-    padding: 4px;
+    width: 55px;
+    height: 25px;
     text-align: center;
     vertical-align: middle;
+    input {
+      background-color: transparent;
+      border: medium none;
+      height: 100%;
+      padding: 0 5px;
+      text-align: center;
+      width: 100%;
+    }
   }
   .item-thumbnail-left > img:first-child {
     top: 15px;

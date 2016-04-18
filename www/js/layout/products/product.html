@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <div class="info-inner-r">
-                            <button class="add-cart" data-ng-click="chooseProductOption(product)"
-                                    ng-class="{'actived' : product.added}"></button>
                             <button class="add-wishlist" ng-class="{'actived' : product.like}"
                                     ng-click="addToWishlist(product)"></button>
+                            <button class="add-cart" data-ng-click="add_to_cart(product)"
+                                    ng-class="{'actived' : product.added}"></button>
                         </div>
                     </div>
                 </ion-item>
