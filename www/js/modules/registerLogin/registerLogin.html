@@ -1,5 +1,5 @@
 <ion-modal-view id="popup-login-register">
-    <ion-content scroll="">
+    <ion-content>
 
         <ion-tabs class="tabs-icon-only">
 
@@ -21,21 +21,25 @@
                     </div>
                 </form>
                 <div class="list second-list">
-                    <a class="item support-link">Quen Mat Khau</a>
-                    <span class="note item">Hoac</span>
-                    <button class="button button-block button-blue" type="submit">Dang nhap bang facebook</button>
+                    <!--<a class="item support-link">Quen Mat Khau</a>-->
+                    <!--<span class="note item">Hoac</span>-->
+                    <!--<button class="button button-block button-blue" type="submit">Dang nhap bang facebook</button>-->
                     <a class="support-link item" ng-click="closeLoginModal()">Bo Qua</a>
                 </div>
 
             </ion-tab>
 
-            <ion-tab title="Dang Ky" class="custom-tab">
+            <ion-tab title="Dang Ky" class="custom-tab" >
                 <!-- Tab 2 content -->
                 <form ng-submit="doRegister()" class="custom-form">
                     <div class="list">
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">So dien thoai</span>
                             <input type="text" ng-model="registerData.username" class="input-text">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Email</span>
+                            <input type="text" ng-model="registerData.email" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Mat khau</span>
@@ -50,6 +54,9 @@
                         </label>
                     </div>
                 </form>
+                <div class="list second-list">
+                    <a class="support-link item" ng-click="closeLoginModal()">Bo Qua</a>
+                </div>
             </ion-tab>
 
         </ion-tabs>

@@ -1,8 +1,14 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService','$ionicHistory',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $ionicHistory) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService,$localstorage) {
+            $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
+
+            $scope.$on('WishlistUpdate', function (event, data) {
+                $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
+            });
+
             $scope.filterType = [
                 {type: "hot", name: 'San pham hot'},
                 {type: "bestseller", name: 'San pham ban chay'},

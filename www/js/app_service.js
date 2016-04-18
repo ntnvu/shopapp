@@ -134,7 +134,6 @@ module.exports = angular.module("app.service", [])
                     modalScope.openModal = function () {
                         modalScope.modal.show();
                         modalScope.modal.addClass("addruine");
-                        deferred.test = "aa";
                     };
 
                     modalScope.closeModal = function (result) {

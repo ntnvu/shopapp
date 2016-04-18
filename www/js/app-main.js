@@ -1,5 +1,5 @@
 'use strict';
-function AppMain($ionicPlatform){
+function AppMain($ionicPlatform, $state){
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -15,8 +15,8 @@ function AppMain($ionicPlatform){
     });
 
     $ionicPlatform.on('resume', function(){
-        alert("haha");
+        $state.go('home');
     });
 }
 
-module.exports = ['$ionicPlatform', AppMain];
+module.exports = ['$ionicPlatform', '$state', AppMain];

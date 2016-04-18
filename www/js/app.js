@@ -15,7 +15,7 @@ require("./layout/checkout/checkout");
 require("./layout/checkout_edit/checkout_edit");
 require("./layout/wishlist/wishlist");
 
-module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid', 'ng-mfb',
+module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid', 'ng-mfb', 'ionicLazyLoad',
         //functions
         'registerLogin',
         'cart',
@@ -33,9 +33,6 @@ module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid',
 
     ])
     .config(require('./router'))
-    .config(function ($ionicConfigProvider) {
-        $ionicConfigProvider.platform.android.tabs.position("bottom");
-    })
     .run(require('./app-main'));
 
 
