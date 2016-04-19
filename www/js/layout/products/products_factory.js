@@ -4,16 +4,16 @@ module.exports = angular.module("products.factory", [])
     .factory('ProductService', function ($q, $http, $localstorage) {
         var products = [];
         var page = {
-            number : 1
+            number: 1
         };//should use object or array, don't use a single variable
 
-        function edit_object_return(products){
+        function edit_object_return(products) {
             var temp = [];
-            $.each( products, function( key, value ) {
-                value.img = value.image_url;
+            $.each(products, function (key, value) {
                 value.id = value.entity_id;
                 temp.push(value);
             })
+            temp.reverse();
             return temp;
         }
 
@@ -25,19 +25,22 @@ module.exports = angular.module("products.factory", [])
 //                $http.get(link_ajax + "?action=latest_products_app&filter=" + filterType + "&page=" + page_next).then(function (resp) {
 
                 var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-                $http.get(link_ajax + "?page="+ page_next + "&limit=20&order=entity_id&dir=dsc").then(function (resp) {
+                $http.get(link_ajax + "?page=" + page_next + "&limit=20&order=entity_id&dir=dsc").then(function (resp) {
+
+                    if (!Array.isArray(resp.data))
+                        resp.data = edit_object_return(resp.data);
 
                     if (ajax) {
                         products = products.concat(resp.data);
+                        console.log(products);
                     }
                     else {
                         products = resp.data;
                     }
-                    if(!Array.isArray(products))
-                        products = edit_object_return(products);
 
-                    products = $localstorage.updateArray(products, $localstorage.getObject("wishlist"));
-                    products = $localstorage.updateArray(products, $localstorage.getObject("cart"));
+
+//                    products = $localstorage.updateArray(products, $localstorage.getObject("wishlist"));
+//                    products = $localstorage.updateArray(products, $localstorage.getObject("cart"));
 
                     deferred.resolve(products);
                     // For JSON responses, resp.data contains the result
@@ -50,8 +53,8 @@ module.exports = angular.module("products.factory", [])
                 return promise;
             },
 
-            productCurrent : products,
+            productCurrent: products,
 
-            page : page
+            page: page
         }
     });

@@ -8,6 +8,9 @@
   right: 0;
   top: 0;
   width: 80%;
+  .list label:first-child {
+    border-top: medium none;
+  }
   .tabs {
     bottom: auto;
     top: 0;
@@ -17,14 +20,15 @@
   }
   .tab-item {
     color: #b0b0b0;
-    span {
+    border: none;
+    .tab-title {
       border-bottom: 2px solid #b0b0b0;
       padding-bottom: 3px;
     }
   }
   .tab-item.tab-item-active {
     color: #000;
-    span {
+    .tab-title {
       border-bottom: 2px solid #f94568;
     }
   }

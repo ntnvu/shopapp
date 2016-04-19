@@ -6,6 +6,7 @@ module.exports = angular.module('cart.services', [])
             addCart : function(item){
                 if(!item.added){
                     item.added = !item.added;
+                    item.quantity = 1;
                     $localstorage.addObject("cart", item);
                     $rootScope.$broadcast("CartUpdate");
                 }

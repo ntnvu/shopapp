@@ -3,7 +3,6 @@
     background-color: #eaeaea;
     border-radius: 7px;
     margin: 10px 0;
-    overflow: hidden;
     border: 1px solid #ccc;
   }
   .thumb-footer h4 {
@@ -12,6 +11,9 @@
     white-space: nowrap;
   }
   .info-wrap {
+    font-size: 1px;
+    line-height: 0;
+    padding: 7px 0 4px;
     text-align: justify;
     @include display_inline_block();
     > * {

@@ -12,7 +12,7 @@
                     </ion-slide-box>
                 </ion-item>
                 <ion-item>
-                    <h2 class="title-product">Pretty Hate Machine</h2>
+                    <h2 class="title-product">{{product.detail.name}}</h2>
                     <div class="info-wrap">
                         <div class="info-inner-l">
 
@@ -26,10 +26,10 @@
                             </div>
                         </div>
                         <div class="info-inner-r">
-                            <button class="add-wishlist" ng-class="{'actived' : product.like}"
-                                    ng-click="addToWishlist(product)"></button>
-                            <button class="add-cart" data-ng-click="add_to_cart(product)"
-                                    ng-class="{'actived' : product.added}"></button>
+                            <button class="add-wishlist" ng-class="{'actived' : product.detail.like}"
+                                    ng-click="addToWishlist(product.detail)"></button>
+                            <button class="add-cart" data-ng-click="add_to_cart(product.detail)"
+                                    ng-class="{'actived' : product.detail.added}"></button>
                         </div>
                     </div>
                 </ion-item>
@@ -47,32 +47,6 @@
                                     <img ng-src="{{item_img.image_url}}" alt="A masonry brick">
                                 </a>
                             </div>
-                            <!--<div>-->
-                                <!--<a>-->
-
-                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"-->
-                                         <!--alt="A masonry brick">-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div>-->
-                                <!--<a>-->
-                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001618-Korean-WalMae-Makogeoli-0.75L-6Alc.jpg"-->
-                                         <!--alt="A masonry brick">-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div>-->
-                                <!--<a>-->
-                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/OT-001617-Fresh-Korean-Soju-0.36L-18Alc.jpg"-->
-                                         <!--alt="A masonry brick">-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div>-->
-                                <!--<a>-->
-
-                                    <!--<img ng-src="http://liquordelivery.com.sg/wp-content/uploads/2016/03/JW-b-Bohae-Black-Raspberry-Wine-0.375L-14Alc.jpg"-->
-                                         <!--alt="A masonry brick">-->
-                                <!--</a>-->
-                            <!--</div>-->
                         </slick>
                     </div>
                 </ion-item>

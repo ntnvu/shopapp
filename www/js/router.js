@@ -23,22 +23,6 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
         ;
 
         $stateProvider
-            .state('newMenu', {
-                url: "/newMenu",
-                abstract: true,
-                templateUrl: "js/layout/newMenu/newMenu.html",
-                controller: 'NewmenuController'
-            })
-        ;
-        $stateProvider
-            .state('newMenu.home', {
-                url: "/home",
-                templateUrl: "js/layout/newMenu/home.html",
-                controller: 'NewmenuController'
-            })
-        ;
-
-        $stateProvider
             .state('menu', {
                 url: "/menu",
                 abstract: true,

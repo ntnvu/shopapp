@@ -1,5 +1,5 @@
 <ion-modal-view id="popup-login-register">
-    <ion-content>
+    <ion-content overflow-scroll=false>
 
         <ion-tabs class="tabs-icon-only">
 
@@ -9,7 +9,7 @@
                     <div class="list">
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">So dien thoai</span>
-                            <input type="text" ng-model="loginData.username" class="input-text">
+                            <input type="tel" ng-model="loginData.username" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Mat khau</span>
@@ -35,11 +35,11 @@
                     <div class="list">
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">So dien thoai</span>
-                            <input type="text" ng-model="registerData.username" class="input-text">
+                            <input type="tel" ng-model="registerData.username" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Email</span>
-                            <input type="text" ng-model="registerData.email" class="input-text">
+                            <input type="email" ng-model="registerData.email" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Mat khau</span>

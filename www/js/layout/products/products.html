@@ -3,7 +3,7 @@
         <div deckgrid class="deckgrid" source="products">
             <div class="a-card">
                 <a href="#/menu/product/{{card.id}}">
-                    <img ng-src="{{card.img}}" alt="A masonry brick">
+                    <img ng-src="{{card.image_url}}" alt="{{card.name}}">
                 </a>
 
                 <div class="info-wrap">
@@ -19,7 +19,6 @@
                     <div class="info-inner-r">
                         <button class="add-wishlist" ng-class="{'actived' : card.like}" ng-click="mother.addToWishlist(card)"></button>
                         <button class="add-cart" data-ng-click="mother.add_to_cart(card)" ng-class="{'actived' : card.added}"></button>
-
                     </div>
                 </div>
             </div>
