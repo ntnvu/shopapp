@@ -37,10 +37,10 @@ module.exports = angular.module('registerLogin.controller', [])
 
             //register section
             $scope.doLogin = function () {
-                LoginService.loginUser($scope.loginData.username, $scope.loginData.password)
+                LoginService.loginUser($scope.loginData.email, $scope.loginData.pass)
                     .success(function (data) {
-//                    $state.go('tab.dash');
-                        $localstorage.setObject("current_user", $scope.loginData);
+                        $scope.loginData.login = 1;
+                        $localstorage.setObject("user", $scope.loginData);
                         $scope.closeModal();
                         $state.go('menu.products');
                     })

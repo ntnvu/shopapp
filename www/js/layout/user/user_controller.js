@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = angular.module('user.controller', [])
-    .controller("CartController", ['$scope',
+    .controller("UserController", ['$scope',
         function ($scope) {
 
         }

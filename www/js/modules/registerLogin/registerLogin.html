@@ -8,12 +8,12 @@
                 <form ng-submit="doLogin()" class="custom-form">
                     <div class="list">
                         <label class="item item-input item-stacked-label">
-                            <span class="input-label">So dien thoai</span>
-                            <input type="tel" ng-model="loginData.username" class="input-text">
+                            <span class="input-label">Email</span>
+                            <input type="email" ng-model="loginData.email" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Mat khau</span>
-                            <input type="password" ng-model="loginData.password" class="input-text">
+                            <input type="password" ng-model="loginData.pass" class="input-text">
                         </label>
                         <label class="item item-clear">
                             <button class="button button-block button-blue" type="submit">Dang nhap</button>
@@ -34,8 +34,8 @@
                 <form ng-submit="doRegister()" class="custom-form">
                     <div class="list">
                         <label class="item item-input item-stacked-label">
-                            <span class="input-label">So dien thoai</span>
-                            <input type="tel" ng-model="registerData.username" class="input-text">
+                            <span class="input-label">Email</span>
+                            <input type="email" ng-model="registerData.email" class="input-text">
                         </label>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Email</span>

@@ -10,8 +10,8 @@ require("./layout/products/products");
 require("./layout/menu/menu");
 require("./layout/cart/cart");
 require("./layout/checkout/checkout");
-require("./layout/checkout_edit/checkout_edit");
 require("./layout/wishlist/wishlist");
+require("./layout/user/user");
 
 module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid', 'ng-mfb',
         //functions
@@ -24,8 +24,8 @@ module.export = angular.module('starter', ['ionic', 'slick', 'akoenig.deckgrid',
         'products',
         'cart',
         'checkout',
-        'checkoutEdit',
         'wishlist',
+        'user'
 
     ])
     .config(require('./router'))

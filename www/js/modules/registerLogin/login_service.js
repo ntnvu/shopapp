@@ -9,7 +9,7 @@ module.exports = angular.module('registerLogin.services', [])
             var deferred = $q.defer();
             var promise = deferred.promise;
 
-            if (name == '12345' && pw == '12345') {
+            if (name == 'test@advn.vn' && pw == '123456') {
                 deferred.resolve('Welcome ' + name + '!');
             } else {
                 deferred.reject('Wrong credentials.');

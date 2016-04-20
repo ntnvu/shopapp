@@ -69,11 +69,17 @@ module.exports = ['$stateProvider', '$urlRouterProvider',
         $stateProvider
             .state('menu.checkout_edit', {
                 url: "/checkout_edit",
-                templateUrl: "js/layout/checkout_edit/checkout_edit.html",
+                templateUrl: "js/layout/checkout/checkout_edit.html",
                 controller: 'CheckoutEditController'
             })
         ;
-
+        $stateProvider
+            .state('menu.user', {
+                url: "/user",
+                templateUrl: "js/layout/user/user.html",
+                controller: 'UserController'
+            })
+        ;
     }
 ]
 ;
