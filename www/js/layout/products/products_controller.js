@@ -5,29 +5,15 @@ module.exports = angular.module("products.controller", [])
         function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService) {
             $scope.products = ProductService.productCurrent;
 
-            $scope.page = ProductService.page;
-
             $scope.openMenu = function () {
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
             $scope.loadMoreData = function () {
-                var type = $scope.currentcheckCtrl;
-
-                var temppage = $scope.page.number;
-                temppage++;
-
-                ProductService.filterProduct(type, 1, temppage).then(
-                    function (data) {
-                        var temp = $scope.products;
-                        temp = temp.concat(data);
-                        angular.copy(temp, $scope.products);//must use angular.copy
-                        $scope.$broadcast('scroll.infiniteScrollComplete');
-                        angular.copy({
-                            number: temppage
-                        }, $scope.page);
-                    }
-                );
+                ProductService.filterProduct().then(function(data){
+                    ProductService.setPage(++data);
+                    $scope.$broadcast('scroll.infiniteScrollComplete');
+                });
             };
 
             $scope.add_to_cart = function (item) {

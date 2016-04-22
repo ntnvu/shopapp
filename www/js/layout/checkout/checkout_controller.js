@@ -3,9 +3,11 @@
 module.exports = angular.module('checkout.controller', [])
     .controller("CheckoutController", ['$scope', '$localstorage', 'ControlModalService', '$state','$rootScope', 'CheckoutService','UserService',
         function ($scope, $localstorage, ControlModalService, $state, $rootScope, CheckoutService, UserService) {
-            $scope.cartlist = $localstorage.getObject("cart");
             $scope.user = UserService.currentUser;
-            $scope.checkout_info = CheckoutService.checkoutInfo;
+            $scope.checkoutInfo = CheckoutService.checkoutInfo;
+
+            $scope.checkoutInfo["methodShip"] = CheckoutService.shippingInfo.A;
+            $scope.checkoutInfo["methodPayment"] = CheckoutService.paymentInfo.A;
 
             if(UserService.isLogin()){
                 CheckoutService.updateCheckoutInfo($scope.user);

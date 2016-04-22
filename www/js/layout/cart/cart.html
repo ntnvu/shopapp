@@ -3,25 +3,31 @@
         <ion-list class="padding">
             <ion-item ng-repeat="item in cartlist" class="item">
                 <div class="thumb-wrap">
-                    <img ng-src="{{item.image_url}}">
+                    <a href="#/menu/product/{{item.entity_id}}">
+                        <img ng-src="{{item.image_url}}">
+                    </a>
                 </div>
                 <div class="info-wrap">
                     <div class="title-wrap">
                         <h2>{{item.name}}</h2>
                     </div>
                     <div class="price">
-                    <span class="cross">
-                        70000
-                    </span>
-                    <span class="orange">
-                        50000
-                    </span>
+                        <div class="cross" ng-if='0'>
+                            70000
+                        </div>
+                        <div class="orange">
+                            {{item.regular_price_with_tax}}
+                        </div>
                     </div>
-                    <div class="detail-attr"><label>So luong</label> <span class="detail"><input type="number" ng-model="item.quantity" value="{{item.quantity}}"/></span></div>
+                    <div class="detail-attr"><label>So luong</label> <span class="detail"><input type="number"
+                                                                                                 ng-model="item.quantity"
+                                                                                                 value="{{item.quantity}}"/></span>
+                    </div>
                 </div>
 
                 <button class="delete icon-top" ng-click="removeFromCart(item)"></button>
-                <button class="add-wishlist icon-bottom" ng-click="addToWishlist(item)" ng-class="{'actived' : item.like}"></button>
+                <button class="add-wishlist icon-bottom" ng-click="addToWishlist(item)"
+                        ng-class="{'actived' : item.like}"></button>
             </ion-item>
         </ion-list>
         <button class="button no-radius button-positive button-block" ui-sref="menu.checkout">Thanh toan</button>

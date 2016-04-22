@@ -9880,6 +9880,10 @@ body {
 #nav-bar-custom .hide.must-show {
   display: block; }
 
+#nav-bar-custom .left-buttons button {
+  padding: 0;
+  width: 40px; }
+
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
   background-size: cover; }
@@ -10232,20 +10236,124 @@ body {
   #list-product .address-info {
     border-bottom: 1px solid #000;
     display: block; }
-  #list-product .sum-wrap .item > div:after {
-    clear: both;
-    content: "";
-    display: table;
-    font-size: 0;
-    line-height: 0;
-    width: 100%;
-    zoom: 1; }
-  #list-product .sum-wrap .item > div h2 {
-    float: left; }
-  #list-product .sum-wrap .item > div p {
-    float: right;
-    font-weight: 300;
-    color: #000; }
   #list-product .shipping-info .item p {
     color: #000;
     font-weight: 100; }
+
+#checkout-template .shipping-info ion-item {
+  border: medium none;
+  padding: 5px 0; }
+  #checkout-template .shipping-info ion-item p {
+    line-height: 20px;
+    margin-top: 10px; }
+
+#checkout-template .shipping-info .edit {
+  color: #00aaf4;
+  display: block;
+  text-align: right; }
+
+#checkout-template > .scroll:first-child {
+  min-height: 100%; }
+
+#checkout-template .submit-btn {
+  bottom: 0;
+  margin: 0;
+  position: absolute; }
+
+#checkout-template .form-wrap {
+  padding-bottom: 60px; }
+  #checkout-template .form-wrap .submit-btn {
+    position: inherit; }
+
+#checkout-template .sum-wrap {
+  display: block;
+  margin-top: 30px; }
+  #checkout-template .sum-wrap .item {
+    border: medium none;
+    padding: 5px 0; }
+    #checkout-template .sum-wrap .item > div:after {
+      clear: both;
+      content: "";
+      display: table;
+      font-size: 0;
+      line-height: 0;
+      width: 100%;
+      zoom: 1; }
+    #checkout-template .sum-wrap .item > div h2 {
+      float: left; }
+    #checkout-template .sum-wrap .item > div p {
+      float: right;
+      font-weight: 300;
+      color: #000; }
+  #checkout-template .sum-wrap .total.item > div p {
+    font-weight: 700;
+    color: #ff8a00; }
+
+#side-menu-template .item {
+  border: medium none; }
+  #side-menu-template .item a, #side-menu-template .item h2 {
+    color: #000;
+    display: block;
+    font-weight: 500;
+    height: 100%;
+    padding: 10px 0; }
+
+#side-menu-template .item a.signout {
+  color: darkkhaki; }
+
+#side-menu-template .item.has-img {
+  background-position: left 18px center;
+  background-repeat: no-repeat;
+  background-size: 15px auto;
+  margin: 0;
+  padding-bottom: 0;
+  padding-left: 40px;
+  padding-top: 0; }
+
+#side-menu-template .item-radio .item-content {
+  padding-bottom: 10px;
+  padding-top: 10px; }
+  #side-menu-template .item-radio .item-content span {
+    color: #000;
+    display: block;
+    font-weight: 500;
+    height: 100%; }
+
+#side-menu-template .item-radio .radio-icon {
+  background-image: url("../img/sign-check.png");
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  background-size: 8px auto;
+  visibility: visible; }
+  #side-menu-template .item-radio .radio-icon:before {
+    display: none; }
+
+#side-menu-template .item-radio input:checked + .radio-content > .radio-icon {
+  background-image: url("../img/sign-check-blue.png"); }
+
+#side-menu-template .item-radio input:checked + .radio-content .item-content span {
+  color: #00aaf4; }
+
+#side-menu-template .show-user {
+  background-image: url("../img/people.png"); }
+
+#side-menu-template .show-cart {
+  background-image: url("../img/cart_black.png"); }
+
+#side-menu-template .item.thumbnail-wrap {
+  border-bottom: 1px solid #000;
+  margin: 0 0 5px;
+  padding: 10px 5px; }
+  #side-menu-template .item.thumbnail-wrap > * {
+    display: inline-block;
+    vertical-align: middle; }
+  #side-menu-template .item.thumbnail-wrap > a.thumbnail {
+    border: medium none; }
+    #side-menu-template .item.thumbnail-wrap > a.thumbnail img {
+      border-radius: 100%;
+      height: 85px;
+      margin-right: 5px;
+      object-fit: cover;
+      width: 85px; }
+  #side-menu-template .item.thumbnail-wrap > .info {
+    width: 170px; }

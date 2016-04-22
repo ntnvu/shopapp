@@ -31,26 +31,38 @@
         </nav>
     </ion-pane>
     <ion-side-menu side="left">
-        <ion-content has-header="true">
-            <div class="list">
-                <ion-item>
-                    <a class="item item-thumbnail-left" href="#">
-                        <img src="cover.jpg">
-
-                        <h2>Pretty Hate Machine</h2>
-
-                        <p>Nine Inch Nails</p>
+        <ion-content has-header="true" id="side-menu-template">
+            <div class="list" ng-if="user.login">
+                <ion-item class="item-text-wrap thumbnail-wrap">
+                    <a menu-close ng-click="user_info()" class="thumbnail">
+                        <img src="{{user.portrait}}">
                     </a>
+
+                    <div class="info">
+                        <h2>{{user.name}}</h2>
+
+                        <p>{{user.address}}{{", " + user.ward}}{{", " + user.district}}{{", " + user.city}}</p>
+                        <a class="signout" ng-click="signout()">Thoát</a>
+                    </div>
                 </ion-item>
-                <ion-item>
-                    <a menu-close>Tai Khoan Cua Toi</a>
+                <ion-item class="show-user has-img">
+                    <a menu-close ng-click="user_info()">Tai Khoan Cua Toi</a>
                 </ion-item>
-                <ion-item>
+                <ion-item class="show-cart has-img">
                     <a menu-close ng-click="show_cart()">Gio Hang</a>
                 </ion-item>
-                <ion-radio menu-close ng-model="selected.type" ng-click="getProducts(ftype.type)"
-                           ng-value="{{ftype.type}}" ng-repeat="ftype in filterType">{{ftype.name}}
-                </ion-radio>
+            </div>
+            <div class="list" ng-if="!user.login">
+                <ion-item class="show-user has-img">
+                    <a menu-close ng-click="to_login()">Đăng ký / Đăng nhập</a>
+                </ion-item>
+            </div>
+            <div class="list">
+                <ion-item class="radio-product-wrap">
+                    <ion-radio menu-close ng-model="selected.type" ng-click="getProducts(ftype.type)"
+                               ng-value="{{ftype.type}}" ng-repeat="ftype in filterType">{{ftype.name}}
+                    </ion-radio>
+                </ion-item>
             </div>
         </ion-content>
     </ion-side-menu>

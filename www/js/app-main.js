@@ -15,7 +15,7 @@ function AppMain($ionicPlatform, $state){
     });
 
     $ionicPlatform.on('resume', function(){
-        $state.go('home');
+//        $state.go('home');
     });
 }
 

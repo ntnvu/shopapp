@@ -1,9 +1,9 @@
 'use strict';
 
-require('./checkout_controller.js');
-require('./checkout_edit_controller.js');
-require('./checkout_service.js');
-require('.././user/user.js');
+require('./checkout_controller');
+require('./checkout_edit_controller');
+require('./checkout_service');
+require('.././user/user');
 require('../.././app_service');
 
-module.exports = angular.module("checkout", ['app.service', 'checkout.service', 'user.service', 'checkout.controller', 'checkoutEdit.controller']);
+module.exports = angular.module("checkout", ['app.service', 'user', 'checkout.service', 'checkout.controller', 'checkoutEdit.controller']);

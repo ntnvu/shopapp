@@ -1,19 +1,24 @@
 <ion-view id="list-product">
-    <ion-content>
+    <ion-content id="checkout-template">
         <ion-list class="shipping-info">
             <ion-item>
-                <button ui-sref="menu.checkout_edit">Sửa</button>
+                <a class="edit" ui-sref="menu.checkout_edit">Sửa</a>
+            </ion-item>
+            <ion-item class="item-text-wrap">
                 <h2>Địa Chỉ Giao Hàng</h2>
 
-                <p>{{checkout_info.address}}</p>
-
+                <p>{{checkoutInfo.address}}{{", " + checkoutInfo.ward}}{{", " + checkoutInfo.district}}{{", " + checkoutInfo.city}}</p>
+            </ion-item>
+            <ion-item class="item-text-wrap">
                 <h2>Chuyển Hàng</h2>
 
-                <p>Gửi hàng qua dịch vụ - nội thành</p>
-
+                <p>{{checkoutInfo.methodShip.text}}</p>
+            </ion-item>
+            <ion-item class="item-text-wrap">
                 <h2>Thanh Toán</h2>
 
-                <p>Thanh toán khi nhận hàng</p>
+                <p>{{checkoutInfo.methodPayment}}</p>
+            </ion-item>
             </ion-item>
         </ion-list>
         <ion-list class="sum-wrap">
@@ -21,20 +26,24 @@
                 <div>
                     <h2>Tổng</h2>
 
-                    <p>200.000</p>
+                    <p>{{checkoutInfo.total}}</p>
                 </div>
+            </ion-item>
+            <ion-item>
                 <div>
                     <h2>Phí Giao Hàng</h2>
 
-                    <p>20.000</p>
+                    <p>{{checkoutInfo.methodShip.value}}</p>
                 </div>
+            </ion-item>
+            <ion-item class="total">
                 <div>
                     <h2>Tổng Cộng</h2>
 
-                    <p>220.000</p>
+                    <p>{{checkoutInfo.grandTotal}}</p>
                 </div>
             </ion-item>
         </ion-list>
-        <button class="button no-radius button-block button-positive" data-ng-click="checkout()">Thanh toan</button>
+        <button class="button no-radius button-block button-positive submit-btn" data-ng-click="checkout()">Đặt hàng</button>
     </ion-content>
 </ion-view>

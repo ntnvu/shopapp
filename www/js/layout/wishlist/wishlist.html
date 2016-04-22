@@ -3,23 +3,26 @@
         <ion-list class="padding">
             <ion-item ng-repeat="item in wishlist" class="item">
                 <div class="thumb-wrap">
-                    <img ng-src="{{item.image_url}}">
+                    <a href="#/menu/product/{{item.entity_id}}">
+                        <img ng-src="{{item.image_url}}">
+                    </a>
                 </div>
                 <div class="info-wrap">
                     <div class="title-wrap">
                         <h2>{{item.name}}</h2>
                     </div>
                     <div class="price">
-                    <span class="cross">
-                        70000
-                    </span>
-                    <span class="orange">
-                        50000
-                    </span>
+                        <div class="cross" ng-if='0'>
+                            70000
+                        </div>
+                        <div class="orange">
+                            {{item.regular_price_with_tax}}
+                        </div>
                     </div>
                 </div>
                 <button class="delete icon-top" ng-click="removeFromWishlist(item)"></button>
-                <button class="add-cart icon-bottom" ng-click="add_to_cart(item)" ng-class="{'actived' : item.added}"></button>
+                <button class="add-cart icon-bottom" ng-click="add_to_cart(item)"
+                        ng-class="{'actived' : item.added}"></button>
             </ion-item>
         </ion-list>
     </ion-content>

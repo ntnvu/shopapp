@@ -190,22 +190,6 @@
     display: block;
   }
 
-  .sum-wrap {
-    .item {
-      > div {
-        @include clearfix();
-        h2 {
-          float: left;
-        }
-        p {
-          float: right;
-          font-weight: 300;
-          color: #000;
-        }
-      }
-    }
-  }
-
   .shipping-info .item p {
     color: #000;
     font-weight: 100;

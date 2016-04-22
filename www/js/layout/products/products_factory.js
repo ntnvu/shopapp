@@ -3,58 +3,70 @@
 module.exports = angular.module("products.factory", [])
     .factory('ProductService', function ($q, $http, $localstorage) {
         var products = [];
-        var page = {
-            number: 1
-        };//should use object or array, don't use a single variable
+        var filter = {
+            page: 1,
+            type: ''
+        };
 
-        function edit_object_return(products) {
-            var temp = [];
-            $.each(products, function (key, value) {
-                value.id = value.entity_id;
-                temp.push(value);
-            })
-            temp.reverse();
-            return temp;
+        function add_product(data) {
+            var array = $.map(data, function (value, index) {
+                return [value];
+            });
+
+            for (var i = array.length - 1; i >= 0; i--) {
+                products.push(array[i]);
+            }
         }
 
         return{
-            filterProduct: function (filterType, ajax, page_next) {
+            filterProduct: function () {
                 var deferred = $q.defer();
                 var promise = deferred.promise;
 //                var link_ajax = "http://liquordelivery.com.sg/wp-admin/admin-ajax.php";
 //                $http.get(link_ajax + "?action=latest_products_app&filter=" + filterType + "&page=" + page_next).then(function (resp) {
+                if(filter.page == 1){
+                     this.clearProducts();
+                }
 
                 var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-                $http.get(link_ajax + "?page=" + page_next + "&limit=20&order=entity_id&dir=dsc").then(function (resp) {
+                $http.get(link_ajax + "?page=" + filter.page + "&limit=20&order=entity_id&dir=dsc").then(function (resp) {
+                    add_product(resp.data);
+                    deferred.resolve(filter.page++);
 
-                    if (!Array.isArray(resp.data))
-                        resp.data = edit_object_return(resp.data);
+                    $localstorage.updateArray(products, $localstorage.getObject("cart"),"added");
+                    $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
 
-                    if (ajax) {
-                        products = products.concat(resp.data);
-                        console.log(products);
-                    }
-                    else {
-                        products = resp.data;
-                    }
-
-
-//                    products = $localstorage.updateArray(products, $localstorage.getObject("wishlist"));
-//                    products = $localstorage.updateArray(products, $localstorage.getObject("cart"));
-
-                    deferred.resolve(products);
-                    // For JSON responses, resp.data contains the result
                 }, function (err) {
+                    // err.status will contain the status code
                     console.error('ERR', err);
                     deferred.reject('ERR ' + err);
-                    // err.status will contain the status code
                 })
 
                 return promise;
             },
 
+            setPage: function (number) {
+                filter.page = number;
+            },
+
+            setType: function (type) {
+                filter.type = type;
+            },
+
+            addAttribute : function(item, index){
+                for(var i in products){
+                    if(products[i].entity_id == item.entity_id){
+                        products[i][index] = item[index];
+                    }
+                }
+            },
+
+            clearProducts : function(){
+                products.length = 0;
+            },
+
             productCurrent: products,
 
-            page: page
+            page: filter.page
         }
     });

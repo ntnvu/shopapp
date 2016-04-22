@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = angular.module("app.service", [])
-    .factory('$localstorage', ['$window', '$ionicHistory', function ($window, $ionicHistory) {
+    .factory('$localstorage', function ($window, $ionicHistory) {
         return {
             set: function (key, value) {
                 $window.localStorage[key] = value;
@@ -33,7 +33,7 @@ module.exports = angular.module("app.service", [])
                 if (arr.length > 0) {
                     var shared = false;
                     for (var i in arr) {
-                        if (arr[i].id == value[0].id) {
+                        if (arr[i].entity_id == value[0].entity_id) {
                             shared = true;
                             break;
                         }
@@ -41,7 +41,7 @@ module.exports = angular.module("app.service", [])
                     if (!shared) {
                         value = value.concat(arr);
                     }
-                    else{
+                    else {
                         value = arr;
                     }
                 }
@@ -49,58 +49,60 @@ module.exports = angular.module("app.service", [])
             },
 
             /*
-            * objArrNeedUpdate : is an array need update after main array is
-            * */
-            removeObject: function(key, item, objArrNeedUpdate){
+             * objArrNeedUpdate : is an array need update after main array is
+             * */
+            removeObject: function (key, item) {
                 var arr = this.getObject(key);
                 for (var i in arr) {
-                    if (arr[i].id == item.id) {
+                    if (arr[i].entity_id == item.entity_id) {
                         arr.splice(i, 1);
                         break;
                     }
                 }
                 this.setObject(key, arr);
-
-                //update value in array need update
-                var arr2 = this.getObject(objArrNeedUpdate);
-                if (arr2.length > 0) {
-                    for (var i in arr2) {
-                        if (arr2[i].id == item.id) {
-                            arr2[i] = item;
-                            break;
-                        }
-                    }
-                }
-                this.setObject(objArrNeedUpdate, arr2);
             },
 
-            mergeArray : function(arr1, arr2){
+            mergeArray: function (arr1, arr2) {
                 var arr3 = [];
-                for(var i in arr1){
+                for (var i in arr1) {
                     var shared = false;
                     for (var j in arr2)
-                        if (arr2[j].id == arr1[i].id) {
+                        if (arr2[j].entity_id == arr1[i].entity_id) {
                             shared = true;
                             break;
                         }
-                    if(!shared) arr3.push(arr1[i])
+                    if (!shared) arr3.push(arr1[i])
                 }
                 arr3 = arr3.concat(arr2);
                 return arr3;
             },
             //input 2 array
             //return array contain all elements which are in both array and update follow arr2
-            updateArray : function(arr1, arr2){
-                for(var i in arr1){
-                    for (var j in arr2)
-                        if (arr2[j].id == arr1[i].id) {
-                            arr1[i] = arr2[j];
+            updateArray: function (arr1, arr2, key) {
+                for (var i in arr1) {
+                    for (var j in arr2) {
+                        if (arr2[j].entity_id == arr1[i].entity_id) {
+
+                            arr1[i][key] = arr2[j][key];
+                            console.log(arr1[i]);
                         }
+                    }
                 }
-                return arr1;
+            },
+
+            addAttribute: function (key, item, index) {
+                var arr = this.getObject(key);
+                if (arr.length > 0) {
+                    for (var i in arr) {
+                        if (arr[i].entity_id == item.entity_id) {
+                            arr[i][index] = item[index];
+                        }
+                    }
+                    this.setObject(key, arr);
+                }
             }
         }
-    }])
+    })
     .service('ControlModalService', function ($q, $ionicModal, $rootScope, $timeout, $controller) {
         return {
             show: show
@@ -117,7 +119,6 @@ module.exports = angular.module("app.service", [])
                     backdropClickToClose: true,
                     hardwareBackButtonClose: true,
                     modalCallback: null
-
                 };
 
             options = angular.extend({}, defaultOptions, options);
@@ -133,7 +134,6 @@ module.exports = angular.module("app.service", [])
 
                     modalScope.openModal = function () {
                         modalScope.modal.show();
-                        modalScope.modal.addClass("addruine");
                     };
 
                     modalScope.closeModal = function (result) {

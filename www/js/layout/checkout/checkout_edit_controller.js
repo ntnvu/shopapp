@@ -1,17 +1,15 @@
 'use strict';
 
 module.exports = angular.module('checkoutEdit.controller', [])
-    .controller("CheckoutEditController", ['$scope', '$localstorage', 'UserService','CheckoutService',
-        function ($scope,  $localstorage, UserService, CheckoutService) {
+    .controller("CheckoutEditController", ['$scope', '$localstorage', 'UserService','CheckoutService','$state',
+        function ($scope,  $localstorage, UserService, CheckoutService, $state) {
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
             $scope.shippingInfo = CheckoutService.shippingInfo;
-            $scope.methodShip = {
-                name : ""
-            }
+            $scope.paymentInfo = CheckoutService.paymentInfo;
 
             $scope.updateCheckout = function(){
-                console.log($scope.methodShip.name);
                 CheckoutService.updateCheckoutInfo($scope.checkoutInfo);
+                $state.go('menu.checkout');
             }
         }]);

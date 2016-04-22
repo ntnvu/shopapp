@@ -1,11 +1,15 @@
 "use strict"
 
 module.exports = angular.module("product.controller", [])
-    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService',
-        function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService) {
+    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService','$localstorage',
+        function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService, $localstorage) {
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
             $scope.product = {};
             $http.get(link_ajax + "/" + $stateParams.id).then(function (resp) {
+
+                $localstorage.updateArray(resp.data, $localstorage.getObject("cart"),"added");
+                $localstorage.updateArray(resp.data, $localstorage.getObject("wishlist"), "like");
+
                 $scope.product.detail = resp.data;
             });
 

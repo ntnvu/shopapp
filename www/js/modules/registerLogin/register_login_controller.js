@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = angular.module('registerLogin.controller', [])
-    .controller("RegisterLoginController", ['$scope', 'LoginService', '$state', '$ionicPopup', '$localstorage',
-        function ($scope, LoginService, $state, $ionicPopup, $localstorage) {
-
+    .controller("RegisterLoginController", ['$scope', 'LoginService', '$state', '$ionicPopup', '$localstorage', 'UserService',
+        function ($scope, LoginService, $state, $ionicPopup, $localstorage, UserService) {
+            $scope.user = UserService.current_user;
             $scope.result = function () {
                 console.log(LoginService.rec);
             }
@@ -39,13 +39,11 @@ module.exports = angular.module('registerLogin.controller', [])
             $scope.doLogin = function () {
                 LoginService.loginUser($scope.loginData.email, $scope.loginData.pass)
                     .success(function (data) {
-                        $scope.loginData.login = 1;
-                        $localstorage.setObject("user", $scope.loginData);
+                        UserService.login($scope.user);
                         $scope.closeModal();
                         $state.go('menu.products');
                     })
                     .error(function (data) {
-                        console.log("do not Login");
                         var alertPopup = $ionicPopup.alert({
                             title: 'Login failed!',
                             template: 'Please check your credentials!'

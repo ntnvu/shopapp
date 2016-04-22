@@ -1,11 +1,12 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', '$timeout',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, $timeout) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
             $scope.cartNumber = $localstorage.getObject("cart").length;
-
+            $scope.user = UserService.currentUser;
+            UserService.isLogin();
 
             $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 if (toState.name == "menu.products") {
@@ -14,7 +15,6 @@ module.exports = angular.module("menu.controller", [])
                 else {
                     $scope.showProductBackBtn = true;
                 }
-                console.log($scope.showProductBackBtn);
             });
 
             $scope.$on('WishlistUpdate', function (event, data) {
@@ -46,22 +46,11 @@ module.exports = angular.module("menu.controller", [])
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
-            $scope.products = ProductService.productCurrent;
-            $scope.page = ProductService.page;
-            $scope.firstTime = 0;
-
             $scope.getProducts = function (type) {
                 type = JSON.stringify(type);
-                $scope.currentcheckCtrl = type;
-                ProductService.filterProduct(type).then(
-                    function (data) {
-                        angular.copy({number: 1}, $scope.page);
-                        angular.copy(data, $scope.products);//must use angular.copy instead use "=" so it can continue binding to first service param
-                        if ($scope.firstTime)
-                            $state.go("menu.products");
-                        $scope.firstTime = 1;
-                    }
-                );
+                ProductService.setType(type);
+                ProductService.setPage(1);
+                ProductService.filterProduct();
             }
 
             $scope.contact = function () {
@@ -70,6 +59,18 @@ module.exports = angular.module("menu.controller", [])
 
             $scope.show_cart = function () {
                 $state.go("menu.cart");
+            }
+
+            $scope.user_info = function () {
+                $state.go("menu.user");
+            }
+
+            $scope.to_login = function () {
+                ControlModalService.show('js/modules/registerLogin/registerLogin.html', 'RegisterLoginController', 1);
+            }
+
+            $scope.signout = function () {
+                UserService.signOut();
             }
 
             $scope.getProducts("hot");

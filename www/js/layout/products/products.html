@@ -2,7 +2,7 @@
     <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
             <div class="a-card">
-                <a href="#/menu/product/{{card.id}}">
+                <a href="#/menu/product/{{card.entity_id}}">
                     <img ng-src="{{card.image_url}}" alt="{{card.name}}">
                 </a>
 
@@ -10,15 +10,17 @@
 
                     <div class="info-inner-l">
                         <div class="orange">
-                            50000
+                            {{card.regular_price_with_tax}}
                         </div>
-                        <div class="cross">
+                        <div class="cross" ng-if='0'>
                             70000
                         </div>
                     </div>
                     <div class="info-inner-r">
-                        <button class="add-wishlist" ng-class="{'actived' : card.like}" ng-click="mother.addToWishlist(card)"></button>
-                        <button class="add-cart" data-ng-click="mother.add_to_cart(card)" ng-class="{'actived' : card.added}"></button>
+                        <button class="add-wishlist" ng-class="{'actived' : card.like}"
+                                ng-click="mother.addToWishlist(card)"></button>
+                        <button class="add-cart" data-ng-click="mother.add_to_cart(card)"
+                                ng-class="{'actived' : card.added}"></button>
                     </div>
                 </div>
             </div>

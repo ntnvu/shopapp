@@ -1,5 +1,5 @@
 <ion-view id="list-product">
-    <ion-content>
+    <ion-content id="checkout-template">
         <form class="form-wrap" ng-submit="updateCheckout()">
             <ion-list class="address-info">
                 <ion-item class="item-divider title-group">
@@ -7,33 +7,33 @@
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Ho ten</span>
-                    <input type="text" placeholder="{{user.name}}" ng-model="checkoutInfo.name">
+                    <input type="text" ng-model="checkoutInfo.name">
                 </ion-item>
 
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Email</span>
-                    <input type="text" placeholder="{{user.email}}" ng-model="checkoutInfo.email">
+                    <input type="text" ng-model="checkoutInfo.email">
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Dien thoai</span>
-                    <input type="text" placeholder="{{user.phone}}" ng-model="checkoutInfo.phone">
+                    <input type="text" ng-model="checkoutInfo.phone">
                 </ion-item>
 
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Dia chi</span>
-                    <input type="text" placeholder="{{user.address}}" ng-model="checkoutInfo.address">
+                    <input type="text" ng-model="checkoutInfo.address">
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Quan/Huyen</span>
-                    <input type="text" placeholder="{{user.district}}" ng-model="checkoutInfo.district">
+                    <input type="text" ng-model="checkoutInfo.district">
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Phuong/Xa</span>
-                    <input type="text" placeholder="{{user.ward}}" ng-model="checkoutInfo.ward">
+                    <input type="text" ng-model="checkoutInfo.ward">
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Thanh Pho</span>
-                    <input type="text" placeholder="{{user.city}}" ng-model="checkoutInfo.city">
+                    <input type="text" ng-model="checkoutInfo.city">
                 </ion-item>
             </ion-list>
             <ion-list class="address">
@@ -41,42 +41,42 @@
                     <h2>Chuyen Hang</h2>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input id="chose-1" type="radio" ng-model="methodShip.name" ng-value="shippingInfo.A">
+                    <input id="chose-1" type="radio" ng-model="checkoutInfo.methodShip" ng-value="shippingInfo.A">
                     <label for="chose-1">
-                        <span>{{shippingInfo.A}}</span>
+                        <span>{{shippingInfo.A.text}}</span>
                     </label>
                 </ion-item>
                 <ion-item class="item-divider">
                     <h3>Gui hang qua dich vu - noi thanh</h3>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input id="chose-2" type="radio" ng-model="methodShip.name" ng-value="shippingInfo.B">
+                    <input id="chose-2" type="radio" ng-model="checkoutInfo.methodShip" ng-value="shippingInfo.B">
                     <label for="chose-2">
-                        <span>{{shippingInfo.B}}</span>
+                        <span>{{shippingInfo.B.text}}</span>
                     </label>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input id="chose-3" type="radio" ng-model="methodShip.name" ng-value="shippingInfo.C">
+                    <input id="chose-3" type="radio" ng-model="checkoutInfo.methodShip" ng-value="shippingInfo.C">
                     <label for="chose-3">
-                        <span>{{shippingInfo.C}}</span>
+                        <span>{{shippingInfo.C.text}}</span>
                     </label>
                 </ion-item>
                 <ion-item class="item-divider item-text-wrap">
                     <h3>Gửi hàng qua dịch vụ - ngoại thành</h3>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input id="chose-4" type="radio" ng-model="methodShip.name" ng-value="shippingInfo.D">
+                    <input id="chose-4" type="radio" ng-model="checkoutInfo.methodShip" ng-value="shippingInfo.D">
                     <label for="chose-4">
-                        <span>{{shippingInfo.D}}</span>
+                        <span>{{shippingInfo.D.text}}</span>
                     </label>
                 </ion-item>
                 <ion-item class="item-divider item-text-wrap">
                     <h3>Ship hàng đi các tỉnh</h3>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input id="chose-5" type="radio" ng-model="methodShip.name" ng-value="shippingInfo.E">
+                    <input id="chose-5" type="radio" ng-model="checkoutInfo.methodShip" ng-value="shippingInfo.E">
                     <label for="chose-5">
-                        <span>{{shippingInfo.E}}</span>
+                        <span>{{shippingInfo.E.text}}</span>
                     </label>
                 </ion-item>
             </ion-list>
@@ -85,19 +85,19 @@
                     <h2>Thanh Toán</h2>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input type="radio" id="chose-6" name="method-payment" ng-model="methodPayment" ng-value="'A'">
+                    <input type="radio" id="chose-6" ng-model="checkoutInfo.methodPayment" ng-value="paymentInfo.A">
                     <label for="chose-6">
-                        <span>Cash On Delivery (thanh toán khi nhận hàng)</span>
+                        <span>{{paymentInfo.A}}</span>
                     </label>
                 </ion-item>
                 <ion-item class="item-text-wrap">
-                    <input type="radio" id="chose-7" name="method-payment" ng-model="methodPayment" ng-value="'A'">
+                    <input type="radio" id="chose-7" ng-model="checkoutInfo.methodPayment" ng-value="paymentInfo.B">
                     <label for="chose-7">
-                        <span>Bank Transfer Payment (chuyển qua ngân hàng)</span>
+                        <span>{{paymentInfo.B}}</span>
                     </label>
                 </ion-item>
             </ion-list>
-            <button class="button button-block button-positive" type="submit">Luu</button>
+            <button class="button button-block button-positive submit-btn" type="submit">Lưu</button>
         </form>
     </ion-content>
 </ion-view>

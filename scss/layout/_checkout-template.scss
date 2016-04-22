@@ -1,0 +1,59 @@
+#checkout-template {
+  .shipping-info {
+    ion-item {
+      border: medium none;
+      padding: 5px 0;
+      p {
+        line-height: 20px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .shipping-info .edit {
+    color: #00aaf4;
+    display: block;
+    text-align: right;
+  }
+
+  > .scroll:first-child {
+    min-height: 100%;
+  }
+
+  .submit-btn {
+    bottom: 0;
+    margin: 0;
+    position: absolute;
+  }
+
+  .form-wrap {
+    padding-bottom: 60px;
+    .submit-btn {
+      position: inherit;
+    }
+  }
+
+  .sum-wrap {
+    display: block;
+    margin-top: 30px;
+    .item {
+      border: medium none;
+      padding: 5px 0;
+      > div {
+        @include clearfix();
+        h2 {
+          float: left;
+        }
+        p {
+          float: right;
+          font-weight: 300;
+          color: #000;
+        }
+      }
+    }
+    .total.item > div p {
+      font-weight: 700;
+      color: #ff8a00;
+    }
+  }
+}

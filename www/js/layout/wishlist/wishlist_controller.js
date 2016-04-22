@@ -7,8 +7,6 @@ module.exports = angular.module('wishlist.controller', [])
             $scope.wishlistNumber = WishlistService.wishlistNumber;
             $scope.wishlist = $localstorage.getObject("wishlist");
 
-            console.log($scope.wishlist);
-
             $scope.removeFromWishlist = function(item){
                 WishlistService.removeWishlist(item);
                 $scope.wishlist = $localstorage.getObject("wishlist");
