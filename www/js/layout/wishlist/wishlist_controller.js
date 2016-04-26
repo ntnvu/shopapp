@@ -6,10 +6,12 @@ module.exports = angular.module('wishlist.controller', [])
 //            $localstorage.setNullAll();
             $scope.wishlistNumber = WishlistService.wishlistNumber;
             $scope.wishlist = $localstorage.getObject("wishlist");
+            $scope.lengthWishlist = $scope.wishlist.length;
 
             $scope.removeFromWishlist = function(item){
                 WishlistService.removeWishlist(item);
                 $scope.wishlist = $localstorage.getObject("wishlist");
+                $scope.lengthWishlist = $scope.wishlist.length;
             }
 
             $scope.add_to_cart = function (item) {

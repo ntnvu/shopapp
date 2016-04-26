@@ -3,7 +3,7 @@
         <div id="single-product-template">
             <ion-list>
                 <ion-item>
-                    <ion-slide-box class="product-images" auto-play="true" does-continue="true">
+                    <ion-slide-box class="product-images" does-continue="true">
                         <ion-slide ng-repeat="item in product.images">
                             <div class="box"><img
                                     ng-src="{{item.url}}"
@@ -11,8 +11,8 @@
                         </ion-slide>
                     </ion-slide-box>
                 </ion-item>
-                <ion-item>
-                    <h2 class="title-product">{{product.detail.name}}</h2>
+                <ion-item class="item-text-wrap">
+                    <h2 class="title-product">{{product.detail[0].name}}</h2>
                     <div class="info-wrap">
                         <div class="info-inner-l">
 
@@ -21,15 +21,15 @@
                                     70000
                                 </div>
                                 <div class="orange">
-                                    {{product.detail.regular_price_with_tax}}
+                                    {{product.detail[0].regular_price_with_tax}}
                                 </div>
                             </div>
                         </div>
                         <div class="info-inner-r">
-                            <button class="add-wishlist" ng-class="{'actived' : product.detail.like}"
-                                    ng-click="addToWishlist(product.detail)"></button>
-                            <button class="add-cart" data-ng-click="add_to_cart(product.detail)"
-                                    ng-class="{'actived' : product.detail.added}"></button>
+                            <button class="add-wishlist" ng-class="{'actived' : product.detail[0].like}"
+                                    ng-click="addToWishlist(product.detail[0])"></button>
+                            <button class="add-cart" data-ng-click="add_to_cart(product.detail[0])"
+                                    ng-class="{'actived' : product.detail[0].added}"></button>
                         </div>
                     </div>
                 </ion-item>

@@ -6,4 +6,4 @@ require('./checkout_service');
 require('.././user/user');
 require('../.././app_service');
 
-module.exports = angular.module("checkout", ['app.service', 'user', 'checkout.service', 'checkout.controller', 'checkoutEdit.controller']);
+module.exports = angular.module("checkout", ['app.service', 'user', 'checkout.service', 'checkout.controller', 'checkoutEdit.controller'])

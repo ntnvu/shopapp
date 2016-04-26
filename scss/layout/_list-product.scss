@@ -1,5 +1,13 @@
 #list-product {
   background-color: #efefef;
+  .bottom-absolute{
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+  }
+  .has-ion-scroll ion-item:last-child {
+    margin-bottom: 100px;
+  }
   .item {
     background-color: #efefef;
     border-left: none;

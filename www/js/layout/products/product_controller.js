@@ -6,11 +6,12 @@ module.exports = angular.module("product.controller", [])
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
             $scope.product = {};
             $http.get(link_ajax + "/" + $stateParams.id).then(function (resp) {
+                var temp = [];
+                temp.push(resp.data);
+                $localstorage.updateArray(temp, $localstorage.getObject("cart"),"added");
+                $localstorage.updateArray(temp, $localstorage.getObject("wishlist"), "like");
 
-                $localstorage.updateArray(resp.data, $localstorage.getObject("cart"),"added");
-                $localstorage.updateArray(resp.data, $localstorage.getObject("wishlist"), "like");
-
-                $scope.product.detail = resp.data;
+                $scope.product.detail = temp;
             });
 
             $http.get(link_ajax + "/" + $stateParams.id + "/images").then(function (resp) {

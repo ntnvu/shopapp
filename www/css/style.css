@@ -9953,7 +9953,15 @@ body {
   background-color: #eaeaea;
   border-radius: 7px;
   margin: 10px 0;
-  border: 1px solid #ccc; }
+  border: 1px solid #ccc;
+  overflow: hidden; }
+  #list-product-template .a-card a {
+    display: block;
+    min-height: 150px;
+    position: relative; }
+    #list-product-template .a-card a img.loaded {
+      opacity: 1;
+      transition: all 0.8s; }
 
 #list-product-template .thumb-footer h4 {
   overflow: hidden;
@@ -10005,6 +10013,16 @@ body {
     #list-product-template .info-inner-r button.add-wishlist.actived {
       background-image: url("../img/wishlist_added.png"); }
 
+#list-product-template ion-spinner {
+  bottom: 0;
+  height: 28px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 28px; }
+
 #popup-login-register {
   bottom: 0;
   height: 80%;
@@ -10042,9 +10060,13 @@ body {
     padding: 0;
     text-align: center; }
   #popup-login-register .support-link {
-    color: #707070;
-    font-size: 13px;
-    font-weight: 100; }
+    background-color: palevioletred;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    height: 45px;
+    line-height: 45px;
+    width: 100%; }
 
 #popup-cart-prodOpt {
   bottom: 0;
@@ -10085,6 +10107,12 @@ body {
 
 #list-product {
   background-color: #efefef; }
+  #list-product .bottom-absolute {
+    position: absolute;
+    bottom: 0;
+    margin: 0; }
+  #list-product .has-ion-scroll ion-item:last-child {
+    margin-bottom: 100px; }
   #list-product .item {
     background-color: #efefef;
     border-left: none;

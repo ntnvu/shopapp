@@ -47,8 +47,12 @@
   }
 
   .support-link {
-    color: #707070;
-    font-size: 13px;
-    font-weight: 100;
+    background-color: palevioletred;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    height: 45px;
+    line-height: 45px;
+    width: 100%;
   }
 }

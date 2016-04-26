@@ -26,20 +26,12 @@ module.exports = angular.module("menu.controller", [])
             });
 
             $scope.filterType = [
-                {type: "hot", name: 'San pham hot'},
-                {type: "bestseller", name: 'San pham ban chay'},
-                {type: {
-                    lt: 50
-                }, name: 'Duoi 50.000'},
-                {type: {
-                    rand: [50, 100]
-                }, name: '50.000 den 100.000'},
-                {type: {
-                    rand: [100, 200]
-                }, name: '100.000 den 200.000'},
-                {type: {
-                    gt: 200
-                }, name: 'Tren 200.000'}
+                {type: "new", name: 'Sản phẩm mới'},
+                {type: "promo", name: 'Sản phẩm khuyến mãi'},
+                {type: "price50k" , name: 'Duoi 50.000'},
+                {type: "price100k" , name: '50.000 den 100.000'},
+                {type: "price200k" , name: '100.000 den 200.000'},
+                {type: "price200up" , name: 'Tren 200.000'}
             ];
 
             $scope.openMenu = function () {
@@ -47,7 +39,6 @@ module.exports = angular.module("menu.controller", [])
             };
 
             $scope.getProducts = function (type) {
-                type = JSON.stringify(type);
                 ProductService.setType(type);
                 ProductService.setPage(1);
                 ProductService.filterProduct();
@@ -73,6 +64,6 @@ module.exports = angular.module("menu.controller", [])
                 UserService.signOut();
             }
 
-            $scope.getProducts("hot");
+            $scope.getProducts("all");
         }
     ]);

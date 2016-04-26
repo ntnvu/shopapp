@@ -1,19 +1,23 @@
 <ion-view id="list-product-template">
     <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
+
             <div class="a-card">
+
                 <a href="#/menu/product/{{card.entity_id}}">
-                    <img ng-src="{{card.image_url}}" alt="{{card.name}}">
+                        <!--<ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>-->
+                        <!--<img ng-src="{{card.image_url}}" alt="{{card.name}}" ng-class="{loaded : loaded}" spinner-on-load>-->
+                    <img ng-src="{{card.thumb}}" alt="{{card.name}}">
                 </a>
 
                 <div class="info-wrap">
 
                     <div class="info-inner-l">
                         <div class="orange">
-                            {{card.regular_price_with_tax}}
+                            {{card.price}}
                         </div>
-                        <div class="cross" ng-if='0'>
-                            70000
+                        <div class="cross" ng-show="card.price_old">
+                            {{card.price_old}}
                         </div>
                     </div>
                     <div class="info-inner-r">

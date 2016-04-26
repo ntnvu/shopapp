@@ -4,6 +4,19 @@
     border-radius: 7px;
     margin: 10px 0;
     border: 1px solid #ccc;
+    overflow: hidden;
+    a{
+      display: block;
+      min-height: 150px;
+      position: relative;
+      img{
+        //opacity: 0;
+        &.loaded{
+          opacity: 1;
+          transition: all 0.8s;
+        }
+      }
+    }
   }
   .thumb-footer h4 {
     overflow: hidden;
@@ -54,5 +67,15 @@
         }
       }
     }
+  }
+  ion-spinner {
+    bottom: 0;
+    height: 28px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
   }
 }

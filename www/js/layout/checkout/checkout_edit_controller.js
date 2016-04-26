@@ -9,7 +9,7 @@ module.exports = angular.module('checkoutEdit.controller', [])
             $scope.paymentInfo = CheckoutService.paymentInfo;
 
             $scope.updateCheckout = function(){
-                CheckoutService.updateCheckoutInfo($scope.checkoutInfo);
+                CheckoutService.addShipping($scope.checkoutInfo.methodShip);
                 $state.go('menu.checkout');
             }
         }]);

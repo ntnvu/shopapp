@@ -40,14 +40,19 @@ module.exports = angular.module('checkout.service', [])
                 for (var i in info) {
                     checkout_info[i] = info[i];
                 }
-                this.sumTotal();
             },
 
             sumTotal: function () {
+                checkout_info.total = 0;
                 var cart = $localstorage.getObject("cart");
                 for (var i in cart) {
                     checkout_info.total += cart[i].regular_price_with_tax;
                 }
+                checkout_info.grandTotal = checkout_info.total;
+            },
+
+            addShipping: function(methodShip){
+                checkout_info.methodShip = methodShip;
                 checkout_info.grandTotal = checkout_info.total + checkout_info.methodShip.value;
             },
 
