@@ -89,10 +89,12 @@
   .cross {
     color: #000;
     font-size: 13px;
+    display: inline-block;
     &:after {
       background-color: #000;
       right: auto;
       top: 48%;
+      width: 100%;
     }
   }
   .detail-attr {

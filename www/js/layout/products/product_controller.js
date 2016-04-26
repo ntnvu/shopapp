@@ -4,8 +4,9 @@ module.exports = angular.module("product.controller", [])
     .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService','$localstorage',
         function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService, $localstorage) {
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
+            var link_ajax_new = "http://shop10k.qrmartdemo.info/web_api.php";
             $scope.product = {};
-            $http.get(link_ajax + "/" + $stateParams.id).then(function (resp) {
+            $http.get(link_ajax_new + "?r=product&id=" + $stateParams.id).then(function (resp) {
                 var temp = [];
                 temp.push(resp.data);
                 $localstorage.updateArray(temp, $localstorage.getObject("cart"),"added");

@@ -46,7 +46,8 @@ module.exports = angular.module('checkout.service', [])
                 checkout_info.total = 0;
                 var cart = $localstorage.getObject("cart");
                 for (var i in cart) {
-                    checkout_info.total += cart[i].regular_price_with_tax;
+                    console.log(cart[i].price_number);
+                    checkout_info.total += parseInt(cart[i].price_number);
                 }
                 checkout_info.grandTotal = checkout_info.total;
             },

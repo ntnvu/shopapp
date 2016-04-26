@@ -9,10 +9,10 @@ module.exports = angular.module("products.factory", [])
         };
         var current_index = 0;
 
-        function init(){
-            products.length = 0;
-            current_index = 0;
-            for (var i = 0; i <= 200; i++) {
+        function init(number){
+//            products.length = 0;
+//            current_index = 0;
+            for (var i = 0; i < number; i++) {
                 products.push({
                     "entity_id" : i
                 });
@@ -25,8 +25,9 @@ module.exports = angular.module("products.factory", [])
             });
 
             for (var i = array.length - 1; i >= 0; i--) {
+                products[current_index] = array[i];
+//                products.push(array[i]);
                 current_index++;
-                products.push(array[i]);
             }
         }
 
@@ -44,6 +45,8 @@ module.exports = angular.module("products.factory", [])
                     });
                     filter.limit = 20;
                 }
+
+                init(filter.limit);
 
 //                var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
 //                $http.get(link_ajax + "?page=" + filter.page + "&limit="+ filter.limit +"&order=entity_id&dir=dsc").then(function (resp) {

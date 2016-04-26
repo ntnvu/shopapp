@@ -15,13 +15,12 @@
                     <h2 class="title-product">{{product.detail[0].name}}</h2>
                     <div class="info-wrap">
                         <div class="info-inner-l">
-
                             <div class="price-wrap">
-                                <div class="cross" ng-if='0'>
-                                    70000
+                                <div class="cross" ng-show="product.detail[0].price_old">
+                                    {{product.detail[0].price_old}}
                                 </div>
                                 <div class="orange">
-                                    {{product.detail[0].regular_price_with_tax}}
+                                    {{product.detail[0].price}}
                                 </div>
                             </div>
                         </div>

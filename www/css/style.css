@@ -9806,13 +9806,19 @@ body {
 .deckgrid .column-1-2 {
   width: 48%; }
 
+#float-button.mfb-component--tl, #float-button.mfb-component--tr, #float-button.mfb-component--bl, #float-button.mfb-component--br {
+  margin-bottom: 50px; }
+
 #float-button [data-mfb-label]:after {
   display: none; }
 
 #float-button a i::before {
   font-size: 27px;
   position: relative;
-  top: 3px; }
+  top: 5px; }
+
+#float-button a i.ion-ios-help-empty::before {
+  font-size: 50px; }
 
 .custom-form .input-label {
   font-size: 13px;
@@ -10104,6 +10110,9 @@ body {
     border-top: 1px solid #ccc;
     bottom: 0;
     position: absolute; }
+  #popup-contatct-template .contact-detail {
+    padding: 35px 0;
+    text-align: center; }
 
 #list-product {
   background-color: #efefef; }
@@ -10182,11 +10191,13 @@ body {
     font-weight: 700; }
   #list-product .cross {
     color: #000;
-    font-size: 13px; }
+    font-size: 13px;
+    display: inline-block; }
     #list-product .cross:after {
       background-color: #000;
       right: auto;
-      top: 48%; }
+      top: 48%;
+      width: 100%; }
   #list-product .detail-attr {
     margin-top: 5px; }
   #list-product label {
@@ -10316,6 +10327,10 @@ body {
   #checkout-template .sum-wrap .total.item > div p {
     font-weight: 700;
     color: #ff8a00; }
+
+#side-menu-template .not-margin {
+  margin-bottom: 0;
+  margin-top: 15px; }
 
 #side-menu-template .item {
   border: medium none; }

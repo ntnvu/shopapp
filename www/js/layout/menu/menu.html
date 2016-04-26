@@ -24,7 +24,7 @@
 
         </ion-nav-view>
         <nav id="float-button" mfb-menu position="bl" effect="zoomin"
-             active-icon="ion-android-close" resting-icon="ion-help-circled"
+             active-icon="ion-android-close" resting-icon="ion-ios-help-empty"
              toggling-method="click">
             <button mfb-button icon="ion-ios-telephone" data-ng-click="contact()">Dat Hang</button>
             <button mfb-button icon="ion-android-textsms" data-ng-click="contact()">Gop Y</button>
@@ -41,7 +41,7 @@
                     <div class="info">
                         <h2>{{user.name}}</h2>
 
-                        <p>{{user.address}}{{", " + user.ward}}{{", " + user.district}}{{", " + user.city}}</p>
+                        <p>{{user.address}}{{user.ward ? ", " + user.ward : ""}}{{user.district ? ", " + user.district : ""}}{{user.city ? ", " + user.city : ""}}</p>
                         <a class="signout" ng-click="signout()">Thoát</a>
                     </div>
                 </ion-item>
@@ -52,7 +52,7 @@
                     <a menu-close ng-click="show_cart()">Gio Hang</a>
                 </ion-item>
             </div>
-            <div class="list" ng-if="!user.login">
+            <div class="list not-margin" ng-if="!user.login">
                 <ion-item class="show-user has-img">
                     <a menu-close ng-click="to_login()">Đăng ký / Đăng nhập</a>
                 </ion-item>
