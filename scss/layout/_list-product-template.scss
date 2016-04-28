@@ -1,4 +1,28 @@
 #list-product-template {
+  .button{
+    text-transform: uppercase;
+  }
+  .button-next-total {
+    bottom: -47px;
+    position: absolute;
+    transition: bottom 1s;
+    &.slided{
+      bottom: 0;
+    }
+    > * {
+      border-left: 1px solid #fff;
+      border-radius: 0;
+      font-family: arial;
+      font-size: 16px;
+      line-height: 44px;
+      margin: 0;
+    }
+  }
+  .button-next-total > *:first-child {
+    background-color: mediumturquoise;
+    border: medium none;
+    color: #fff;
+  }
   .a-card {
     background-color: #eaeaea;
     border-radius: 7px;
@@ -35,8 +59,8 @@
     }
   }
   .info-inner-l {
-    padding: 0 5px;
     text-align: center;
+    margin-left: 5px;
     .orange {
       font-size: 18px;
     }
@@ -47,15 +71,18 @@
   .info-inner-r {
     button {
       background-color: transparent;
-      background-position: center bottom;
+      background-position: center center;
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: 30px auto;
       border: medium none;
-      height: 27px;
-      margin: 0 5px 0 0;
-      width: 27px;
+      height: 45px;
+      margin: 0;
+      padding: 0;
+      width: 35px;
       &.add-cart {
         background-image: url("../img/cart.png");
+        background-position: center bottom 9px;
+        background-size: 29px auto;
         &.actived{
           background-image: url("../img/cart_added.png");
         }

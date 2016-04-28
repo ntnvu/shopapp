@@ -1,10 +1,12 @@
 'use strict';
 
 module.exports = angular.module('checkout.service', [])
-    .factory('CheckoutService', function ($q, $localstorage) {
+    .factory('CheckoutService', function ($q, $localstorage, CartService) {
         var checkout_info = {
             total: 0,
-            grandTotal: 0
+            grandTotal: 0,
+            methodShipText: 0,
+            methodShip: {}
         };
 
         var shipping_method = {
@@ -43,18 +45,18 @@ module.exports = angular.module('checkout.service', [])
             },
 
             sumTotal: function () {
-                checkout_info.total = 0;
-                var cart = $localstorage.getObject("cart");
-                for (var i in cart) {
-                    console.log(cart[i].price_number);
-                    checkout_info.total += parseInt(cart[i].price_number);
-                }
-                checkout_info.grandTotal = checkout_info.total;
+                checkout_info.total = CartService.sumCart();
+                checkout_info.totalText = CartService.convertMoney(0, ",", ".", checkout_info.total);
+                if(checkout_info.methodShip.value)
+                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".",(checkout_info.total + checkout_info.methodShip.value));
+                else
+                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".",checkout_info.total);
             },
 
             addShipping: function(methodShip){
                 checkout_info.methodShip = methodShip;
-                checkout_info.grandTotal = checkout_info.total + checkout_info.methodShip.value;
+                checkout_info.methodShipText = CartService.convertMoney(0, ",", ".", checkout_info.methodShip.value);
+                checkout_info.grandTotal = CartService.convertMoney(0, ",", ".",(checkout_info.total + checkout_info.methodShip.value));
             },
 
             checkoutInfo: checkout_info,

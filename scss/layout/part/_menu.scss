@@ -1,29 +1,30 @@
 .view-button button, .grid-view {
   background-color: transparent;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 32px auto;
   border: medium none;
   color: #fff;
-  height: 32px;
-  margin: 0 5px 0 3px;
   position: relative;
-  width: 33px;
-
   > span {
     background-color: mediumslateblue;
     border-radius: 100%;
-    bottom: -5px;
+    bottom: 5px;
     font-size: 9px;
     height: 17px;
-    line-height: 17px;
+    line-height: 19px;
     position: absolute;
-    right: -5px;
+    right: 0;
     width: 17px;
   }
 }
 
-.grid-view{
+.view-button button.view-cart {
+  background-position: center bottom 10px;
+  background-size: 27px auto;
+}
+
+.grid-view {
   background-image: url("../img/grid_view.png");
 }
 
@@ -35,11 +36,11 @@
   background-image: url("../img/view_card.png");
 }
 
-#nav-bar-custom{
-  .icon{
+#nav-bar-custom {
+  .icon {
     color: #fff;
   }
-  .hide.must-show{
+  .hide.must-show {
     display: block;
   }
   .left-buttons button {

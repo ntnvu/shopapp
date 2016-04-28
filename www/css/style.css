@@ -9851,25 +9851,26 @@ body {
 
 .view-button button, .grid-view {
   background-color: transparent;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 32px auto;
   border: medium none;
   color: #fff;
-  height: 32px;
-  margin: 0 5px 0 3px;
-  position: relative;
-  width: 33px; }
+  position: relative; }
   .view-button button > span, .grid-view > span {
     background-color: mediumslateblue;
     border-radius: 100%;
-    bottom: -5px;
+    bottom: 5px;
     font-size: 9px;
     height: 17px;
-    line-height: 17px;
+    line-height: 19px;
     position: absolute;
-    right: -5px;
+    right: 0;
     width: 17px; }
+
+.view-button button.view-cart {
+  background-position: center bottom 10px;
+  background-size: 27px auto; }
 
 .grid-view {
   background-image: url("../img/grid_view.png"); }
@@ -9889,6 +9890,20 @@ body {
 #nav-bar-custom .left-buttons button {
   padding: 0;
   width: 40px; }
+
+#nav-bar-custom {
+  padding: 0;
+  height: 45px; }
+  #nav-bar-custom .bar-header {
+    padding: 0; }
+  #nav-bar-custom button {
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    width: 40px; }
+  #nav-bar-custom .header-item {
+    bottom: 0;
+    top: 0; }
 
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
@@ -9921,7 +9936,12 @@ body {
     height: 100%; }
     #single-product-template .box img {
       width: 100%;
-      border-radius: 9px; }
+      min-height: 250px;
+      border-radius: 9px;
+      opacity: 0; }
+      #single-product-template .box img.loaded {
+        opacity: 1;
+        transition: all 0.8s; }
   #single-product-template .related-product {
     font-size: 1px; }
     #single-product-template .related-product .slick-slide {
@@ -9931,7 +9951,12 @@ body {
       overflow: hidden;
       width: 32%; }
       #single-product-template .related-product .slick-slide img {
-        width: 100%; }
+        width: 100%;
+        opacity: 0;
+        min-height: 90px; }
+        #single-product-template .related-product .slick-slide img.loaded {
+          opacity: 1;
+          transition: all 0.8s; }
   #single-product-template .price-wrap > * {
     display: inline-block; }
   #single-product-template .info-inner-l {
@@ -9954,6 +9979,28 @@ body {
 
 #list-product-template ion-item {
   border: none; }
+
+#list-product-template .button {
+  text-transform: uppercase; }
+
+#list-product-template .button-next-total {
+  bottom: -47px;
+  position: absolute;
+  transition: bottom 1s; }
+  #list-product-template .button-next-total.slided {
+    bottom: 0; }
+  #list-product-template .button-next-total > * {
+    border-left: 1px solid #fff;
+    border-radius: 0;
+    font-family: arial;
+    font-size: 16px;
+    line-height: 44px;
+    margin: 0; }
+
+#list-product-template .button-next-total > *:first-child {
+  background-color: mediumturquoise;
+  border: medium none;
+  color: #fff; }
 
 #list-product-template .a-card {
   background-color: #eaeaea;
@@ -9994,8 +10041,8 @@ body {
     vertical-align: middle; }
 
 #list-product-template .info-inner-l {
-  padding: 0 5px;
-  text-align: center; }
+  text-align: center;
+  margin-left: 5px; }
   #list-product-template .info-inner-l .orange {
     font-size: 18px; }
   #list-product-template .info-inner-l .cross {
@@ -10003,15 +10050,18 @@ body {
 
 #list-product-template .info-inner-r button {
   background-color: transparent;
-  background-position: center bottom;
+  background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 30px auto;
   border: medium none;
-  height: 27px;
-  margin: 0 5px 0 0;
-  width: 27px; }
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  width: 35px; }
   #list-product-template .info-inner-r button.add-cart {
-    background-image: url("../img/cart.png"); }
+    background-image: url("../img/cart.png");
+    background-position: center bottom 9px;
+    background-size: 29px auto; }
     #list-product-template .info-inner-r button.add-cart.actived {
       background-image: url("../img/cart_added.png"); }
   #list-product-template .info-inner-r button.add-wishlist {
@@ -10048,14 +10098,12 @@ body {
     padding-top: 49px; }
   #popup-login-register .tab-item {
     color: #b0b0b0;
-    border: none; }
+    border: none;
+    font-weight: 700; }
     #popup-login-register .tab-item .tab-title {
-      border-bottom: 2px solid #b0b0b0;
       padding-bottom: 3px; }
   #popup-login-register .tab-item.tab-item-active {
     color: #000; }
-    #popup-login-register .tab-item.tab-item-active .tab-title {
-      border-bottom: 2px solid #f94568; }
   #popup-login-register .scroll {
     height: 100%; }
   #popup-login-register .second-list {
@@ -10116,6 +10164,25 @@ body {
 
 #list-product {
   background-color: #efefef; }
+  #list-product .button {
+    text-transform: uppercase; }
+  #list-product .button-next-total {
+    bottom: -47px;
+    position: absolute;
+    transition: bottom 1s; }
+    #list-product .button-next-total.slided {
+      bottom: 0; }
+    #list-product .button-next-total > * {
+      border-left: 1px solid #fff;
+      border-radius: 0;
+      font-family: arial;
+      font-size: 16px;
+      line-height: 44px;
+      margin: 0; }
+  #list-product .button-next-total > *:first-child {
+    background-color: mediumturquoise;
+    border: medium none;
+    color: #fff; }
   #list-product .bottom-absolute {
     position: absolute;
     bottom: 0;
@@ -10287,9 +10354,14 @@ body {
     margin-top: 10px; }
 
 #checkout-template .shipping-info .edit {
+  background: transparent url("../img/edit_btn.png") no-repeat scroll right center/25px auto;
   color: #00aaf4;
   display: block;
-  text-align: right; }
+  float: right;
+  font-size: 0;
+  height: 45px;
+  text-align: right;
+  width: 45px; }
 
 #checkout-template > .scroll:first-child {
   min-height: 100%; }
@@ -10305,8 +10377,10 @@ body {
     position: inherit; }
 
 #checkout-template .sum-wrap {
+  border-top: 1px solid #ccc;
   display: block;
-  margin-top: 30px; }
+  margin-top: 20px;
+  padding-top: 20px; }
   #checkout-template .sum-wrap .item {
     border: medium none;
     padding: 5px 0; }

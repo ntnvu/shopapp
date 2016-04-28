@@ -1,6 +1,19 @@
 "use strict"
 
 module.exports = angular.module("product.controller", [])
+    .directive('spinnerOnLoad', function () {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                scope.loaded = false;
+                element.bind('load', function () {
+                    scope.$apply(function () {
+                        scope.loaded = true;
+                    });
+                });
+            }
+        };
+    })
     .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService','$localstorage',
         function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService, $localstorage) {
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
@@ -13,6 +26,8 @@ module.exports = angular.module("product.controller", [])
                 $localstorage.updateArray(temp, $localstorage.getObject("wishlist"), "like");
 
                 $scope.product.detail = temp;
+                $scope.product.detail["thumb"] = $scope.product.detail.image;
+                console.log($scope.product.detail);
             });
 
             $http.get(link_ajax + "/" + $stateParams.id + "/images").then(function (resp) {

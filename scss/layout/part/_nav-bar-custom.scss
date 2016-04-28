@@ -1,0 +1,17 @@
+#nav-bar-custom{
+  padding: 0;
+  height: 45px;
+  .bar-header {
+    padding: 0;
+  }
+  button {
+    height: 45px;
+    margin: 0;
+    padding: 0;
+    width: 40px;
+  }
+  .header-item {
+    bottom: 0;
+    top: 0;
+  }
+}

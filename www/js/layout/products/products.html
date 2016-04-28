@@ -1,12 +1,12 @@
-<ion-view id="list-product-template">
+<ion-view id="list-product-template" cache-view="false">
     <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
 
             <div class="a-card">
 
                 <a href="#/menu/product/{{card.entity_id}}">
-                        <!--<ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>-->
-                        <!--<img ng-src="{{card.thumb}}" alt="{{card.name}}" ng-class="{loaded : loaded}" spinner-on-load>-->
+                    <!--<ion-spinner ng-show="card.loading" class="spinner-on-load"></ion-spinner>-->
+                    <!--<img ng-src="{{card.thumb}}" alt="{{card.name}}" ng-class="{loaded : loaded}" spinner-on-load>-->
                     <img ng-src="{{card.thumb}}" alt="{{card.name}}">
                 </a>
 
@@ -32,6 +32,9 @@
 
         <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%"></ion-infinite-scroll>
     </ion-content>
-
-
+    <div class="button-bar button-next-total" ng-class="{slided : cartNumber}">
+        <div class="button">{{total}}</div>
+        <button class="button no-radius button-positive button-block bottom-absolute" ui-sref="menu.cart">Xem giỏ hàng
+        </button>
+    </div>
 </ion-view>

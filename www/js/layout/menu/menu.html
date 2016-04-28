@@ -26,8 +26,8 @@
         <nav id="float-button" mfb-menu position="bl" effect="zoomin"
              active-icon="ion-android-close" resting-icon="ion-ios-help-empty"
              toggling-method="click">
-            <button mfb-button icon="ion-ios-telephone" data-ng-click="contact()">Dat Hang</button>
-            <button mfb-button icon="ion-android-textsms" data-ng-click="contact()">Gop Y</button>
+            <button mfb-button icon="ion-ios-telephone" data-ng-click="contact()">Đặt Hàng</button>
+            <button mfb-button icon="ion-android-textsms" data-ng-click="contact()">Góp Ý</button>
         </nav>
     </ion-pane>
     <ion-side-menu side="left">
@@ -46,15 +46,15 @@
                     </div>
                 </ion-item>
                 <ion-item class="show-user has-img">
-                    <a menu-close ng-click="user_info()">Tai Khoan Cua Toi</a>
+                    <a menu-close ng-click="user_info()">Tài Khoản Của Tôi</a>
                 </ion-item>
                 <ion-item class="show-cart has-img">
-                    <a menu-close ng-click="show_cart()">Gio Hang</a>
+                    <a menu-close ng-click="show_cart()">Giỏ Hàng</a>
                 </ion-item>
             </div>
             <div class="list not-margin" ng-if="!user.login">
                 <ion-item class="show-user has-img">
-                    <a menu-close ng-click="to_login()">Đăng ký / Đăng nhập</a>
+                    <a menu-close ng-click="to_login()">Đăng Ký / Đăng Nhập</a>
                 </ion-item>
             </div>
             <div class="list">

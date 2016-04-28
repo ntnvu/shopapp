@@ -9,15 +9,6 @@ module.exports = angular.module("products.factory", [])
         };
         var current_index = 0;
 
-        function init(number){
-//            products.length = 0;
-//            current_index = 0;
-            for (var i = 0; i < number; i++) {
-                products.push({
-                    "entity_id" : i
-                });
-            }
-        }
 
         function add_product(data) {
             var array = $.map(data, function (value, index) {
@@ -37,7 +28,7 @@ module.exports = angular.module("products.factory", [])
                 var promise = deferred.promise;
 //                var link_ajax = "http://liquordelivery.com.sg/wp-admin/admin-ajax.php";
 //                $http.get(link_ajax + "?action=latest_products_app&filter=" + filterType + "&page=" + page_next).then(function (resp) {
-                filter.limit = 10;
+                filter.limit = 20;
                 if (filter.page == 1) {
                     this.clearProducts();
                     $ionicLoading.show({
@@ -45,14 +36,11 @@ module.exports = angular.module("products.factory", [])
                     });
                     filter.limit = 20;
                 }
-
-                init(filter.limit);
-
 //                var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
 //                $http.get(link_ajax + "?page=" + filter.page + "&limit="+ filter.limit +"&order=entity_id&dir=dsc").then(function (resp) {
 
                 var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-                $http.get("http://shop10k.qrmartdemo.info/web_api.php?r="+ filter.type + "&limit="+ filter.limit + "&page=" + filter.page).then(function (resp) {
+                $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page).then(function (resp) {
                     add_product(resp.data);
 
                     $ionicLoading.hide();
@@ -60,7 +48,7 @@ module.exports = angular.module("products.factory", [])
                     $localstorage.updateArray(products, $localstorage.getObject("cart"), "added");
                     $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
 
-                    deferred.resolve(++filter.page);
+                    deferred.resolve(filter.page);
                 }, function (err) {
                     // err.status will contain the status code
                     console.error('ERR', err);
@@ -78,11 +66,11 @@ module.exports = angular.module("products.factory", [])
                 filter.type = type;
             },
 
-            getPage: function(){
+            getPage: function () {
                 return filter.page;
             },
 
-            getIndex: function(){
+            getIndex: function () {
                 return current_index;
             },
 
@@ -96,6 +84,15 @@ module.exports = angular.module("products.factory", [])
 
             clearProducts: function () {
                 products.length = 0;
+                current_index = 0;
+            },
+
+            init : function (number) {
+                for (var i = 0; i < number; i++) {
+                    products.push({
+                        "loading": true
+                    });
+                }
             },
 
             productCurrent: products

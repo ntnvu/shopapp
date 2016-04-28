@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
             $scope.cartNumber = $localstorage.getObject("cart").length;
             $scope.user = UserService.currentUser;
@@ -39,6 +39,8 @@ module.exports = angular.module("menu.controller", [])
             };
 
             $scope.getProducts = function (type) {
+                $state.go("menu.products");
+                $ionicScrollDelegate.scrollTop();
                 ProductService.setType(type);
                 ProductService.setPage(1);
                 ProductService.filterProduct();

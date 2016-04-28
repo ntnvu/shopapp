@@ -5,9 +5,11 @@
                 <ion-item>
                     <ion-slide-box class="product-images" does-continue="true">
                         <ion-slide ng-repeat="item in product.images">
-                            <div class="box"><img
-                                    ng-src="{{item.url}}"
-                                    alt="A masonry brick"></div>
+                            <div class="box">
+                                <!--<img ng-src="{{item.url}}" alt="A masonry brick">-->
+                                <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
+                                <img ng-src="{{item.url}}" alt="{{item.name}}" ng-class="{loaded : loaded}" spinner-on-load>
+                            </div>
                         </ion-slide>
                     </ion-slide-box>
                 </ion-item>
@@ -43,7 +45,8 @@
                         <slick infinite="true" slides-to-show="3" slides-to-scroll="3" init-onload="true" data="product.related">
                             <div data-ng-repeat="item_img in product.related">
                                 <a ui-sref="menu.product({id : item_img.entity_id})">
-                                    <img ng-src="{{item_img.image_url}}" alt="A masonry brick">
+                                    <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
+                                    <img ng-src="{{item_img.image_url}}" alt="{{item.name}}" ng-class="{loaded : loaded}" spinner-on-load>
                                 </a>
                             </div>
                         </slick>

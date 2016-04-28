@@ -27,7 +27,7 @@
                         </div>
                         <div class="detail-attr"><label>So luong</label> <span class="detail"><input type="number"
                                                                                                      ng-model="item.quantity"
-                                                                                                     value="{{item.quantity}}"/></span>
+                                                                                                     value="{{item.quantity}}" ng-change="updateQty(item)"/></span>
                         </div>
                     </div>
 
@@ -37,8 +37,11 @@
                 </ion-item>
             </ion-list>
         </ion-scroll>
-        <button class="button no-radius button-positive button-block bottom-absolute" ui-sref="menu.checkout"
+    </ion-content>
+    <div class="button-bar button-next-total" ng-class="{slided : cartNumber}">
+        <div class="button">{{total}}</div>
+        <button class="button no-radius button-positive button-block" ui-sref="menu.checkout"
                 ng-click="cart_checkout()">Tạo Đơn Hàng
         </button>
-    </ion-content>
+    </div>
 </ion-view>

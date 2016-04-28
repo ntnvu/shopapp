@@ -84,7 +84,6 @@ module.exports = angular.module("app.service", [])
                         if (arr2[j].entity_id == arr1[i].entity_id) {
 
                             arr1[i][key] = arr2[j][key];
-                            console.log(arr1[i]);
                         }
                     }
                 }

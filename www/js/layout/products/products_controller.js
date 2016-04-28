@@ -1,35 +1,27 @@
 "use strict"
 
 module.exports = angular.module("products.controller", [])
-    .directive('spinnerOnLoad', function () {
-        return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                scope.loaded = false;
-                element.bind('load', function () {
-                    scope.$apply(function () {
-                        scope.loaded = true;
-                    });
-                });
-            }
-        };
-    })
-    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService',
-        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService) {
+    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService','$localstorage',
+        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService, $localstorage) {
             $scope.products = ProductService.productCurrent;
+            CartService.setCartNumber();
+            $scope.cartNumber = CartService.getCartNumber();
+            $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
 
             $scope.openMenu = function () {
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
             $scope.loadMoreData = function () {
-                console.log(ProductService.getIndex());
+                ProductService.init(9);
+
                 var temp = ProductService.getPage();
                 if(temp == 1){
                     ProductService.setPage(2);
                 }
                 ProductService.filterProduct().then(function (data) {
                     $scope.$broadcast('scroll.infiniteScrollComplete');
+                    ProductService.setPage(++data);
                 });
             };
 
@@ -40,5 +32,10 @@ module.exports = angular.module("products.controller", [])
             $scope.addToWishlist = function (item) {
                 WishlistService.addWishlist(item);
             }
+
+            $scope.$on('CartUpdate', function (event, data) {
+                $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
+                $scope.cartNumber = CartService.getCartNumber();
+            });
         }
     ]);

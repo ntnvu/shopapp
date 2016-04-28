@@ -10,10 +10,17 @@
     }
   }
 
-  .shipping-info .edit {
-    color: #00aaf4;
-    display: block;
-    text-align: right;
+  .shipping-info {
+    .edit {
+      background: transparent url("../img/edit_btn.png") no-repeat scroll right center / 25px auto;
+      color: #00aaf4;
+      display: block;
+      float: right;
+      font-size: 0;
+      height: 45px;
+      text-align: right;
+      width: 45px;
+    }
   }
 
   > .scroll:first-child {
@@ -34,8 +41,10 @@
   }
 
   .sum-wrap {
+    border-top: 1px solid #ccc;
     display: block;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
     .item {
       border: medium none;
       padding: 5px 0;

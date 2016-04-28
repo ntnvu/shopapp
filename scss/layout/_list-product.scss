@@ -1,5 +1,29 @@
 #list-product {
   background-color: #efefef;
+  .button{
+    text-transform: uppercase;
+  }
+  .button-next-total {
+    bottom: -47px;
+    position: absolute;
+    transition: bottom 1s;
+    &.slided{
+      bottom: 0;
+    }
+    > * {
+      border-left: 1px solid #fff;
+      border-radius: 0;
+      font-family: arial;
+      font-size: 16px;
+      line-height: 44px;
+      margin: 0;
+    }
+  }
+  .button-next-total > *:first-child {
+    background-color: mediumturquoise;
+    border: medium none;
+    color: #fff;
+  }
   .bottom-absolute{
     position: absolute;
     bottom: 0;
