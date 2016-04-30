@@ -7,22 +7,27 @@ module.exports = angular.module("products.controller", [])
             CartService.setCartNumber();
             $scope.cartNumber = CartService.getCartNumber();
             $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
+            $scope.loadMore = ProductService.loadMore;
 
             $scope.openMenu = function () {
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
             $scope.loadMoreData = function () {
-                ProductService.init(9);
+                if($scope.loadMore[0]){
+//                    ProductService.init(9);
 
-                var temp = ProductService.getPage();
-                if(temp == 1){
-                    ProductService.setPage(2);
+                    var temp = ProductService.getPage();
+                    if(temp == 1){
+                        ProductService.setPage(2);
+                    }
+                    ProductService.filterProduct().then(function (data) {
+                        $scope.$broadcast('scroll.infiniteScrollComplete');
+                        ProductService.setPage(++data);
+                    }, function(data){
+                        ProductService.updateLoadmore(false);
+                    });
                 }
-                ProductService.filterProduct().then(function (data) {
-                    $scope.$broadcast('scroll.infiniteScrollComplete');
-                    ProductService.setPage(++data);
-                });
             };
 
             $scope.add_to_cart = function (item) {

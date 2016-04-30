@@ -31,6 +31,11 @@ module.exports = angular.module('registerLogin.controller', [])
                 }, 1000);
             };
 
+            LoginService.registerUser().success(function(data){
+                console.log("vào" + data);
+            }).error(function(data){
+                    console.log("hihi" + data);
+                });
 
             //register section
             $scope.doLogin = function () {

@@ -46,6 +46,7 @@ module.exports = angular.module('user.service', [])
             },
 
             login : function(user){
+
                 for(var i in user){
                     current_user[i] = user[i];
                 }

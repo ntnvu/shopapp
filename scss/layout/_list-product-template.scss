@@ -1,4 +1,7 @@
 #list-product-template {
+  ion-content {
+    margin-bottom: 40px;
+  }
   .button{
     text-transform: uppercase;
   }
@@ -62,7 +65,7 @@
     text-align: center;
     margin-left: 5px;
     .orange {
-      font-size: 18px;
+      font-size: 15px;
     }
     .cross {
       color: #acacac;
@@ -78,7 +81,7 @@
       height: 45px;
       margin: 0;
       padding: 0;
-      width: 35px;
+      width: 30px;
       &.add-cart {
         background-image: url("../img/cart.png");
         background-position: center bottom 9px;

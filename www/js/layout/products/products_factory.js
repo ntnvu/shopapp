@@ -1,14 +1,14 @@
 "use strict"
 
 module.exports = angular.module("products.factory", [])
-    .factory('ProductService', function ($q, $http, $localstorage, $ionicLoading) {
+    .factory('ProductService', function ($q, $http, $localstorage, $ionicLoading, $rootScope) {
         var products = [];
         var filter = {
             limit: 20,
             type: ''
         };
+        var isLoadMore = [];
         var current_index = 0;
-
 
         function add_product(data) {
             var array = $.map(data, function (value, index) {
@@ -41,20 +41,24 @@ module.exports = angular.module("products.factory", [])
 
                 var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
                 $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page).then(function (resp) {
-                    add_product(resp.data);
+                    if (!resp.data.Error) {
+                        add_product(resp.data);
 
-                    $ionicLoading.hide();
+                        $ionicLoading.hide();
 
-                    $localstorage.updateArray(products, $localstorage.getObject("cart"), "added");
-                    $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
+                        $localstorage.updateArray(products, $localstorage.getObject("cart"), "added");
+                        $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
 
-                    deferred.resolve(filter.page);
+                        deferred.resolve(filter.page);
+                    }
+                    else{
+                        deferred.reject(filter.page);
+                    }
                 }, function (err) {
                     // err.status will contain the status code
                     console.error('ERR', err);
                     deferred.reject('ERR ' + err);
                 })
-
                 return promise;
             },
 
@@ -82,18 +86,26 @@ module.exports = angular.module("products.factory", [])
                 }
             },
 
+            updateLoadmore : function(load){
+                isLoadMore[0] = load;
+            },
+
             clearProducts: function () {
                 products.length = 0;
                 current_index = 0;
             },
 
-            init : function (number) {
+            init: function (number) {
                 for (var i = 0; i < number; i++) {
                     products.push({
                         "loading": true
                     });
                 }
             },
+
+            filter : filter,
+
+            loadMore : isLoadMore,
 
             productCurrent: products
         }

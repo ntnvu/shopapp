@@ -17,7 +17,6 @@ $pink: #f94568;
 .pink-bg .left-buttons .button, .pink-bg .right-buttons .button {
   color: #fff;
 }
-
 .cross {
   position: relative;
   &:after {
@@ -45,7 +44,9 @@ body {
 .ion-ios-heart.actived {
   color: red;
 }
-
+.red{
+  color: red;
+}
 .item {
   .icon-top, .icon-bottom {
     height: auto;
@@ -57,6 +58,9 @@ body {
   }
   .icon-bottom {
     bottom: 5px;
+  }
+  h2{
+    font-weight: 700;
   }
 }
 

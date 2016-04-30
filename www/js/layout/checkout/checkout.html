@@ -1,5 +1,5 @@
 <ion-view id="list-product">
-    <ion-content id="checkout-template">
+    <ion-content id="checkout-template" overflow-scroll="true">
         <ion-list class="shipping-info">
             <ion-item>
                 <a class="edit" ui-sref="menu.checkout_edit">Sửa</a>
@@ -45,6 +45,6 @@
                 </div>
             </ion-item>
         </ion-list>
-        <button class="button no-radius button-block button-positive submit-btn" data-ng-click="checkout()">Đặt hàng</button>
     </ion-content>
+    <button class="button no-radius button-block button-positive button-bottom-fix" data-ng-click="checkout()">Đặt hàng</button>
 </ion-view>

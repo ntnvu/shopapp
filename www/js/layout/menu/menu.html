@@ -32,7 +32,7 @@
     </ion-pane>
     <ion-side-menu side="left">
         <ion-content has-header="true" id="side-menu-template">
-            <div class="list" ng-if="user.login">
+            <div class="list user-section" ng-if="user.login">
                 <ion-item class="item-text-wrap thumbnail-wrap">
                     <a menu-close ng-click="user_info()" class="thumbnail">
                         <img src="{{user.portrait}}">
@@ -45,11 +45,17 @@
                         <a class="signout" ng-click="signout()">Thoát</a>
                     </div>
                 </ion-item>
+                <ion-item class="horizontal-bar">
+                    <hr/>
+                </ion-item>
                 <ion-item class="show-user has-img">
                     <a menu-close ng-click="user_info()">Tài Khoản Của Tôi</a>
                 </ion-item>
                 <ion-item class="show-cart has-img">
                     <a menu-close ng-click="show_cart()">Giỏ Hàng</a>
+                </ion-item>
+                <ion-item class="horizontal-bar">
+                    <hr/>
                 </ion-item>
             </div>
             <div class="list not-margin" ng-if="!user.login">

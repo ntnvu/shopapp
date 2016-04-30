@@ -1,4 +1,4 @@
-<ion-view id="list-product-template" cache-view="false">
+<ion-view id="list-product-template">
     <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
 
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%"></ion-infinite-scroll>
+        <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%" ng-if="loadMore[0]"></ion-infinite-scroll>
     </ion-content>
     <div class="button-bar button-next-total" ng-class="{slided : cartNumber}">
         <div class="button">{{total}}</div>

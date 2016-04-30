@@ -43,6 +43,7 @@ module.exports = angular.module("menu.controller", [])
                 $ionicScrollDelegate.scrollTop();
                 ProductService.setType(type);
                 ProductService.setPage(1);
+                ProductService.updateLoadmore(true);
                 ProductService.filterProduct();
             }
 
