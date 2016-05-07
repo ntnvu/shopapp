@@ -9736,6 +9736,15 @@ a.button {
   $t: width of container
   $n: number of column
 */
+.platform-ios .test {
+  background: green; }
+
+.platform-android .test {
+  background: blue; }
+
+.platform-browser .test {
+  background: red; }
+
 .orange {
   color: #ff8a00; }
 
@@ -9855,7 +9864,7 @@ body {
   border: medium none;
   padding: 0; }
 
-.view-button button, .grid-view {
+.view-button button, .grid-view, .button-back {
   background-color: transparent;
   background-position: center center;
   background-repeat: no-repeat;
@@ -9863,7 +9872,7 @@ body {
   border: medium none;
   color: #fff;
   position: relative; }
-  .view-button button > span, .grid-view > span {
+  .view-button button > span, .grid-view > span, .button-back > span {
     background-color: mediumslateblue;
     border-radius: 100%;
     bottom: 5px;
@@ -9877,6 +9886,9 @@ body {
 .view-button button.view-cart {
   background-position: center bottom 10px;
   background-size: 27px auto; }
+
+.button-back {
+  background-image: url("../img/back_btn.png"); }
 
 .grid-view {
   background-image: url("../img/grid_view.png"); }
@@ -9899,17 +9911,25 @@ body {
 
 #nav-bar-custom {
   padding: 0;
-  height: 45px; }
+  height: 45px;
+  border: none; }
   #nav-bar-custom .bar-header {
-    padding: 0; }
+    padding: 0;
+    height: 45px; }
   #nav-bar-custom button {
     height: 45px;
     margin: 0;
     padding: 0;
-    width: 40px; }
+    width: 40px;
+    max-height: inherit; }
   #nav-bar-custom .header-item {
     bottom: 0;
     top: 0; }
+
+.platform-ios #nav-bar-custom {
+  height: 60px; }
+  .platform-ios #nav-bar-custom .bar-header {
+    height: 60px; }
 
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;

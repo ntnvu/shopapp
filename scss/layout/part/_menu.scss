@@ -1,4 +1,4 @@
-.view-button button, .grid-view {
+.view-button button, .grid-view, .button-back{
   background-color: transparent;
   background-position: center center;
   background-repeat: no-repeat;
@@ -22,6 +22,10 @@
 .view-button button.view-cart {
   background-position: center bottom 10px;
   background-size: 27px auto;
+}
+
+.button-back {
+  background-image: url("../img/back_btn.png");
 }
 
 .grid-view {

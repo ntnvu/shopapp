@@ -5,11 +5,12 @@ module.exports = angular.module('registerLogin.controller', [])
         function ($scope, LoginService, $state, $ionicPopup, $localstorage, UserService) {
             $scope.user = UserService.current_user;
 
-            $scope.$on('modal.hidden', function() {
+            $scope.$on('modal.hidden', function () {
                 $state.go('menu.products');
             });
 
             $scope.loginData = {};
+            $scope.registerData = {};
 
             $scope.openLoginModal = function () {
                 $scope.openModal();
@@ -22,28 +23,45 @@ module.exports = angular.module('registerLogin.controller', [])
 
             //login section
             $scope.doRegister = function () {
-                console.log('Doing register', $scope.loginData);
+                LoginService.registerUser($scope.registerData)
+                    .success(function (data) {
+                        $scope.registerData = {};
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Đăng ký thành công',
+                            template: 'Vui lòng đăng nhập để tiếp tục'
+                        });
+                    })
+                    .error(function (data) {
+                        var alertPopup = $ionicPopup.alert({
+                            title: 'Đăng ký không thành công',
+                            template: data
+                        });
+                    });
 
-                // Simulate a login delay. Remove this and replace with your login
-                // code if using a login system
-                $timeout(function () {
-                    $scope.closeLoginRegister();
-                }, 1000);
             };
-
-            LoginService.registerUser().success(function(data){
-                console.log("vào" + data);
-            }).error(function(data){
-                    console.log("hihi" + data);
-                });
 
             //register section
             $scope.doLogin = function () {
-                LoginService.loginUser($scope.loginData.email, $scope.loginData.pass)
+                LoginService.loginUser($scope.loginData)
                     .success(function (data) {
-                        UserService.login($scope.user);
-                        $scope.closeModal();
-                        $state.go('menu.products');
+                        LoginService.getInfo($scope.loginData)
+                            .success(function (data) {
+                                data.name = data.user.fullname;
+                                data.email = data.user.email;
+                                data.phone = data.shipping_address.telephone_ship;
+                                data.address = data.shipping_address.street_ship[0];
+                                data.district = data.shipping_address.dis_ship;
+                                data.city = data.shipping_address.city_ship;
+                                data.password = $scope.loginData.password;
+                                UserService.login(data);
+                                $scope.closeModal();
+                                $state.go('menu.products');
+                            })
+                            .error(function (data) {
+                                $scope.closeModal();
+                                $state.go('menu.user');
+                            });
+
                     })
                     .error(function (data) {
                         var alertPopup = $ionicPopup.alert({

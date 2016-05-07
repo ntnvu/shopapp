@@ -3,15 +3,6 @@
 module.exports = angular.module('user.service', [])
     .service('UserService', function ($q, $localstorage, ProductService, $rootScope) {
         var current_user = {
-            name : "Linh Đỗ",
-            username: "test@advn.vn",
-            email : "vilma.kilback@larkin.name",
-            pass : "123456",
-            phone : "335-104-2542",
-            address : "800, Lạc Long Quân",
-            district : "Quận Tân Bình",
-            ward : "Phường 10",
-            city : "Hồ Chí Minh",
             portrait: "img/portrait.jpg"
         };
 

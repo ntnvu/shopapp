@@ -6,7 +6,9 @@ module.exports = angular.module('checkout.controller', [])
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
-            $scope.checkoutInfo["methodShip"] = CheckoutService.shippingInfo.A;
+            var shippingInfo = CheckoutService.shippingInfo();
+
+            $scope.checkoutInfo["methodShip"] = shippingInfo.A;
             $scope.checkoutInfo["methodPayment"] = CheckoutService.paymentInfo.A;
 
             if(UserService.isLogin()){
@@ -14,6 +16,7 @@ module.exports = angular.module('checkout.controller', [])
             }
 
             $scope.checkout = function(){
+                CheckoutService.setOrder();
                 $localstorage.setNull("cart");
                 $rootScope.$broadcast("CartUpdate");
                 $state.go("menu.products");

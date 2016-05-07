@@ -3,9 +3,10 @@
     <ion-pane ion-side-menu-content>
 
         <ion-nav-bar id="nav-bar-custom" class="bar pink-bg nav-title-slide-ios7">
-            <ion-nav-back-button ng-show="showProductBackBtn">
-            </ion-nav-back-button>
             <ion-nav-buttons side="left">
+                <button ng-show="showProductBackBtn" ng-click="$ionicGoBack()" class="button-back button hide" ng-class="{'must-show' : showProductBackBtn}" style="">
+
+                </button>
                 <button ng-class="{'must-show' : !showProductBackBtn}" menu-toggle="left"
                         class="button button-icon button-clear ion-navicon"
                         ng-click="openMenu()"></button>

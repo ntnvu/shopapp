@@ -5,10 +5,16 @@ module.exports = angular.module('checkoutEdit.controller', [])
         function ($scope,  $localstorage, UserService, CheckoutService, $state, CartService) {
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
-            $scope.shippingInfo = CheckoutService.shippingInfo;
+
             $scope.paymentInfo = CheckoutService.paymentInfo;
             $scope.below50 = false;
             $scope.below100 = false;
+
+            CheckoutService.shippingInfo().success(
+                function(data){
+                    $scope.shippingInfo = data;
+                }
+            )
 
             var total = CartService.sumCart();
 

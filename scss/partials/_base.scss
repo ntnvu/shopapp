@@ -1,6 +1,18 @@
 $light-bg: #00aaf5;
 $main-font: Roboto, sans-serif;
 $pink: #f94568;
+.platform-ios .test{
+  background: green;
+}
+
+.platform-android .test{
+  background: blue;
+}
+
+.platform-browser .test{
+  background: red;
+}
+
 .orange {
   color: #ff8a00;
 }
