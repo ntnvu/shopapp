@@ -16,6 +16,7 @@ module.exports = angular.module('checkout.service', [])
             $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=shipping")
                 .then(function (resp) {
                     deferred.resolve(resp.data);
+
                 }, function (err) {
                     // err.status will contain the status code
                     console.error('ERR', err);
@@ -166,7 +167,7 @@ module.exports = angular.module('checkout.service', [])
 
             checkoutInfo: checkout_info,
 
-            shippingInfo: get_shipping_method,
+            shippingInfo_1: shipping_method,
 
             paymentInfo: payment_method
         }

@@ -6,7 +6,7 @@ module.exports = angular.module('checkout.controller', [])
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
-            var shippingInfo = CheckoutService.shippingInfo();
+            var shippingInfo = CheckoutService.shippingInfo_1;
 
             $scope.checkoutInfo["methodShip"] = shippingInfo.A;
             $scope.checkoutInfo["methodPayment"] = CheckoutService.paymentInfo.A;
