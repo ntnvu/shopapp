@@ -9,9 +9,9 @@
     text-transform: uppercase;
   }
   .button-next-total {
-    bottom: -47px;
+    bottom: -100px;
     position: absolute;
-    transition: bottom 1s;
+    transition: bottom 2s;
     &.slided{
       bottom: 0;
     }

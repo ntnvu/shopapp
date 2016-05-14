@@ -10006,9 +10006,6 @@ body {
 #list-product-template ion-item {
   border: none; }
 
-#list-product-template ion-content {
-  margin-bottom: 40px; }
-
 #list-product-template .button {
   text-transform: uppercase; }
 
@@ -10138,18 +10135,9 @@ body {
   #popup-login-register .second-list {
     margin: auto;
     width: 85%; }
-  #popup-login-register .second-list .item {
-    border: medium none;
-    padding: 0;
-    text-align: center; }
   #popup-login-register .support-link {
     background-color: palevioletred;
-    border-radius: 3px;
-    color: #fff;
-    font-size: 16px;
-    height: 45px;
-    line-height: 45px;
-    width: 100%; }
+    color: #fff; }
 
 #popup-cart-prodOpt {
   bottom: 0;
@@ -10207,9 +10195,9 @@ body {
   #list-product .button {
     text-transform: uppercase; }
   #list-product .button-next-total {
-    bottom: -47px;
+    bottom: -100px;
     position: absolute;
-    transition: bottom 1s; }
+    transition: bottom 2s; }
     #list-product .button-next-total.slided {
       bottom: 0; }
     #list-product .button-next-total > * {

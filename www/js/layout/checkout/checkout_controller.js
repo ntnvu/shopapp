@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = angular.module('checkout.controller', [])
-    .controller("CheckoutController", ['$scope', '$localstorage', 'ControlModalService', '$state','$rootScope', 'CheckoutService','UserService',
-        function ($scope, $localstorage, ControlModalService, $state, $rootScope, CheckoutService, UserService) {
+    .controller("CheckoutController", ['$scope', '$localstorage', 'ControlModalService', '$state','$rootScope', 'CheckoutService','UserService','ProductService',
+        function ($scope, $localstorage, ControlModalService, $state, $rootScope, CheckoutService, UserService, ProductService) {
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
@@ -19,6 +19,12 @@ module.exports = angular.module('checkout.controller', [])
                 CheckoutService.setOrder();
                 $localstorage.setNull("cart");
                 $rootScope.$broadcast("CartUpdate");
+
+                ProductService.setType("all");
+                ProductService.setPage(1);
+                ProductService.updateLoadmore(true);
+                ProductService.filterProduct();
+
                 $state.go("menu.products");
             }
         }]);

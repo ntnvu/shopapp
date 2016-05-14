@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = angular.module("products.controller", [])
-    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService','$localstorage',
-        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService, $localstorage) {
+    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService',
+        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService) {
             $scope.products = ProductService.productCurrent;
             CartService.setCartNumber();
             $scope.cartNumber = CartService.getCartNumber();
