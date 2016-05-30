@@ -27,9 +27,11 @@
                             </div>
                         </div>
                         <div class="info-inner-r">
-                            <button class="add-wishlist" ng-class="{'actived' : product.detail[0].like}"
+                            <button class="button-cus button button-clear button-icon ion-ios-heart"
+                                    ng-class="{'actived' : product.detail[0].like}"
                                     ng-click="addToWishlist(product.detail[0])"></button>
-                            <button class="add-cart" data-ng-click="add_to_cart(product.detail[0])"
+                            <button class="button-cus ion-bag button button-clear button-icon"
+                                    data-ng-click="add_to_cart(product.detail[0])"
                                     ng-class="{'actived' : product.detail[0].added}"></button>
                         </div>
                     </div>
@@ -42,14 +44,14 @@
                 </div>
                 <ion-item class="has-header">
                     <div class="related-product">
-                        <slick infinite="true" slides-to-show="3" slides-to-scroll="3" init-onload="true" data="product.related">
+                        <ion-scroll direction="x" class="wide-as-needed">
                             <div data-ng-repeat="item_img in product.related">
                                 <a ui-sref="menu.product({id : item_img.entity_id})">
                                     <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
                                     <img ng-src="{{item_img.image_url}}" alt="{{item.name}}" ng-class="{loaded : loaded}" spinner-on-load>
                                 </a>
                             </div>
-                        </slick>
+                        </ion-scroll>
                     </div>
                 </ion-item>
             </ion-list>

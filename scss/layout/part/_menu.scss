@@ -1,43 +1,33 @@
-.view-button button, .grid-view, .button-back{
-  background-color: transparent;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 32px auto;
-  border: medium none;
-  color: #fff;
+.view-button button, .grid-view{
   position: relative;
   > span {
-    background-color: mediumslateblue;
-    border-radius: 100%;
+    background-color: mediumslateblue !important;
     bottom: 5px;
     font-size: 9px;
-    height: 17px;
-    line-height: 19px;
-    position: absolute;
+    height: 15px;
+    line-height: 9px;
+    padding: 3px;
+    position: absolute !important;
     right: 0;
-    width: 17px;
+    text-align: center;
+    top: auto !important;
+    width: 16px;
   }
 }
-
-.view-button button.view-cart {
-  background-position: center bottom 10px;
-  background-size: 27px auto;
+.platform-android {
+  .view-button button, .grid-view{
+    > span {
+      line-height: 12px;
+    }
+  }
 }
-
-.button-back {
-  background-image: url("../img/back_btn.png");
-}
-
-.grid-view {
-  background-image: url("../img/grid_view.png");
-}
-
-.view-wishlist {
-  background-image: url("../img/wishlist_white.png");
-}
-
-.view-cart {
-  background-image: url("../img/view_card.png");
+.platform-ios {
+  //  #nav-bar-custom {
+  //    height: 60px;
+  //    .bar-header {
+  //      height: 60px;
+  //    }
+  //  }
 }
 
 #nav-bar-custom {

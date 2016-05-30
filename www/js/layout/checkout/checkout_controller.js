@@ -6,9 +6,11 @@ module.exports = angular.module('checkout.controller', [])
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
-            var shippingInfo = CheckoutService.shippingInfo_1;
+            CheckoutService.shippingInfo().success(function(data){
+                var shippingInfo = data;
+                $scope.checkoutInfo["methodShip"] = shippingInfo[0].method[0];
+            });
 
-            $scope.checkoutInfo["methodShip"] = shippingInfo.A;
             $scope.checkoutInfo["methodPayment"] = CheckoutService.paymentInfo.A;
 
             if(UserService.isLogin()){
@@ -17,7 +19,10 @@ module.exports = angular.module('checkout.controller', [])
 
             $scope.checkout = function(){
                 CheckoutService.setOrder();
+
                 $localstorage.setNull("cart");
+                $localstorage.addAttributeAll("wishlist", "added", false);//remove add to card attr in wishlist
+
                 $rootScope.$broadcast("CartUpdate");
 
                 ProductService.setType("all");

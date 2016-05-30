@@ -1,17 +1,12 @@
 #float-button {
   &.mfb-component--tl, &.mfb-component--tr, &.mfb-component--bl, &.mfb-component--br {
     margin-bottom: 50px;
-
   }
-  [data-mfb-label]:after{
+  [data-mfb-label]:after {
     display: none;
   }
-  a i::before {
+  a i::before{
     font-size: 27px;
-    position: relative;
-    top: 1px;
-  }
-  a i.ion-ios-help-empty::before {
-    font-size: 50px;
+    line-height: 56px;
   }
 }

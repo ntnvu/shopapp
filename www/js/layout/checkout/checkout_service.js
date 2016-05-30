@@ -9,13 +9,41 @@ module.exports = angular.module('checkout.service', [])
             methodShip: {}
         };
 
+        function transformArr(orig) {
+            var orig_new = [];
+            for (var key in orig) {
+                orig_new.push(orig[key]);
+            }
+            var newArr = [],
+                names = {},
+                i, j, cur;
+            for (i = 0, j = orig_new.length; i < j; i++) {
+                cur = orig_new[i];
+                if (!(cur.title in names)) {
+                    names[cur.title] = {title: cur.title, method: []};
+                    newArr.push(names[cur.title]);
+                }
+                else if(i < 5){
+                    //add child attribute to method which is child.
+                    names[cur.title].method[0].child = true;
+                    cur.child = true;
+                }
+
+                cur.price = parseInt(cur.price);
+                names[cur.title].method.push(cur);
+            }
+            console.log(newArr);
+            return newArr;
+        }
+
         function get_shipping_method(){
             var deferred = $q.defer();
             var promise = deferred.promise;
 
             $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=shipping")
                 .then(function (resp) {
-                    deferred.resolve(resp.data);
+                    var newData = transformArr(resp.data);
+                    deferred.resolve(newData);
 
                 }, function (err) {
                     // err.status will contain the status code
@@ -35,51 +63,6 @@ module.exports = angular.module('checkout.service', [])
             return promise;
         }
 
-        var shipping_method = {
-            "A": {
-                text: "T? l?y hàng t?i c?a hàng 164 Tr?n Bình Tr?ng Q5 - HCM 0?",
-                value: 0
-            },
-            "B": {
-                text: "Qu?n 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, Tân Bình, Tân Phú, Phú Nhu?n, Bình Th?nh, Gò V?p",
-                method: [
-                    {
-                        index: "B",
-                        text: "1 ngày (15.000 ?)",
-                        value: 15000
-                    },
-                    {
-                        index: "B",
-                        text: "2-3 ngày (12.000 ?)",
-                        value: 12000
-                    }
-                ]
-            },
-            "C": {
-                text: "Qu?n 9, 12, Bình Tân, Th? ??c",
-                method: [
-                    {
-                        index: "C",
-                        text: "1 ngày (25.000 ?)",
-                        value: 25000
-                    },
-                    {
-                        index: "C",
-                        text: "2-3 ngày (20.000 ?)",
-                        value: 20000
-                    }
-                ]
-            },
-            "D": {
-                text: "C? Chi, Nhà Bè, Bình Chánh, Hóc Môn, C?n Gi? (30.000 ?)",
-                value: 30000
-            },
-            "E": {
-                text: "T?nh, Thành ph? ngoài Tp.H? Chí Minh (T? v?n viên s? liên h? v?i KH qua ?T thông báo phí & th?i gian giao hàng)",
-                value: 0
-            }
-        };
-
         var payment_method = {
             "A": "Cash On Delivery (thanh toán khi nhận hàng)",
             "B": "Bank Transfer Payment (chuyển qua ngân hàng)"
@@ -95,20 +78,20 @@ module.exports = angular.module('checkout.service', [])
             sumTotal: function () {
                 checkout_info.total = CartService.sumCart();
                 checkout_info.totalText = CartService.convertMoney(0, ",", ".", checkout_info.total);
-                if (checkout_info.methodShip.value)
-                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.value));
+                if (checkout_info.methodShip.price)
+                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.price));
                 else
                     checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", checkout_info.total);
             },
 
             addShipping: function (methodShip) {
-                if (methodShip.index) {
-                    methodShip.text = shipping_method[methodShip.index].text + " - " + methodShip.text;
+                if (methodShip.child) {
+                    methodShip.shipAddress = methodShip.title + " - " + methodShip.name;
                 }
                 checkout_info.methodShip = methodShip;
-                console.log(checkout_info.methodShip);
-                checkout_info.methodShipText = CartService.convertMoney(0, ",", ".", checkout_info.methodShip.value);
-                checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.value));
+
+                checkout_info.methodShipText = CartService.convertMoney(0, ",", ".", checkout_info.methodShip.price);
+                checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.price));
             },
 
             setOrder: function () {
@@ -167,7 +150,7 @@ module.exports = angular.module('checkout.service', [])
 
             checkoutInfo: checkout_info,
 
-            shippingInfo_1: shipping_method,
+            shippingInfo: get_shipping_method,
 
             paymentInfo: payment_method
         }

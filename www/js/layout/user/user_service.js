@@ -24,6 +24,10 @@ module.exports = angular.module('user.service', [])
                 }
             },
 
+            getUser : function(){
+                return current_user;
+            },
+
             signOut : function(){
                 current_user.login = false;
                 $localstorage.setNull("user");

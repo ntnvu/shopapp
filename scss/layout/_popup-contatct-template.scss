@@ -1,14 +1,15 @@
 #popup-contatct-template {
   bottom: 0;
-  height: 30%;
+  height: 145px;
   left: 0;
   max-height: 145px;
   margin: auto;
-  min-height: inherit;
+  min-height: 145px;
   right: 0;
   top: 0;
   width: 80%;
   border-radius: 10px;
+  max-width: 300px;
   .contact-detail span {
     display: block;
     &:first-child {
@@ -16,11 +17,11 @@
       font-weight: 300;
     }
   }
-  .button-bar {
-    border-top: 1px solid #ccc;
-    bottom: 0;
-    position: absolute;
-  }
+  //.button-bar {
+  //  border-top: 1px solid #ccc;
+  //  bottom: 0;
+  //  position: absolute;
+  //}
   .contact-detail {
     padding: 25px 0;
     text-align: center;

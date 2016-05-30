@@ -8,26 +8,26 @@
   .button{
     text-transform: uppercase;
   }
-  .button-next-total {
+  .has-footer {
+    bottom: 0;
+  }
+  ion-footer-bar{
     bottom: -100px;
-    position: absolute;
-    transition: bottom 2s;
+    padding: 0;
+    transition: bottom 0.8s;
     &.slided{
       bottom: 0;
     }
-    > * {
-      border-left: 1px solid #fff;
-      border-radius: 0;
-      font-family: arial;
-      font-size: 16px;
-      line-height: 44px;
-      margin: 0;
-    }
   }
-  .button-next-total > *:first-child {
-    background-color: mediumturquoise;
-    border: medium none;
-    color: #fff;
+
+  .button-next-total {
+    > *:first-child {
+      background-color: mediumturquoise;
+      color: #fff;
+    }
+    > * {
+      border-radius: 0;
+    }
   }
   .bottom-absolute{
     position: absolute;
@@ -90,7 +90,6 @@
   }
   .title-wrap {
     width: 80%;
-    word-break: break-all;
     word-wrap: break-word;
     h2 {
       display: block;

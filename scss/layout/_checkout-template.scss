@@ -11,16 +11,23 @@
     }
   }
 
-  .shipping-info {
-    .edit {
-      background: transparent url("../img/edit_btn.png") no-repeat scroll right center / 25px auto;
-      color: #00aaf4;
-      display: block;
-      float: right;
-      font-size: 0;
-      height: 45px;
-      text-align: right;
-      width: 45px;
+  //.shipping-info {
+  //  .edit {
+  //    background: transparent url("../img/edit_btn.png") no-repeat scroll right center / 25px auto;
+  //    color: #00aaf4;
+  //    display: block;
+  //    float: right;
+  //    font-size: 0;
+  //    height: 45px;
+  //    text-align: right;
+  //    width: 45px;
+  //  }
+  //}
+
+  .item-button-right.item {
+    height: 50px;
+    button{
+      color: #000;
     }
   }
 
@@ -67,4 +74,16 @@
     line-height: 20px;
     margin: 0 0 10px;
   }
+
+  &.user-template{
+    margin-bottom: 0;
+  }
+}
+
+#list-product #checkout-template .address-info {
+  border-bottom: medium none;
+}
+
+#checkout-template.checkout-edit {
+  margin-bottom: 0;
 }

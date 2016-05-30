@@ -1,0 +1,26 @@
+@media screen and (min-width: 480px){
+  .deckgrid .column-1-3 {
+    width: 31.3%;
+  }
+  .deckgrid[deckgrid]::before {
+    content: '3 .column.column-1-3';
+  }
+}
+
+//@media screen and (min-width: 768px){
+//  .deckgrid .column-1-4 {
+//    width: 23%;
+//  }
+//  .deckgrid[deckgrid]::before {
+//    content: '4 .column.column-1-4';
+//  }
+//}
+
+@media screen and (min-width: 1024px){
+  .deckgrid .column-1-4 {
+    width: 23%;
+  }
+  .deckgrid[deckgrid]::before {
+    content: '4 .column.column-1-4';
+  }
+}

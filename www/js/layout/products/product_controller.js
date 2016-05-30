@@ -57,5 +57,14 @@ module.exports = angular.module("product.controller", [])
             $scope.chooseProductOption = function (item) {
                 ControlModalService.show('js/modules/cart/cart.html', 'CartController', 1, item);
             }
+
+            $scope.slickConfig = {
+                autoplay: true,
+                infinite: true,
+                autoplaySpeed: 1000,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                method: {}
+            };
         }]);
 

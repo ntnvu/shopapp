@@ -20,6 +20,7 @@ module.exports = angular.module("app.service", [])
 
             setNull: function (key) {
                 this.setObject(key, {});
+                this.addAttribute
             },
             setNullAll: function () {
                 $window.localStorage.clear();
@@ -96,6 +97,16 @@ module.exports = angular.module("app.service", [])
                         if (arr[i].entity_id == item.entity_id) {
                             arr[i][index] = item[index];
                         }
+                    }
+                    this.setObject(key, arr);
+                }
+            },
+
+            addAttributeAll: function(key, attr, value ){
+                var arr = this.getObject(key);
+                if (arr.length > 0) {
+                    for (var i in arr) {
+                        arr[i][attr] = value;
                     }
                     this.setObject(key, arr);
                 }

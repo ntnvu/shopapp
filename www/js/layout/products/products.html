@@ -1,4 +1,4 @@
-<ion-view id="list-product-template">
+<ion-view id="list-product-template" cache-view="false">
     <ion-content overflow-scroll="true">
         <div deckgrid class="deckgrid" source="products">
 
@@ -21,20 +21,25 @@
                         </div>
                     </div>
                     <div class="info-inner-r">
-                        <button class="add-wishlist" ng-class="{'actived' : card.like}"
+                        <button class="button-cus button button-clear button-icon ion-ios-heart"
+                                ng-class="{'actived' : card.like}"
                                 ng-click="mother.addToWishlist(card)"></button>
-                        <button class="add-cart" data-ng-click="mother.add_to_cart(card)"
+                        <button class="button-cus ion-bag button button-clear button-icon"
+                                data-ng-click="mother.add_to_cart(card)"
                                 ng-class="{'actived' : card.added}"></button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%" ng-if="loadMore[0]"></ion-infinite-scroll>
+        <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%"
+                             ng-if="loadMore[0]"></ion-infinite-scroll>
     </ion-content>
-    <div class="button-bar button-next-total" ng-class="{slided : cartNumber}">
-        <button class="button">{{total}}</button>
-        <button class="button no-radius button-positive button-block bottom-absolute" ui-sref="menu.cart">Xem giỏ hàng
-        </button>
-    </div>
+    <ion-footer-bar ng-class="{slided : cartNumber}">
+        <div class="button-bar button-next-total">
+            <button class="button">{{total}}</button>
+            <button class="button button-positive" ui-sref="menu.cart">Xem giỏ hàng
+            </button>
+        </div>
+    </ion-footer-bar>
 </ion-view>

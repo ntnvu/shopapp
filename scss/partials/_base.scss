@@ -47,15 +47,23 @@ $pink: #f94568;
 .bar-grey {
   background-color: #d4d4d4;
 }
-
+.bg-white{
+  background-color: #fff;
+}
 body {
   font: 15px $main-font;
   background-color: #efefef;
 }
-
-.ion-ios-heart.actived {
-  color: red;
+button.button-cus.button {
+  font-size: 30px;
+  margin-right: 5px;
+  padding: 0;
+  color: #555;
+  &.ion-ios-heart.actived, &.ion-bag.actived {
+    color: #f94568;
+  }
 }
+
 .red{
   color: red;
 }

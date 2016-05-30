@@ -4,14 +4,16 @@ module.exports = angular.module('checkoutEdit.controller', [])
     .controller("CheckoutEditController", ['$scope', '$localstorage', 'UserService', 'CheckoutService', '$state', 'CartService',
         function ($scope, $localstorage, UserService, CheckoutService, $state, CartService) {
             $scope.user = UserService.currentUser;
-            $scope.shippingInfo = CheckoutService.shippingInfo_1;
+
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
             $scope.paymentInfo = CheckoutService.paymentInfo;
             $scope.below50 = false;
             $scope.below100 = false;
 
-
+            CheckoutService.shippingInfo().success(function(data){
+                $scope.shippingInfo = data;
+            })
 
             var total = CartService.sumCart();
 
@@ -23,6 +25,7 @@ module.exports = angular.module('checkoutEdit.controller', [])
             }
 
             $scope.updateCheckout = function () {
+                CheckoutService.updateCheckoutInfo($scope.checkoutInfo);
                 CheckoutService.addShipping($scope.checkoutInfo.methodShip);
                 $state.go('menu.checkout');
             }

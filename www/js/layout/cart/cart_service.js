@@ -51,7 +51,7 @@ module.exports = angular.module('cart.services', [])
             },
 
             setCartNumber : function(){
-                cartNumber = $localstorage.getObject("cart").length;
+                cartNumber = $localstorage.getObject("cart").length > 0 ? $localstorage.getObject("cart").length : 0;
             },
 
             getCartNumber : function(){

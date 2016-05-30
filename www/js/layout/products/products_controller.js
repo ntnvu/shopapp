@@ -39,8 +39,8 @@ module.exports = angular.module("products.controller", [])
             }
 
             $scope.$on('CartUpdate', function (event, data) {
-                $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
                 $scope.cartNumber = CartService.getCartNumber();
+                $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
             });
         }
     ]);

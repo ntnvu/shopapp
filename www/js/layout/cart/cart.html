@@ -1,5 +1,5 @@
 <ion-view id="list-product" class="list-product" cache-view="false">
-    <ion-content overflow-scroll="true">
+    <ion-content id="cart-template" overflow-scroll="true">
         <ion-list ng-if="!lengthCart">
             <ion-item>
                 Chưa có sản phẩm
@@ -25,9 +25,11 @@
                                 {{item.price}}
                             </div>
                         </div>
-                        <div class="detail-attr"><label>Số lượng</label> <span class="detail"><input type="number"
+                        <div class="detail-attr"><label>Số lượng</label>
+                            <input type="number" class="input-numb"
                                                                                                      ng-model="item.quantity"
-                                                                                                     value="{{item.quantity}}" ng-change="updateQty(item)"/></span>
+                                                                                                     value="{{item.quantity}}"
+                                                                                                     ng-change="updateQty(item)"/>
                         </div>
                     </div>
 
@@ -38,10 +40,12 @@
             </ion-list>
         </ion-scroll>
     </ion-content>
-    <div class="button-bar button-next-total" ng-class="{slided : cartNumber}">
-        <div class="button">{{total}}</div>
-        <button class="button no-radius button-positive button-block" ui-sref="menu.checkout"
-                ng-click="cart_checkout()">Tạo Đơn Hàng
-        </button>
-    </div>
+    <ion-footer-bar ng-class="{slided : cartNumber}">
+        <div class="button-bar button-next-total">
+            <button class="button">{{total}}</button>
+            <button class="button button-positive" ui-sref="menu.checkout"
+                    ng-click="cart_checkout()">Tạo Đơn Hàng
+            </button>
+        </div>
+    </ion-footer-bar>
 </ion-view>

@@ -2,31 +2,48 @@
   .button{
     text-transform: uppercase;
   }
-  .button-next-total {
-    bottom: -47px;
-    position: absolute;
-    transition: bottom 1s;
+  //.button-next-total {
+  //  bottom: -47px;
+  //  position: absolute;
+  //  transition: bottom 1s;
+  //  &.slided{
+  //    bottom: 0;
+  //  }
+  //  > * {
+  //    border-left: 1px solid #fff;
+  //    border-radius: 0;
+  //    font-family: arial;
+  //    font-size: 16px;
+  //    line-height: 44px;
+  //    margin: 0;
+  //  }
+  //}
+  .has-footer {
+    bottom: 0;
+  }
+  ion-footer-bar{
+    bottom: -100px;
+    padding: 0;
+    transition: bottom 0.8s;
     &.slided{
       bottom: 0;
     }
+  }
+
+  .button-next-total {
+    > *:first-child {
+      background-color: mediumturquoise;
+      color: #fff;
+    }
     > * {
-      border-left: 1px solid #fff;
       border-radius: 0;
-      font-family: arial;
-      font-size: 16px;
-      line-height: 44px;
-      margin: 0;
     }
   }
-  .button-next-total > *:first-child {
-    background-color: mediumturquoise;
-    border: medium none;
-    color: #fff;
-  }
+
   .a-card {
     background-color: #eaeaea;
     border-radius: 7px;
-    margin: 10px 0;
+    margin: 15px 0;
     border: 1px solid #ccc;
     overflow: hidden;
     a{
@@ -69,31 +86,32 @@
     }
   }
   .info-inner-r {
-    button {
-      background-color: transparent;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: 30px auto;
-      border: medium none;
-      height: 45px;
-      margin: 0;
-      padding: 0;
-      width: 30px;
-      &.add-cart {
-        background-image: url("../img/cart.png");
-        background-position: center bottom 9px;
-        background-size: 29px auto;
-        &.actived{
-          background-image: url("../img/cart_added.png");
-        }
-      }
-      &.add-wishlist {
-        background-image: url("../img/wishlist.png");
-        &.actived{
-          background-image: url("../img/wishlist_added.png");
-        }
-      }
-    }
+
+    //button {
+    //  background-color: transparent;
+    //  background-position: center center;
+    //  background-repeat: no-repeat;
+    //  background-size: 30px auto;
+    //  border: medium none;
+    //  height: 45px;
+    //  margin: 0;
+    //  padding: 0;
+    //  width: 30px;
+    //  &.add-cart {
+    //    background-image: url("../img/cart.png");
+    //    background-position: center bottom 9px;
+    //    background-size: 29px auto;
+    //    &.actived{
+    //      background-image: url("../img/cart_added.png");
+    //    }
+    //  }
+    //  &.add-wishlist {
+    //    background-image: url("../img/wishlist.png");
+    //    &.actived{
+    //      background-image: url("../img/wishlist_added.png");
+    //    }
+    //  }
+    //}
   }
   ion-spinner {
     bottom: 0;
