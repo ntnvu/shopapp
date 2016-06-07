@@ -65,12 +65,12 @@
       }
     }
 
-    input:checked + .radio-content {
+    &.current > .radio-content {
       > .radio-icon {
         background-image: url("../img/sign-check-blue.png");
       }
-      .item-content{
-        span{
+      .item-content {
+        span {
           color: #00aaf4;
         }
       }
@@ -100,7 +100,7 @@
         width: 85px;
       }
     }
-    > .info{
+    > .info {
       width: 170px;
     }
   }

@@ -21,6 +21,9 @@
   .has-footer {
     bottom: 0;
   }
+  .has-footer.needbottom {
+    bottom: 44px;
+  }
   ion-footer-bar{
     bottom: -100px;
     padding: 0;

@@ -14,33 +14,37 @@ module.exports = angular.module("product.controller", [])
             }
         };
     })
-    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService','$localstorage',
+    .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService', '$localstorage',
         function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService, $localstorage) {
             var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
             var link_ajax_new = "http://shop10k.qrmartdemo.info/web_api.php";
+
             $scope.product = {};
-            $http.get(link_ajax_new + "?r=product&id=" + $stateParams.id).then(function (resp) {
-                var temp = [];
-                temp.push(resp.data);
-                $localstorage.updateArray(temp, $localstorage.getObject("cart"),"added");
-                $localstorage.updateArray(temp, $localstorage.getObject("wishlist"), "like");
+            $localstorage.getKeyTime().then(
+                function (md5key) {
+                    $http.get(link_ajax_new + "?r=product&id=" + $stateParams.id + "&key=" + md5key).then(function (resp) {
+                        var temp = [];
+                        temp.push(resp.data);
+                        $localstorage.updateArray(temp, $localstorage.getObject("cart"), "added");
+                        $localstorage.updateArray(temp, $localstorage.getObject("wishlist"), "like");
 
-                $scope.product.detail = temp;
-                $scope.product.detail["thumb"] = $scope.product.detail.image;
-                console.log($scope.product.detail);
-            });
+                        $scope.product.detail = temp;
+                        $scope.product.detail["thumb"] = $scope.product.detail.image;
+                    });
 
-            $http.get(link_ajax + "/" + $stateParams.id + "/images").then(function (resp) {
-                $scope.product.images = resp.data;
-                $scope.updateSlider();
-            });
+                    $http.get(link_ajax + "/" + $stateParams.id + "/images" + "?key=" + md5key).then(function (resp) {
+                        $scope.product.images = resp.data;
+                        $scope.updateSlider();
+                    });
 
-            $http.get(link_ajax + "/" + $stateParams.id + "/categories").then(function (cat) {
-                $scope.product.category = cat.data;
-                $http.get(link_ajax + "?category_id=" + $scope.product.category[0].category_id).then(function (relate) {
-                    $scope.product.related = relate.data;
-                });
-            });
+                    $http.get(link_ajax + "/" + $stateParams.id + "/categories" + "?key=" + md5key).then(function (cat) {
+                        $scope.product.category = cat.data;
+                        $http.get(link_ajax + "?category_id=" + $scope.product.category[0].category_id + "&key=" + md5key).then(function (relate) {
+                            $scope.product.related = relate.data;
+                        });
+                    });
+                }
+            )
 
             $scope.updateSlider = function () {
                 $ionicSlideBoxDelegate.update();

@@ -1,5 +1,6 @@
 <ion-view id="list-product-template" cache-view="false">
-    <ion-content overflow-scroll="true">
+    <p>{{cartNumber}}</p>
+    <ion-content overflow-scroll="true" ng-class="{needbottom : cartNumber}">
         <div deckgrid class="deckgrid" source="products">
 
             <div class="a-card">

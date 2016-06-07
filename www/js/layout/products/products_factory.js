@@ -17,7 +17,7 @@ module.exports = angular.module("products.factory", [])
 
             for (var i = array.length - 1; i >= 0; i--) {
                 products[current_index] = array[i];
-//                products.push(array[i]);
+//              products.push(array[i]);
                 current_index++;
             }
         }
@@ -26,8 +26,7 @@ module.exports = angular.module("products.factory", [])
             filterProduct: function () {
                 var deferred = $q.defer();
                 var promise = deferred.promise;
-//                var link_ajax = "http://liquordelivery.com.sg/wp-admin/admin-ajax.php";
-//                $http.get(link_ajax + "?action=latest_products_app&filter=" + filterType + "&page=" + page_next).then(function (resp) {
+
                 filter.limit = 20;
                 if (filter.page == 1) {
                     this.clearProducts();
@@ -36,29 +35,36 @@ module.exports = angular.module("products.factory", [])
                     });
                     filter.limit = 20;
                 }
-//                var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-//                $http.get(link_ajax + "?page=" + filter.page + "&limit="+ filter.limit +"&order=entity_id&dir=dsc").then(function (resp) {
 
-                var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-                $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page).then(function (resp) {
-                    if (!resp.data.Error) {
-                        add_product(resp.data);
+                $localstorage.getKeyTime().then(
+                    function(md5key){
+                        var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
+                        $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page + "&key=" + md5key).then(function (resp) {
+                            if (!resp.data.Error) {
+                                add_product(resp.data);
 
-                        $ionicLoading.hide();
+                                $ionicLoading.hide();
 
-                        $localstorage.updateArray(products, $localstorage.getObject("cart"), "added");
-                        $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
+                                $localstorage.updateArray(products, $localstorage.getObject("cart"), "added");
+                                $localstorage.updateArray(products, $localstorage.getObject("wishlist"), "like");
 
-                        deferred.resolve(filter.page);
+                                deferred.resolve(filter.page);
+                            }
+                            else{
+                                deferred.reject(filter.page);
+                            }
+                        }, function (err) {
+                            // err.status will contain the status code
+                            console.error('ERR', err);
+                            deferred.reject('ERR ' + err);
+                        })
+                    },
+                    function(){
+                        deferred.reject("wrong key");
                     }
-                    else{
-                        deferred.reject(filter.page);
-                    }
-                }, function (err) {
-                    // err.status will contain the status code
-                    console.error('ERR', err);
-                    deferred.reject('ERR ' + err);
-                })
+                )
+
+
                 return promise;
             },
 
@@ -68,6 +74,10 @@ module.exports = angular.module("products.factory", [])
 
             setType: function (type) {
                 filter.type = type;
+            },
+
+            getType: function () {
+                return filter.type;
             },
 
             getPage: function () {

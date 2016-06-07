@@ -1,5 +1,5 @@
 <ion-view id="list-product" class="list-product" cache-view="false">
-    <ion-content>
+    <ion-content id="wishlist-template">
         <ion-list ng-if="!lengthWishlist">
             <ion-item>
                 Chưa có sản phẩm
@@ -25,9 +25,10 @@
                         </div>
                     </div>
                 </div>
-                <button class="delete icon-top" ng-click="removeFromWishlist(item)"></button>
-                <button class="add-cart icon-bottom" ng-click="add_to_cart(item)"
-                        ng-class="{'actived' : item.added}"></button>
+                <button class="button-cus button button-clear button-icon ion-ios-close-outline icon-top" ng-click="removeFromWishlist(item)"></button>
+                <button class="button-cus ion-bag button button-clear button-icon icon-bottom"
+                        data-ng-click="add_to_cart(item)"
+                        ng-class="{'actived' : item.added}">
             </ion-item>
         </ion-list>
     </ion-content>

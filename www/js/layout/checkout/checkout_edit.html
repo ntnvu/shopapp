@@ -1,13 +1,25 @@
-<ion-view id="list-product">
+<ion-view id="list-product" cache-view="true">
     <ion-content id="checkout-template" class="checkout-edit">
         <div class="padding red">
             <div class="padding red">
                 <p ng-show="checkoutForm.name.$error.required && !checkoutForm.name.$pristine">* Vui lòng điền tên</p>
-                <p ng-show="checkoutForm.phone.$error.required && !checkoutForm.phone.$pristine">* Vui lòng cung cấp điện thoại</p>
-                <p ng-show="checkoutForm.address.$error.required && !checkoutForm.address.$pristine">* Vui lòng điền địa chỉ</p>
-                <p ng-show="checkoutForm.district.$error.required && !checkoutForm.district.$pristine">* Vui lòng điền quận/huyện</p>
-                <p ng-show="checkoutForm.ward.$error.required && !checkoutForm.ward.$pristine">* Vui lòng điền phường/xã</p>
-                <p ng-show="checkoutForm.city.$error.required && !checkoutForm.city.$pristine">* Vui lòng điền thành phố</p>
+
+                <p ng-show="checkoutForm.name.$error.pattern && checkoutForm.name.$dirty">* Vui lòng nhập đầy đủ họ tên</p>
+
+                <p ng-show="checkoutForm.phone.$error.required && !checkoutForm.phone.$pristine">* Vui lòng cung cấp
+                    điện thoại</p>
+
+                <p ng-show="checkoutForm.address.$error.required && !checkoutForm.address.$pristine">* Vui lòng điền địa
+                    chỉ</p>
+
+                <p ng-show="checkoutForm.district.$error.required && !checkoutForm.district.$pristine">* Vui lòng điền
+                    quận/huyện</p>
+
+                <p ng-show="checkoutForm.ward.$error.required && !checkoutForm.ward.$pristine">* Vui lòng điền
+                    phường/xã</p>
+
+                <p ng-show="checkoutForm.city.$error.required && !checkoutForm.city.$pristine">* Vui lòng điền thành
+                    phố</p>
             </div>
         </div>
         <form class="form-wrap" ng-submit="updateCheckout()" name="checkoutForm">
@@ -17,16 +29,15 @@
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Họ tên<span class="red">*</span></span>
-                    <input type="text" name="name" ng-model="checkoutInfo.name" required>
+                    <input type="text" name="name" ng-model="checkoutInfo.name" ng-pattern="regex" required>
                 </ion-item>
-
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Email</span>
-                    <input type="text" ng-model="checkoutInfo.email">
+                    <input type="email" ng-model="checkoutInfo.email">
                 </ion-item>
                 <ion-item class="item-input item-stacked-label">
                     <span class="input-label">Điện thoại<span class="red">*</span></span>
-                    <input type="text" name="phone" ng-model="checkoutInfo.phone" required>
+                    <input type="tel" name="phone" ng-model="checkoutInfo.phone" required>
                 </ion-item>
 
                 <ion-item class="item-input item-stacked-label">
@@ -50,8 +61,8 @@
                 <ion-item class="item-divider title-group">
                     <h2>{{shippingInfo[0].title}}</h2>
                 </ion-item>
-
-                <ion-item class="item-text-wrap">
+                <ion-item class="item-text-wrap"
+                          ng-class="{current : compareObj(shippingInfo[0].method[0],checkoutInfo.methodShip)}">
                     <input id="A" type="radio" ng-model="checkoutInfo.methodShip"
                            ng-value="shippingInfo[0].method[0]">
                     <label for="A">
@@ -64,7 +75,8 @@
                     <ion-item class="item-divider item-text-wrap">
                         <h3>{{shippingInfo[1].title}}</h3>
                     </ion-item>
-                    <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[1].method">
+                    <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[1].method"
+                              ng-class="{current : compareObj(method,checkoutInfo.methodShip)}">
                         <input id="B-{{method.type}}" type="radio" ng-model="checkoutInfo.methodShip"
                                ng-value="method">
                         <label for="B-{{method.type}}">
@@ -76,7 +88,8 @@
                     <ion-item class="item-divider item-text-wrap">
                         <h3>{{shippingInfo[2].title}}</h3>
                     </ion-item>
-                    <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[2].method">
+                    <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[2].method"
+                              ng-class="{current : compareObj(method,checkoutInfo.methodShip)}">
                         <input id="C-{{method.type}}" type="radio" ng-model="checkoutInfo.methodShip"
                                ng-value="method">
                         <label for="C-{{method.type}}">
@@ -89,7 +102,8 @@
                         <ion-item class="item-divider item-text-wrap">
                             <h3>{{shippingInfo[3].title}}</h3>
                         </ion-item>
-                        <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[3].method">
+                        <ion-item class="item-text-wrap" ng-repeat="method in shippingInfo[3].method"
+                                  ng-class="{current : compareObj(method,checkoutInfo.methodShip)}">
                             <input id="D-{{method.type}}" type="radio" ng-model="checkoutInfo.methodShip"
                                    ng-value="method">
                             <label for="D-{{method.type}}">

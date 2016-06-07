@@ -202,9 +202,16 @@
     &.title-group {
       padding: 15px 0;
     }
+
     > input {
       display: none;
       &:checked + label:before {
+        background: rgba(0, 0, 0, 0) url("../img/check.png") no-repeat scroll center top 0 / cover;
+        border: none;
+      }
+    }
+    &.current{
+      label:before {
         background: rgba(0, 0, 0, 0) url("../img/check.png") no-repeat scroll center top 0 / cover;
         border: none;
       }

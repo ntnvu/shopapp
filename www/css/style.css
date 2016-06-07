@@ -9995,6 +9995,9 @@ button.button-cus.button {
 #list-product-template .has-footer {
   bottom: 0; }
 
+#list-product-template .has-footer.needbottom {
+  bottom: 44px; }
+
 #list-product-template ion-footer-bar {
   bottom: -100px;
   padding: 0;
@@ -10305,6 +10308,9 @@ button.button-cus.button {
       #list-product .address ion-item > input:checked + label:before {
         background: transparent url("../img/check.png") no-repeat scroll center top 0/cover;
         border: none; }
+    #list-product .address ion-item.current label:before {
+      background: transparent url("../img/check.png") no-repeat scroll center top 0/cover;
+      border: none; }
     #list-product .address ion-item > label {
       display: block;
       margin: 0 0 15px;
@@ -10445,10 +10451,10 @@ button.button-cus.button {
   #side-menu-template .item-radio .radio-icon:before {
     display: none; }
 
-#side-menu-template .item-radio input:checked + .radio-content > .radio-icon {
+#side-menu-template .item-radio.current > .radio-content > .radio-icon {
   background-image: url("../img/sign-check-blue.png"); }
 
-#side-menu-template .item-radio input:checked + .radio-content .item-content span {
+#side-menu-template .item-radio.current > .radio-content .item-content span {
   color: #00aaf4; }
 
 #side-menu-template .show-user {
@@ -10484,6 +10490,12 @@ button.button-cus.button {
   width: 50px;
   text-align: center;
   margin-left: 10px; }
+
+#cart-template .list .button-cus {
+  width: 27px; }
+
+#wishlist-template .list .button-cus {
+  width: 27px; }
 
 @media screen and (min-width: 480px) {
   .deckgrid .column-1-3 {

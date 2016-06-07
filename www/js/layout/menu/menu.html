@@ -72,7 +72,7 @@
             <div class="list">
                 <ion-item class="radio-product-wrap">
                     <ion-radio menu-close ng-model="selected.type" ng-click="getProducts(ftype.type)"
-                               ng-value="{{ftype.type}}" ng-repeat="ftype in filterType">{{ftype.name}}
+                               ng-class="{current : type == ftype.type}" ng-value="{{ftype.type}}" ng-repeat="ftype in filterType">{{ftype.name}}
                     </ion-radio>
                 </ion-item>
             </div>

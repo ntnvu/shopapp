@@ -26,16 +26,15 @@
                             </div>
                         </div>
                         <div class="detail-attr"><label>Số lượng</label>
-                            <input type="number" class="input-numb"
-                                                                                                     ng-model="item.quantity"
-                                                                                                     value="{{item.quantity}}"
-                                                                                                     ng-change="updateQty(item)"/>
+                            <input type="number" class="input-numb" ng-model="item.quantity" value="{{item.quantity}}" ng-change="updateQty(item)"/>
                         </div>
                     </div>
+                    <button class="button-cus button button-clear button-icon ion-ios-close-outline icon-top"
+                            ng-click="removeFromCart(item)"></button>
 
-                    <button class="delete icon-top" ng-click="removeFromCart(item)"></button>
-                    <button class="add-wishlist icon-bottom" ng-click="addToWishlist(item)"
-                            ng-class="{'actived' : item.like}"></button>
+                    <button class="button-cus button button-clear button-icon ion-ios-heart icon-bottom"
+                            ng-class="{'actived' : item.like}"
+                            ng-click="addToWishlist(item)"></button>
                 </ion-item>
             </ion-list>
         </ion-scroll>

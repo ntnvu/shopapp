@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = angular.module("app.service", [])
-    .factory('$localstorage', function ($window, $ionicHistory) {
+    .factory('$localstorage', function ($q, $http, $window, $ionicHistory) {
         return {
             set: function (key, value) {
                 $window.localStorage[key] = value;
@@ -102,7 +102,7 @@ module.exports = angular.module("app.service", [])
                 }
             },
 
-            addAttributeAll: function(key, attr, value ){
+            addAttributeAll: function (key, attr, value) {
                 var arr = this.getObject(key);
                 if (arr.length > 0) {
                     for (var i in arr) {
@@ -110,6 +110,30 @@ module.exports = angular.module("app.service", [])
                     }
                     this.setObject(key, arr);
                 }
+            },
+
+            getKeyTime: function () {
+                var deferred = $q.defer();
+                var promise = deferred.promise;
+
+
+                var link_ajax = "http://shop10k.qrmartdemo.info/web_api.php?r=timespam";
+                $http.get(link_ajax).then(function (resp) {
+                    if (!resp.data.error) {
+                        var key = resp.data.timespam + 'app';
+                        var md5key = md5(key);
+                        deferred.resolve(md5key);
+                        console.log(encodeURIComponent(JSON.stringify([{"productid":"1873","quantity":"2"},{"productid":"1871","quantity":"2"}])));
+                    }
+                    else {
+                        deferred.reject(resp.data.error);
+                    }
+                }, function (err) {
+                    // err.status will contain the status code
+                    console.error('ERR', err);
+                    deferred.reject('ERR ' + err);
+                })
+                return promise;
             }
         }
     })

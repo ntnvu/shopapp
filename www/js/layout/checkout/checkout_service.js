@@ -23,7 +23,7 @@ module.exports = angular.module('checkout.service', [])
                     names[cur.title] = {title: cur.title, method: []};
                     newArr.push(names[cur.title]);
                 }
-                else if(i < 5){
+                else if (i < 5) {
                     //add child attribute to method which is child.
                     names[cur.title].method[0].child = true;
                     cur.child = true;
@@ -32,24 +32,26 @@ module.exports = angular.module('checkout.service', [])
                 cur.price = parseInt(cur.price);
                 names[cur.title].method.push(cur);
             }
-            console.log(newArr);
             return newArr;
         }
 
-        function get_shipping_method(){
+        function get_shipping_method() {
             var deferred = $q.defer();
             var promise = deferred.promise;
+            $localstorage.getKeyTime().then(
+                function (md5key) {
+                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=shipping" + "&key=" + md5key)
+                        .then(function (resp) {
+                            var newData = transformArr(resp.data);
+                            deferred.resolve(newData);
 
-            $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=shipping")
-                .then(function (resp) {
-                    var newData = transformArr(resp.data);
-                    deferred.resolve(newData);
-
-                }, function (err) {
-                    // err.status will contain the status code
-                    console.error('ERR', err);
-                    deferred.reject('ERR ' + err);
-                })
+                        }, function (err) {
+                            // err.status will contain the status code
+                            console.error('ERR', err);
+                            deferred.reject('ERR ' + err);
+                        })
+                }
+            )
 
             promise.success = function (fn) {
                 promise.then(fn);
@@ -78,10 +80,12 @@ module.exports = angular.module('checkout.service', [])
             sumTotal: function () {
                 checkout_info.total = CartService.sumCart();
                 checkout_info.totalText = CartService.convertMoney(0, ",", ".", checkout_info.total);
-                if (checkout_info.methodShip.price)
+                if (checkout_info.methodShip.price) {
                     checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.price));
-                else
+                }
+                else {
                     checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", checkout_info.total);
+                }
             },
 
             addShipping: function (methodShip) {
@@ -91,7 +95,12 @@ module.exports = angular.module('checkout.service', [])
                 checkout_info.methodShip = methodShip;
 
                 checkout_info.methodShipText = CartService.convertMoney(0, ",", ".", checkout_info.methodShip.price);
-                checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.price));
+                if (checkout_info.methodShip.price) {
+                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", (checkout_info.total + checkout_info.methodShip.price));
+                }
+                else {
+                    checkout_info.grandTotal = CartService.convertMoney(0, ",", ".", checkout_info.total);
+                }
             },
 
             setOrder: function () {
@@ -99,30 +108,26 @@ module.exports = angular.module('checkout.service', [])
                 var promise = deferred.promise;
                 var cart = $localstorage.getObject("cart");
 
-                $http.post("http://shop10k.qrmartdemo.info/web_api.php", {
-                        r: "user",
-                        check: "longanhvn@gmail.com",
-                        password: "longanh@123",
-                        order: true,
-                        productid: 1717,
-                        qty: 1,
-                        payment: "banktransfer",
-                        shipping: "flatrate",
-                        firstname: "longanh",
-                        lastname: "dang",
-                        postcode: "70000",
-                        city: "quan5",
-                        region: "hcm",
-                        street: "164 Tran Binh Trong",
-                        telephone: "0981112451"
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-                        }
-                    }
-                )
-//                $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&check=longanhvn@gmail.com&password=longanh@123&order=true&productid=1717&qty=1&payment=banktransfer&shipping=flatrate&firstname=longanh&lastname=dang&postcode=70000&city=quan5&region=hcm&street=tran%20binh%20trong&telephone=098444444")
+                for (var i = 0; i < cart.length; i++) {
+                    delete cart[i].description;
+                    delete cart[i].href;
+                    delete cart[i].name;
+                    delete cart[i].price;
+                    delete cart[i].price_number;
+                    delete cart[i].thumb;
+                    delete cart[i].added;
+                    delete cart[i]["$index"];
+                    delete cart[i]["$$hashKey"];
+                }
+                var name_obj = checkout_info.name.split(" ");
+                var first_name = name_obj[0];
+                var last_name_arr = name_obj.slice(1);
+                var last_name = "";
+                for (var i = 0; i < last_name_arr.length; i++) {
+                    last_name += last_name_arr[i] + " ";
+                }
+
+                $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=guest&order=true&products=" + encodeURIComponent(JSON.stringify(cart)) + "&payment=banktransfer&shipping=" + checkout_info.methodShip.type + "&lastname=" + last_name + "&firstname=" + first_name + "&postcode=70000&city=" + checkout_info.city + "&region=" + checkout_info.district + "&street=" + checkout_info.address + "&telephone=" + checkout_info.phone + "")
                     .then(function (resp) {
                         if (!resp.data.error) {
                             deferred.resolve(resp.data);

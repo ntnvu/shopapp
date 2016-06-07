@@ -38,7 +38,12 @@ module.exports = angular.module("menu.controller", [])
                 $ionicSideMenuDelegate.toggleLeft();
             };
 
+            $scope.$on('CloseOrder', function (event, data) {
+                $scope.type = ProductService.getType();
+            });
+
             $scope.getProducts = function (type) {
+                $scope.type = type;
                 $state.go("menu.products");
                 $ionicScrollDelegate.scrollTop();
                 ProductService.setType(type);
@@ -67,6 +72,6 @@ module.exports = angular.module("menu.controller", [])
                 UserService.signOut();
             }
 
-            $scope.getProducts("all");
+            $scope.getProducts("new");
         }
     ]);
