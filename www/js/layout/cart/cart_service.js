@@ -55,7 +55,7 @@ module.exports = angular.module('cart.services', [])
             },
 
             getCartNumber : function(){
-                return cartNumber;
+                return $localstorage.getObject("cart").length;
             }
         }
     });

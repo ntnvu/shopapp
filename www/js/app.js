@@ -32,6 +32,7 @@ module.export = angular.module('starter', ['ionic', 'akoenig.deckgrid', 'ng-mfb'
 
     ])
     .config(require('./router'))
+
     .run(require('./app-main'));
 
 

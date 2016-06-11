@@ -104,4 +104,8 @@
       width: 170px;
     }
   }
+
+  .item-radio input:checked + .radio-content .item-content{
+    background-color: transparent;
+  }
 }

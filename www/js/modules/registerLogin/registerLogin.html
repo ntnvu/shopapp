@@ -31,12 +31,14 @@
 
             <ion-tab title="Đăng Ký" class="custom-tab" >
                 <!-- Tab 2 content -->
-                <form ng-submit="doRegister()" class="custom-form">
+                <form ng-submit="doRegister()" class="custom-form" name="registerForm">
                     <div class="list">
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Tên</span>
-                            <input type="text" ng-model="registerData.name" class="input-text">
+                            <input type="text" ng-model="registerData.name" class="input-text" name="name" ng-pattern="/^([^\d\s]+\s+[^\d\s]+)[^\d]*$/" required>
                         </label>
+                        <p class="error-inform" ng-show="registerForm.name.$error.required && !registerForm.name.$pristine">* Vui lòng điền tên</p>
+                        <p class="error-inform" ng-show="registerForm.name.$error.pattern">* Tên có ít nhất 2 từ không chứa số</p>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label">Email</span>
                             <input type="email" ng-model="registerData.email" class="input-text">

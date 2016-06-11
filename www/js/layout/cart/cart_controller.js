@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = angular.module('cart.controller', [])
-    .controller("CartController", ['$scope', '$localstorage', 'WishlistService', 'CartService','CheckoutService','$state',
+    .controller("CartController", ['$scope', '$localstorage', 'WishlistService', 'CartService', 'CheckoutService', '$state',
         function ($scope, $localstorage, WishlistService, CartService, CheckoutService, $state) {
             $scope.cartlist = $localstorage.getObject("cart");
             $scope.lengthCart = $scope.cartlist.length;
@@ -9,18 +9,19 @@ module.exports = angular.module('cart.controller', [])
             $scope.cartNumber = CartService.getCartNumber();
             $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
 
-            $scope.addToWishlist = function(item){
+            $scope.addToWishlist = function (item) {
                 WishlistService.addWishlist(item);
             }
 
-            $scope.removeFromCart = function(item){
+            $scope.removeFromCart = function (item) {
                 CartService.removeCart(item);
                 $scope.cartlist = $localstorage.getObject("cart");
                 $scope.lengthCart = $scope.cartlist.length;
                 $scope.cartNumber = CartService.getCartNumber();
+                $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
             }
 
-            $scope.cart_checkout = function(){
+            $scope.cart_checkout = function () {
                 CheckoutService.sumTotal();
                 $state.go('menu.checkout', {location: true, notify: false});
             }
@@ -30,7 +31,7 @@ module.exports = angular.module('cart.controller', [])
                 $scope.cartNumber = CartService.getCartNumber();
             });
 
-            $scope.updateQty = function(item){
+            $scope.updateQty = function (item) {
                 $localstorage.addAttribute("cart", item, "quantity");
                 $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
             };

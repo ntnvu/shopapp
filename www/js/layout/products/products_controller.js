@@ -1,13 +1,21 @@
 "use strict"
 
 module.exports = angular.module("products.controller", [])
-    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService',
-        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService) {
+    .controller("ProductsController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', 'ControlModalService', 'WishlistService', 'CartService', 'CheckoutService','UserService',
+        function ($scope, $ionicSideMenuDelegate, ProductService, ControlModalService, WishlistService, CartService, CheckoutService, UserService) {
+            $scope.cartNumber = CartService.getCartNumber();
+
+            $scope.$on('UserLogout', function (event, data) {
+                console.log("hihi");
+                CheckoutService.resetCheckoutInfo();
+            });
+
             $scope.products = ProductService.productCurrent;
             CartService.setCartNumber();
-            $scope.cartNumber = CartService.getCartNumber();
+
             $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
             $scope.loadMore = ProductService.loadMore;
+            $scope.user = UserService.currentUser;
 
             $scope.openMenu = function () {
                 $ionicSideMenuDelegate.toggleLeft();

@@ -27,3 +27,15 @@
 //    }
 //  }
 //}
+
+.platform-ios {
+  #nav-bar-custom {
+    .number-wrap {
+      height: 16px;
+      line-height: 16px;
+      padding: 0;
+      text-align: center;
+      width: 16px;
+    }
+  }
+}

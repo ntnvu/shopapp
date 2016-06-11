@@ -9,6 +9,7 @@ module.exports = angular.module("products.factory", [])
         };
         var isLoadMore = [];
         var current_index = 0;
+        var current_position = 0;
 
         function add_product(data) {
             var array = $.map(data, function (value, index) {
@@ -23,6 +24,12 @@ module.exports = angular.module("products.factory", [])
         }
 
         return{
+            setCurrentPos: function(pos){
+                current_position = pos;
+            },
+            getCurrentPos: function(){
+                return current_position;
+            },
             filterProduct: function () {
                 var deferred = $q.defer();
                 var promise = deferred.promise;
@@ -37,7 +44,7 @@ module.exports = angular.module("products.factory", [])
                 }
 
                 $localstorage.getKeyTime().then(
-                    function(md5key){
+                    function (md5key) {
                         var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
                         $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page + "&key=" + md5key).then(function (resp) {
                             if (!resp.data.Error) {
@@ -50,7 +57,7 @@ module.exports = angular.module("products.factory", [])
 
                                 deferred.resolve(filter.page);
                             }
-                            else{
+                            else {
                                 deferred.reject(filter.page);
                             }
                         }, function (err) {
@@ -59,7 +66,7 @@ module.exports = angular.module("products.factory", [])
                             deferred.reject('ERR ' + err);
                         })
                     },
-                    function(){
+                    function () {
                         deferred.reject("wrong key");
                     }
                 )
@@ -96,7 +103,7 @@ module.exports = angular.module("products.factory", [])
                 }
             },
 
-            updateLoadmore : function(load){
+            updateLoadmore: function (load) {
                 isLoadMore[0] = load;
             },
 
@@ -113,9 +120,9 @@ module.exports = angular.module("products.factory", [])
                 }
             },
 
-            filter : filter,
+            filter: filter,
 
-            loadMore : isLoadMore,
+            loadMore: isLoadMore,
 
             productCurrent: products
         }

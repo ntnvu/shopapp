@@ -40,6 +40,7 @@ module.exports = angular.module("product.controller", [])
                     $http.get(link_ajax + "/" + $stateParams.id + "/categories" + "?key=" + md5key).then(function (cat) {
                         $scope.product.category = cat.data;
                         $http.get(link_ajax + "?category_id=" + $scope.product.category[0].category_id + "&key=" + md5key).then(function (relate) {
+                            delete relate.data[$scope.product.detail[0].entity_id];
                             $scope.product.related = relate.data;
                         });
                     });

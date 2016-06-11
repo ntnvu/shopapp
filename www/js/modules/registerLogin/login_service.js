@@ -1,12 +1,23 @@
 'use strict';
 
 module.exports = angular.module('registerLogin.services', [])
-    .service('LoginService', function ($q, $http, $localstorage) {
+    .service('LoginService', function ($q, $http, $localstorage, $ionicHistory) {
         return {
             loginUser: loginUser,
             registerUser: registerUser,
-            getInfo: getInfo
+            getInfo: getInfo,
+            splitUsername : splitUsername
         }
+        function splitUsername(user){
+            var name_obj = user.name.split(" ");
+            user.firstname = name_obj[0];
+            user.lastname = "";
+            var last_name_arr = name_obj.slice(1);
+            for (var i = 0; i < last_name_arr.length; i++) {
+                user.lastname += last_name_arr[i] + " ";
+            }
+        }
+
         function getInfo(obj) {
             var deferred = $q.defer();
             var promise = deferred.promise;
@@ -21,8 +32,6 @@ module.exports = angular.module('registerLogin.services', [])
                                 deferred.reject(resp.data.error);
                             }
                         }, function (err) {
-                            // err.status will contain the status code
-                            console.error('ERR', err);
                             deferred.reject('ERR ' + err);
                         })
                 },
@@ -46,11 +55,13 @@ module.exports = angular.module('registerLogin.services', [])
         function registerUser(obj) {
             var deferred = $q.defer();
             var promise = deferred.promise;
+
+            this.splitUsername(obj);
+
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&register=true&firstname=" + obj.name + "&lastname=" + obj.name + "&password=" + obj.password + "&email=" + obj.email + "&key=" + md5key)
+                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&register=true&firstname=" + obj.firstname + "&lastname=" + obj.lastname + "&password=" + obj.password + "&email=" + obj.email + "&key=" + md5key)
                         .then(function (resp) {
-                            console.log(resp.data.error);
                             if (!resp.data.error) {
                                 deferred.resolve();
                             }
@@ -88,6 +99,8 @@ module.exports = angular.module('registerLogin.services', [])
                 function (md5key) {
                     $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&login=" + obj.email + "&password=" + obj.password + "&key=" + md5key)
                         .then(function (resp) {
+                            $ionicHistory.clearHistory();
+                            $ionicHistory.clearCache();
                             if (!resp.data.EXCEPTION_INVALID_EMAIL_OR_PASSWORD) {
                                 deferred.resolve('Welcome ' + name + '!');
                             }

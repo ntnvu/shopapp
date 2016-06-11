@@ -20,7 +20,6 @@ module.exports = angular.module("app.service", [])
 
             setNull: function (key) {
                 this.setObject(key, {});
-                this.addAttribute
             },
             setNullAll: function () {
                 $window.localStorage.clear();

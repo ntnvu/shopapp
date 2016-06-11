@@ -9896,6 +9896,13 @@ button.button-cus.button {
   padding: 0;
   width: 40px; }
 
+.platform-ios #nav-bar-custom .number-wrap {
+  height: 16px;
+  line-height: 16px;
+  padding: 0;
+  text-align: center;
+  width: 16px; }
+
 #home .splash {
   background: url("../img/splash.png") no-repeat center center fixed;
   background-size: cover; }
@@ -10101,6 +10108,12 @@ button.button-cus.button {
   #popup-login-register .support-link {
     background-color: palevioletred;
     color: #fff; }
+  #popup-login-register .ng-invalid-required {
+    box-shadow: none; }
+  #popup-login-register .error-inform {
+    color: red;
+    margin: 0 auto;
+    width: 85%; }
 
 #popup-cart-prodOpt {
   bottom: 0;
@@ -10305,9 +10318,6 @@ button.button-cus.button {
       padding: 15px 0; }
     #list-product .address ion-item > input {
       display: none; }
-      #list-product .address ion-item > input:checked + label:before {
-        background: transparent url("../img/check.png") no-repeat scroll center top 0/cover;
-        border: none; }
     #list-product .address ion-item.current label:before {
       background: transparent url("../img/check.png") no-repeat scroll center top 0/cover;
       border: none; }
@@ -10334,6 +10344,10 @@ button.button-cus.button {
   #list-product .shipping-info .item p {
     color: #000;
     font-weight: 100; }
+  #list-product .error-inform {
+    color: red;
+    margin: 0 auto;
+    width: 90%; }
 
 #checkout-template {
   margin-bottom: 50px; }
@@ -10349,15 +10363,14 @@ button.button-cus.button {
       color: #000; }
   #checkout-template > .scroll:first-child {
     min-height: 100%; }
-  #checkout-template .form-wrap {
-    padding-bottom: 60px; }
-    #checkout-template .form-wrap .submit-btn {
-      position: inherit; }
+  #checkout-template .form-wrap .submit-btn {
+    position: inherit; }
   #checkout-template .sum-wrap {
     border-top: 1px solid #ccc;
     display: block;
     margin-top: 20px;
-    padding-top: 20px; }
+    padding-top: 20px;
+    padding-bottom: 80px; }
     #checkout-template .sum-wrap .item {
       border: medium none;
       padding: 5px 0; }
@@ -10391,6 +10404,10 @@ button.button-cus.button {
   border-bottom: medium none; }
 
 #checkout-template.checkout-edit {
+  margin-bottom: 0; }
+
+#checkout-template.checkout-edit .submit-btn {
+  margin-top: 60px;
   margin-bottom: 0; }
 
 #side-menu-template .horizontal-bar.item {
@@ -10479,6 +10496,9 @@ button.button-cus.button {
       width: 85px; }
   #side-menu-template .item.thumbnail-wrap > .info {
     width: 170px; }
+
+#side-menu-template .item-radio input:checked + .radio-content .item-content {
+  background-color: transparent; }
 
 #cart-template .input-numb {
   background-color: transparent;

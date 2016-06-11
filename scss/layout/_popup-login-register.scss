@@ -41,4 +41,12 @@
     background-color: palevioletred;
     color: #fff;
   }
+  .ng-invalid-required {
+    box-shadow: none;
+  }
+  .error-inform {
+    color: red;
+    margin: 0 auto;
+    width: 85%;
+  }
 }

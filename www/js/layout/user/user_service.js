@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = angular.module('user.service', [])
-    .service('UserService', function ($q, $localstorage, ProductService, $rootScope) {
+    .service('UserService', function ($q, $localstorage, ProductService, $rootScope, $ionicHistory, $state) {
         var current_user = {
             portrait: "img/portrait.jpg"
         };
@@ -20,33 +20,43 @@ module.exports = angular.module('user.service', [])
 
             updateUser : function(info){
                 for(var i in info){
-                    current_user[i] = info[i];
+                    this.currentUser[i] = info[i];
                 }
             },
 
             getUser : function(){
-                return current_user;
+                return this.currentUser;
             },
 
             signOut : function(){
-                current_user.login = false;
-                $localstorage.setNull("user");
+                this.currentUser = {
+                    login: false,
+                    portrait: "img/portrait.jpg",
+                    logoutCheckout: "logouted"
+                };
 
+                $ionicHistory.clearCache();
+                $ionicHistory.clearHistory();
+
+                $localstorage.setNull("user");
                 $localstorage.setNull("cart");
                 $localstorage.setNull("wishlist");
                 ProductService.setPage(1);
                 ProductService.filterProduct();
                 $rootScope.$broadcast("CartUpdate");
                 $rootScope.$broadcast("WishlistUpdate");
+                $rootScope.$broadcast("UserLogout");
+
+                $state.go("menu.products");
             },
 
             login : function(user){
-
                 for(var i in user){
-                    current_user[i] = user[i];
+                    this.currentUser[i] = user[i];
                 }
-                current_user.login = true;
-                $localstorage.setObject("user", current_user);
+                this.currentUser.login = true;
+
+                $localstorage.setObject("user", this.currentUser);
 
                 $localstorage.setNull("cart");
                 $localstorage.setNull("wishlist");
@@ -54,6 +64,7 @@ module.exports = angular.module('user.service', [])
                 ProductService.filterProduct();
                 $rootScope.$broadcast("CartUpdate");
                 $rootScope.$broadcast("WishlistUpdate");
+                $rootScope.$broadcast("UserLogin");
             }
         }
     });

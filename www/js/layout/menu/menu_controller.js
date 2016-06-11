@@ -1,12 +1,21 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate','$ionicHistory',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate, $ionicHistory) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
             $scope.cartNumber = $localstorage.getObject("cart").length;
             $scope.user = UserService.currentUser;
             UserService.isLogin();
+
+            $scope.$on('UserLogin', function (event, data) {
+                $scope.user = UserService.currentUser;
+            });
+            $scope.$on('UserLogout', function (event, data) {
+                $scope.user = UserService.currentUser;
+                $ionicHistory.clearCache();
+                $ionicHistory.clearHistory();
+            });
 
             $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                 if (toState.name == "menu.products") {

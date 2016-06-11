@@ -1,8 +1,13 @@
-<ion-view id="list-product" cache-view="true">
+<ion-view id="list-product" cache-view="false">
     <ion-content id="checkout-template" overflow-scroll="true">
         <ion-list class="shipping-info">
             <ion-item class="item-button-right">
                 <button class="button button-clear button-icon ion-edit" ui-sref="menu.checkout_edit"></button>
+            </ion-item>
+            <ion-item class="item-text-wrap">
+                <h2>Tên người nhận</h2>
+
+                <p>{{checkoutInfo.name ? checkoutInfo.name : "Chưa nhập tên"}}</p>
             </ion-item>
             <ion-item class="item-text-wrap">
                 <h2>Địa Chỉ Giao Hàng</h2>
@@ -18,7 +23,7 @@
             <ion-item class="item-text-wrap">
                 <h2>Thanh Toán</h2>
 
-                <p>{{checkoutInfo.methodPayment}}</p>
+                <p>{{checkoutInfo.methodPayment.name}}</p>
             </ion-item>
             </ion-item>
         </ion-list>
