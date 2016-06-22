@@ -23,7 +23,7 @@ module.exports = angular.module('cart.controller', [])
 
             $scope.cart_checkout = function () {
                 CheckoutService.sumTotal();
-                $state.go('menu.checkout', {location: true, notify: false});
+                $state.go('menu.checkout');
             }
 
             $scope.$on('CartUpdate', function (event, data) {

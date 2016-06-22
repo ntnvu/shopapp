@@ -6,11 +6,12 @@ module.exports = angular.module('user.controller', [])
             $scope.user = UserService.currentUser;
 
             $scope.updateUser = function(){
-                UserService.updateUser($scope.user);
-                var alertPopup = $ionicPopup.alert({
-                    title: 'Cập nhật thành công',
-                    template: 'Thông tin của bạn đã được thay đổi'
-                });
+                UserService.updateUser($scope.user).success(function(){
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Cập nhật thành công',
+                        template: 'Thông tin của bạn đã được thay đổi'
+                    });
+                })
             }
         }
     ]);

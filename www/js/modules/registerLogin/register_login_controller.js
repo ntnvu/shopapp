@@ -48,10 +48,10 @@ module.exports = angular.module('registerLogin.controller', [])
                             .success(function (data) {
                                 data.name = data.user.fullname;
                                 data.email = data.user.email;
-                                data.phone = data.shipping_address.telephone_ship;
-                                data.address = data.shipping_address.street_ship[0];
-                                data.district = data.shipping_address.dis_ship;
-                                data.city = data.shipping_address.city_ship;
+                                data.phone = data.phone;
+                                data.address = data.address;
+                                data.district = data.district;
+                                data.city = data.city;
                                 data.password = $scope.loginData.password;
                                 UserService.login(data);
                                 $scope.closeModal();

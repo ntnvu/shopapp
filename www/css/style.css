@@ -10006,11 +10006,7 @@ button.button-cus.button {
   bottom: 44px; }
 
 #list-product-template ion-footer-bar {
-  bottom: -100px;
-  padding: 0;
-  transition: bottom 0.8s; }
-  #list-product-template ion-footer-bar.slided {
-    bottom: 0; }
+  padding: 0; }
 
 #list-product-template .button-next-total > *:first-child {
   background-color: mediumturquoise;
@@ -10410,6 +10406,9 @@ button.button-cus.button {
   margin-top: 60px;
   margin-bottom: 0; }
 
+#list-product .border-top > ion-item:first-child {
+  border-top: 1px solid #ddd; }
+
 #side-menu-template .horizontal-bar.item {
   margin: 0;
   padding-bottom: 0;
@@ -10513,6 +10512,9 @@ button.button-cus.button {
 
 #cart-template .list .button-cus {
   width: 27px; }
+
+#list-product #cart-template.has-footer {
+  bottom: 45px; }
 
 #wishlist-template .list .button-cus {
   width: 27px; }

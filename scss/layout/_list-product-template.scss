@@ -24,13 +24,14 @@
   .has-footer.needbottom {
     bottom: 44px;
   }
+
   ion-footer-bar{
-    bottom: -100px;
+    //bottom: -100px;
     padding: 0;
-    transition: bottom 0.8s;
-    &.slided{
-      bottom: 0;
-    }
+    //transition: bottom 0.8s;
+    //&.slided{
+    //  bottom: 0;
+    //}
   }
 
   .button-next-total {

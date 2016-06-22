@@ -7,7 +7,8 @@ module.exports = angular.module('checkout.service', [])
             grandTotal: 0,
             methodShipText: 0,
             methodShip: {},
-            methodPayment: {}
+            methodPayment: {},
+            user: {}
         };
 
         function transformArr(orig) {
@@ -98,10 +99,11 @@ module.exports = angular.module('checkout.service', [])
         }
 
         return {
-            updateCheckoutInfo: function (info) {
+            updateCheckoutInfo: function (info, isUser) {
                 for (var i in info) {
                     this.checkoutInfo[i] = info[i];
                 }
+
             },
 
             sumTotal: function () {
@@ -152,23 +154,22 @@ module.exports = angular.module('checkout.service', [])
 
                 var api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=guest";
                 if (UserService.isLogin()) {
-                    console.log("khi login");
                     api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=user&check=" + this.checkoutInfo.email + "&password=" + this.checkoutInfo.password;
                 }
+
+                var cus_address = this.checkoutInfo.address;
                 if (this.checkoutInfo.methodShip.type === 'freeshipping') {
-                    this.checkoutInfo.address = "Tự lấy hàng tại cửa hàng 164 trần bình trọng Q5 - HCM";
+                    cus_address = "Tự lấy hàng tại cửa hàng 164 trần bình trọng Q5 - HCM";
                 }
-                $http.get(api_url + "&order=true&products=" + encodeURIComponent(JSON.stringify(cart)) + "&payment=" + this.checkoutInfo.methodPayment.type + "&shipping=" + this.checkoutInfo.methodShip.type + "&lastname=" + this.checkoutInfo.lastname + "&firstname=" + this.checkoutInfo.firstname + "&postcode=70000&city=" + this.checkoutInfo.city + "&region=" + this.checkoutInfo.district + "&street=" + this.checkoutInfo.address + "&telephone=" + this.checkoutInfo.phone + "")
+                $http.get(api_url + "&order=true&products=" + encodeURIComponent(JSON.stringify(cart)) + "&payment=" + this.checkoutInfo.methodPayment.type + "&shipping=" + this.checkoutInfo.methodShip.type + "&lastname=" + this.checkoutInfo.lastname + "&firstname=" + this.checkoutInfo.firstname + "&postcode=70000&city=" + this.checkoutInfo.city + "&region=" + this.checkoutInfo.district + "&street=" + cus_address + "&telephone=" + this.checkoutInfo.phone + "")
                     .then(function (resp) {
-                        if (!resp.data.error) {
+                        if (!resp.data.error && !resp.data.note) {
                             deferred.resolve(resp.data);
                         }
                         else {
                             deferred.reject(resp.data.error);
                         }
                     }, function (err) {
-                        // err.status will contain the status code
-                        console.error('ERR', err);
                         deferred.reject('ERR ' + err);
                     })
 
@@ -184,14 +185,12 @@ module.exports = angular.module('checkout.service', [])
                 return promise;
             },
 
-            resetCheckoutInfo: function(){
-                this.checkoutInfo = {
-                    total: 0,
-                    grandTotal: 0,
-                    methodShipText: 0,
-                    methodShip: {},
-                    methodPayment: {}
-                };
+            resetCheckoutInfo: function () {
+                this.checkoutInfo.total = 0;
+                this.checkoutInfo.grandTotal = 0;
+                this.checkoutInfo.methodShipText = 0;
+                this.checkoutInfo.methodShip = {};
+                this.checkoutInfo.methodPayment = {};
             },
 
             checkoutInfo: checkout_info,

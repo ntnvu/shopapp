@@ -6,7 +6,6 @@ module.exports = angular.module("products.controller", [])
             $scope.cartNumber = CartService.getCartNumber();
 
             $scope.$on('UserLogout', function (event, data) {
-                console.log("hihi");
                 CheckoutService.resetCheckoutInfo();
             });
 
@@ -47,6 +46,11 @@ module.exports = angular.module("products.controller", [])
             }
 
             $scope.$on('CartUpdate', function (event, data) {
+                $scope.cartNumber = CartService.getCartNumber();
+                $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
+            });
+
+            $scope.$on('$ionicView.enter', function (viewInfo, state) {
                 $scope.cartNumber = CartService.getCartNumber();
                 $scope.total = CartService.convertMoney(0, ",", ".", CartService.sumCart());
             });

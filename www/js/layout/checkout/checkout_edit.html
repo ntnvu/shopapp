@@ -1,5 +1,5 @@
 <ion-view id="list-product" cache-view="false">
-    <ion-content id="checkout-template" class="checkout-edit">
+    <ion-content id="checkout-template" class="checkout-edit" overflow-scroll="true">
         <form class="form-wrap" ng-submit="updateCheckout()" name="checkoutForm">
             <ion-list class="address">
                 <ion-item class="item-divider title-group">
@@ -93,7 +93,7 @@
                 <p class="error-inform" ng-show="checkoutForm.phone.$error.required && !checkoutForm.phone.$pristine">*
                     Vui lòng cung cấp
                     điện thoại</p>
-                <div ng-show="checkoutInfo.methodShip.type != 'freeshipping'">
+                <div class="border-top" ng-show="checkoutInfo.methodShip.type != 'freeshipping'">
                     <ion-item class="item-input item-stacked-label">
                         <span class="input-label">Địa chỉ<span class="red">*</span></span>
                         <input type="text" name="address" ng-model="checkoutInfo.address" ng-required="checkoutInfo.methodShip.type != 'freeshipping'">

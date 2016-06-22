@@ -6,11 +6,6 @@ module.exports = angular.module('checkout.controller', [])
             $scope.user = UserService.currentUser;
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
-            $scope.$on('UserLogout', function (event, data) {
-                $ionicHistory.clearCache();
-                $ionicHistory.clearHistory();
-            });
-
             if (Object.keys($scope.checkoutInfo["methodShip"]).length === 0) {
                 CheckoutService.shippingInfo().success(function (data) {
                     var shippingInfo = data;
@@ -18,9 +13,9 @@ module.exports = angular.module('checkout.controller', [])
                 });
             }
 
-            if (Object.keys($scope.checkoutInfo["methodShip"]).length === 0) {
+            if (Object.keys($scope.checkoutInfo["methodPayment"]).length === 0) {
                 CheckoutService.paymentInfo().success(function (data) {
-                    $scope.checkoutInfo["methodPayment"] = data[0];
+                    $scope.checkoutInfo["methodPayment"] = data[1];
                 });
             }
 
@@ -40,21 +35,45 @@ module.exports = angular.module('checkout.controller', [])
                     });
                 }
                 else {
-                    CheckoutService.setOrder();
+                    CheckoutService.setOrder()
+                        .success(function () {
+                            $ionicPopup.alert({
+                                title: 'Đặt mua thành công',
+                                template: 'Xin cảm ơn quý khách'
+                            }).then(function () {
+                                    $localstorage.setNull("cart");
+                                    $localstorage.addAttributeAll("wishlist", "added", false);//remove add to card attr in wishlist
 
-                    $localstorage.setNull("cart");
-                    $localstorage.addAttributeAll("wishlist", "added", false);//remove add to card attr in wishlist
+                                    $rootScope.$broadcast("CartUpdate");
+                                    $rootScope.$broadcast("CloseOrder");
 
-                    ProductService.setType("new");
-                    ProductService.setPage(1);
-                    ProductService.updateLoadmore(true);
-                    ProductService.filterProduct();
+                                    $ionicHistory.clearHistory();
+                                    $ionicHistory.clearCache();
 
-                    $rootScope.$broadcast("CartUpdate");
-                    $rootScope.$broadcast("CloseOrder");
+                                    CheckoutService.resetCheckoutInfo();
+                                    CheckoutService.shippingInfo().success(function (data) {
+                                        var shippingInfo = data;
+                                        $scope.checkoutInfo["methodShip"] = shippingInfo[0].method[0];
+                                    });
 
-                    $state.go("menu.products");
+                                    CheckoutService.paymentInfo().success(function (data) {
+                                        $scope.checkoutInfo["methodPayment"] = data[1];
+                                    });
+
+                                    ProductService.setPage(1);
+                                    ProductService.filterProduct().then(function () {
+                                        console.log("success")
+                                    }, function () {
+                                        $ionicLoading.hide();
+                                        $ionicPopup.alert({
+                                            title: 'Lỗi',
+                                            template: 'Bạn vui lòng thử chọn lại sản phẩm'
+                                        });
+                                    });
+
+                                    $state.go("menu.products");
+                                });
+                        });
                 }
-
             }
         }]);

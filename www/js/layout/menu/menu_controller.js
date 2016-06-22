@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate','$ionicHistory',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate, $ionicHistory) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate','$ionicHistory','$ionicLoading','$ionicPopup',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate, $ionicHistory, $ionicLoading, $ionicPopup) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
             $scope.cartNumber = $localstorage.getObject("cart").length;
             $scope.user = UserService.currentUser;
@@ -58,7 +58,15 @@ module.exports = angular.module("menu.controller", [])
                 ProductService.setType(type);
                 ProductService.setPage(1);
                 ProductService.updateLoadmore(true);
-                ProductService.filterProduct();
+                ProductService.filterProduct().then(function(){
+                    console.log("success")
+                }, function(){
+                    $ionicLoading.hide();
+                    $ionicPopup.alert({
+                        title: 'Lỗi',
+                        template: 'Bạn vui lòng thử chọn lại sản phẩm'
+                    });
+                });
             }
 
             $scope.contact = function () {
@@ -81,6 +89,6 @@ module.exports = angular.module("menu.controller", [])
                 UserService.signOut();
             }
 
-            $scope.getProducts("new");
+            $scope.getProducts("price50k");
         }
     ]);

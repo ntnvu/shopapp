@@ -5,41 +5,36 @@
                 Chưa có sản phẩm
             </ion-item>
         </ion-list>
-        <ion-scroll direction="y" style="height: 100vh" class="has-ion-scroll" ng-if="lengthCart">
-            <ion-list class="padding">
-                <ion-item ng-repeat="item in cartlist" class="item">
-                    <div class="thumb-wrap">
-                        <a href="#/menu/product/{{item.entity_id}}">
-                            <img ng-src="{{item.thumb}}">
-                        </a>
+        <!--<ion-scroll direction="y" style="height: 100vh" class="has-ion-scroll" ng-if="lengthCart">-->
+        <ion-list class="padding">
+            <ion-item ng-repeat="item in cartlist" class="item">
+                <div class="thumb-wrap">
+                    <a href="#/menu/product/{{item.entity_id}}">
+                        <img ng-src="{{item.thumb}}">
+                    </a>
+                </div>
+                <div class="info-wrap">
+                    <div class="title-wrap"><h2><a href="#/menu/product/{{item.entity_id}}">{{item.name}}</a></h2></div>
+                    <div class="price">
+                        <div class="cross" ng-show="item.price_old">{{item.price_old}}</div>
+                        <div class="orange">{{item.price}}</div>
                     </div>
-                    <div class="info-wrap">
-                        <div class="title-wrap">
-                            <h2><a href="#/menu/product/{{item.entity_id}}">{{item.name}}</a></h2>
-                        </div>
-                        <div class="price">
-                            <div class="cross" ng-show="item.price_old">
-                                {{item.price_old}}
-                            </div>
-                            <div class="orange">
-                                {{item.price}}
-                            </div>
-                        </div>
-                        <div class="detail-attr"><label>Số lượng</label>
-                            <input type="number" class="input-numb" ng-model="item.quantity" value="{{item.quantity}}" ng-change="updateQty(item)"/>
-                        </div>
+                    <div class="detail-attr"><label>Số lượng</label>
+                        <input type="number" class="input-numb" ng-model="item.quantity" value="{{item.quantity}}"
+                               ng-change="updateQty(item)"/>
                     </div>
-                    <button class="button-cus button button-clear button-icon ion-ios-close-outline icon-top"
-                            ng-click="removeFromCart(item)"></button>
+                </div>
+                <button class="button-cus button button-clear button-icon ion-ios-close-outline icon-top"
+                        ng-click="removeFromCart(item)"></button>
 
-                    <button class="button-cus button button-clear button-icon ion-ios-heart icon-bottom"
-                            ng-class="{'actived' : item.like}"
-                            ng-click="addToWishlist(item)"></button>
-                </ion-item>
-            </ion-list>
-        </ion-scroll>
+                <button class="button-cus button button-clear button-icon ion-ios-heart icon-bottom"
+                        ng-class="{'actived' : item.like}"
+                        ng-click="addToWishlist(item)"></button>
+            </ion-item>
+        </ion-list>
+        <!--</ion-scroll>-->
     </ion-content>
-    <ion-footer-bar ng-class="{slided : cartNumber}">
+    <ion-footer-bar ng-class="{slided : cartNumber}" ng-show="cartNumber">
         <div class="button-bar button-next-total">
             <button class="button">{{total}}</button>
             <button class="button button-positive" ui-sref="menu.checkout"

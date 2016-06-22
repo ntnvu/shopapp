@@ -6,11 +6,6 @@ module.exports = angular.module('checkoutEdit.controller', [])
             $scope.user = UserService.currentUser;
             $scope.regex2Word = '/^(\d)+$/';
 
-            $scope.$on('UserLogout', function (event, data) {
-                $ionicHistory.clearCache();
-                $ionicHistory.clearHistory();
-            });
-
             $scope.checkoutInfo = CheckoutService.checkoutInfo;
 
             CheckoutService.shippingInfo().success(function (data) {

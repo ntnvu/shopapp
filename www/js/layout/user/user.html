@@ -1,38 +1,37 @@
 <ion-view id="list-product">
-    <div id="checkout-template" class="user-template scroll-content ionic-scroll overflow-scroll  has-header" overflow-scroll="true">
-        <div class="scroll">
-            <form class="form-wrap" ng-submit="updateUser()">
-                <ion-list class="address-info">
-                    <ion-item class="item-divider title-group">
-                        <h2>Thông tin của bạn</h2>
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Họ tên</span>
-                        <input type="text" ng-model="user.name">
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Email</span>
-                        <input type="text" ng-model="user.email">
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Điện thoại</span>
-                        <input type="text" ng-model="user.phone">
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Địa chỉ</span>
-                        <input type="text" ng-model="user.address">
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Quận/Huyện</span>
-                        <input type="text" ng-model="user.district">
-                    </ion-item>
-                    <ion-item class="item-input item-stacked-label">
-                        <span class="input-label">Thành phố</span>
-                        <input type="text" ng-model="user.city">
-                    </ion-item>
-                </ion-list>
-                <button class="button button-block no-radius button-positive submit-btn" type="submit">Lưu</button>
-            </form>
-        </div>
-    </div>
+    <ion-content id="checkout-template" class="user-template" overflow-scroll="true">
+
+        <form class="form-wrap" ng-submit="updateUser()">
+            <ion-list class="address-info">
+                <ion-item class="item-divider title-group">
+                    <h2>Thông tin của bạn</h2>
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Họ tên</span>
+                    <input type="text" ng-model="user.name">
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Email</span>
+                    <input type="text" ng-model="user.email" readonly>
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Điện thoại</span>
+                    <input type="text" ng-model="user.phone">
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Địa chỉ</span>
+                    <input type="text" ng-model="user.address">
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Quận/Huyện</span>
+                    <input type="text" ng-model="user.district">
+                </ion-item>
+                <ion-item class="item-input item-stacked-label">
+                    <span class="input-label">Thành phố</span>
+                    <input type="text" ng-model="user.city">
+                </ion-item>
+            </ion-list>
+            <button class="button button-block no-radius button-positive submit-btn" type="submit">Lưu</button>
+        </form>
+    </ion-content>
 </ion-view>

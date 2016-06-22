@@ -1,5 +1,4 @@
 <ion-view id="list-product-template">
-    <p>{{cartNumber}}</p>
     <ion-content overflow-scroll="true" ng-class="{needbottom : cartNumber}">
         <div deckgrid class="deckgrid" source="products">
 
@@ -36,8 +35,8 @@
         <ion-infinite-scroll immediate-check="false" on-infinite="loadMoreData()" distance="5%"
                              ng-if="loadMore[0]"></ion-infinite-scroll>
     </ion-content>
-    {{cartNumber}}
-    <ion-footer-bar ng-class="{slided : cartNumber}">
+    so: {{cartNumber}}
+    <ion-footer-bar ng-class="{slided : cartNumber}" ng-show="cartNumber">
         <div class="button-bar button-next-total">
             <button class="button">{{total}}</button>
             <button class="button button-positive" ui-sref="menu.cart">Xem giỏ hàng
