@@ -3,7 +3,6 @@
 module.exports = angular.module('checkoutEdit.controller', [])
     .controller("CheckoutEditController", ['$scope', '$localstorage', 'UserService', 'CheckoutService', '$state', 'CartService','$ionicHistory',
         function ($scope, $localstorage, UserService, CheckoutService, $state, CartService, $ionicHistory) {
-            $scope.user = UserService.currentUser;
             $scope.regex2Word = '/^(\d)+$/';
 
             $scope.checkoutInfo = CheckoutService.checkoutInfo;

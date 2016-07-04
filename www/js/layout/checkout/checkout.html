@@ -7,13 +7,13 @@
             <ion-item class="item-text-wrap">
                 <h2>Tên người nhận</h2>
 
-                <p>{{checkoutInfo.name ? checkoutInfo.name : "Chưa nhập tên"}}</p>
+                <p>{{checkoutInfo.user.name ? checkoutInfo.user.name : "Chưa nhập tên"}}</p>
             </ion-item>
             <ion-item class="item-text-wrap">
                 <h2>Địa Chỉ Giao Hàng</h2>
 
-                <p>{{checkoutInfo.address ? checkoutInfo.address : "Chưa có địa chỉ giao hàng"}}{{checkoutInfo.ward ? ", " + checkoutInfo.ward : ""}}
-                    {{checkoutInfo.district ? ", " + checkoutInfo.district : checkoutInfo.district}}{{checkoutInfo.city ? ", " + checkoutInfo.city : checkoutInfo.city}}</p>
+                <p>{{checkoutInfo.user.address ? checkoutInfo.user.address : "Chưa có địa chỉ giao hàng"}}{{checkoutInfo.user.ward ? ", " + checkoutInfo.user.ward : ""}}
+                    {{checkoutInfo.user.district ? ", " + checkoutInfo.user.district : checkoutInfo.user.district}}{{checkoutInfo.user.city ? ", " + checkoutInfo.city : checkoutInfo.user.city}}</p>
             </ion-item>
             <ion-item class="item-text-wrap">
                 <h2>Chuyển Hàng</h2>

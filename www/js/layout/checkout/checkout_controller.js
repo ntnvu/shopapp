@@ -19,16 +19,16 @@ module.exports = angular.module('checkout.controller', [])
                 });
             }
 
-            CheckoutService.updateCheckoutInfo($scope.user);
+            CheckoutService.updateCheckoutInfoUser($scope.user);
 
             $scope.checkout = function () {
-                if (!$scope.checkoutInfo.name) {
+                if (!$scope.checkoutInfo.user.name) {
                     var alertPopup = $ionicPopup.alert({
                         title: 'Bổ sung',
                         template: 'Vui lòng nhập tên'
                     });
                 }
-                else if (!$scope.checkoutInfo.address && ($scope.checkoutInfo.methodShip.type != 'freeshipping')) {
+                else if (!$scope.checkoutInfo.user.address && ($scope.checkoutInfo.methodShip.type != 'freeshipping')) {
                     var alertPopup = $ionicPopup.alert({
                         title: 'Bổ sung',
                         template: 'Vui lòng nhập địa chỉ giao hàng'

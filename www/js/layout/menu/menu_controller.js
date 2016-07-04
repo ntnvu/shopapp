@@ -1,8 +1,8 @@
 "use strict"
 
 module.exports = angular.module("menu.controller", [])
-    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate','$ionicHistory','$ionicLoading','$ionicPopup',
-        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate, $ionicHistory, $ionicLoading, $ionicPopup) {
+    .controller("MenuController", ['$scope', '$ionicSideMenuDelegate', 'ProductService', '$state', 'ControlModalService', '$localstorage', 'UserService','$ionicScrollDelegate','$ionicHistory','$ionicLoading','$ionicPopup','CheckoutService',
+        function ($scope, $ionicSideMenuDelegate, ProductService, $state, ControlModalService, $localstorage, UserService, $ionicScrollDelegate, $ionicHistory, $ionicLoading, $ionicPopup, CheckoutService) {
             $scope.wishlistNumber = $localstorage.getObject("wishlist").length;
             $scope.cartNumber = $localstorage.getObject("cart").length;
             $scope.user = UserService.currentUser;
@@ -10,11 +10,13 @@ module.exports = angular.module("menu.controller", [])
 
             $scope.$on('UserLogin', function (event, data) {
                 $scope.user = UserService.currentUser;
+                CheckoutService.resetCheckoutInfoLoginNout();
             });
             $scope.$on('UserLogout', function (event, data) {
                 $scope.user = UserService.currentUser;
                 $ionicHistory.clearCache();
                 $ionicHistory.clearHistory();
+                CheckoutService.resetCheckoutInfoLoginNout();
             });
 
             $scope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
