@@ -37,7 +37,7 @@ module.exports = angular.module("menu.controller", [])
             });
 
             $scope.filterType = [
-                {type: "new", name: 'Sản phẩm mới'},
+                {type: "all", name: 'Sản phẩm mới'},
                 {type: "promo", name: 'Sản phẩm khuyến mãi'},
                 {type: "price50k" , name: 'Duoi 50.000'},
                 {type: "price100k" , name: '50.000 den 100.000'},
@@ -91,6 +91,6 @@ module.exports = angular.module("menu.controller", [])
                 UserService.signOut();
             }
 
-            $scope.getProducts("price50k");
+            $scope.getProducts("all");
         }
     ]);

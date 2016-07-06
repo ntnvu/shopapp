@@ -16,8 +16,8 @@ module.exports = angular.module("product.controller", [])
     })
     .controller("ProductController", ['$scope', 'ProductService', '$stateParams', 'WishlistService', '$http', 'ControlModalService', '$ionicSlideBoxDelegate', 'CartService', '$localstorage',
         function ($scope, ProductService, $stateParams, WishlistService, $http, ControlModalService, $ionicSlideBoxDelegate, CartService, $localstorage) {
-            var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-            var link_ajax_new = "http://shop10k.qrmartdemo.info/web_api.php";
+            var link_ajax = "http://shop10k.vn/api/rest/products";
+            var link_ajax_new = "http://shop10k.vn/web_api.php";
 
             $scope.product = {};
             $localstorage.getKeyTime().then(

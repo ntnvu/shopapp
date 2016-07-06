@@ -45,8 +45,8 @@ module.exports = angular.module("products.factory", [])
 
                 $localstorage.getKeyTime().then(
                     function (md5key) {
-                        var link_ajax = "http://shop10k.qrmartdemo.info/api/rest/products";
-                        $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page + "&key=" + md5key).then(function (resp) {
+                        var link_ajax = "http://shop10k.vn/api/rest/products";
+                        $http.get("http://shop10k.vn/web_api.php?r=" + filter.type + "&limit=" + filter.limit + "&page=" + filter.page + "&key=" + md5key).then(function (resp) {
                             if (!resp.data.Error) {
                                 add_product(resp.data);
 

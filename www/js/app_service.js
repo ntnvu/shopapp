@@ -116,7 +116,7 @@ module.exports = angular.module("app.service", [])
                 var promise = deferred.promise;
 
 
-                var link_ajax = "http://shop10k.qrmartdemo.info/web_api.php?r=timespam";
+                var link_ajax = "http://shop10k.vn/web_api.php?r=timespam";
                 $http.get(link_ajax).then(function (resp) {
                     if (!resp.data.error) {
                         var key = resp.data.timespam + 'app';

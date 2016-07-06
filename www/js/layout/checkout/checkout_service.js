@@ -42,7 +42,7 @@ module.exports = angular.module('checkout.service', [])
             var promise = deferred.promise;
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=shipping" + "&key=" + md5key)
+                    $http.get("http://shop10k.vn/web_api.php?r=shipping" + "&key=" + md5key)
                         .then(function (resp) {
                             var newData = transformArr(resp.data);
                             deferred.resolve(newData);
@@ -70,7 +70,7 @@ module.exports = angular.module('checkout.service', [])
             var promise = deferred.promise;
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=payment" + "&key=" + md5key)
+                    $http.get("http://shop10k.vn/web_api.php?r=payment" + "&key=" + md5key)
                         .then(function (resp) {
                             var newData = resp.data;
                             var arr = [];
@@ -158,16 +158,22 @@ module.exports = angular.module('checkout.service', [])
 
                 LoginService.splitUsername(this.checkoutInfo.user);
 
-                var api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=guest";
-                if (UserService.isLogin()) {
-                    api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=user&check=" + this.checkoutInfo.user.email + "&password=" + this.checkoutInfo.user.password;
+                var api_url = "http://shop10k.vn/web_api.php?r=guest";
+
+                var email = this.checkoutInfo.user.email;
+                var cus_address = this.checkoutInfo.user.address;
+                var city = " TP " + this.checkoutInfo.user.city;
+                var district = " quận " + this.checkoutInfo.user.district;
+                if (this.checkoutInfo.methodShip.type === 'freeshipping') {
+                    cus_address = "Tự lấy hàng tại cửa hàng 164 trần bình trọng";
+                    city = "TP HCM";
+                    district = "quận 5";
                 }
 
-                var cus_address = this.checkoutInfo.address;
-                if (this.checkoutInfo.methodShip.type === 'freeshipping') {
-                    cus_address = "Tự lấy hàng tại cửa hàng 164 trần bình trọng Q5 - HCM";
+                if (UserService.isLogin()) {
+                    api_url = "http://shop10k.vn/web_api.php?r=user&check=" + this.checkoutInfo.user.email + "&password=" + this.checkoutInfo.user.password;
                 }
-                $http.get(api_url + "&order=true&products=" + encodeURIComponent(JSON.stringify(cart)) + "&payment=" + this.checkoutInfo.methodPayment.type + "&shipping=" + this.checkoutInfo.methodShip.type + "&lastname=" + this.checkoutInfo.user.lastname + "&firstname=" + this.checkoutInfo.user.firstname + "&postcode=70000&city=" + this.checkoutInfo.user.city + "&region=" + this.checkoutInfo.user.district + "&street=" + cus_address + "&telephone=" + this.checkoutInfo.user.phone + "")
+                $http.get(api_url + "&order=true&products=" + encodeURIComponent(JSON.stringify(cart)) + "&payment=" + this.checkoutInfo.methodPayment.type + "&shipping=" + this.checkoutInfo.methodShip.type + "&lastname=" + this.checkoutInfo.user.lastname + "&firstname=" + this.checkoutInfo.user.firstname + "&postcode=70000&city=" + city + "&district=" + district + "&street=" + cus_address + "&telephone=" + this.checkoutInfo.user.phone + "&email=" + email + "")
                     .then(function (resp) {
                         if (!resp.data.error && !resp.data.note) {
                             deferred.resolve(resp.data);

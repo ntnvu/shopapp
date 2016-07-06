@@ -23,7 +23,7 @@ module.exports = angular.module('registerLogin.services', [])
             var promise = deferred.promise;
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&check=" + obj.email + "&password=" + obj.password + "&detail=true" + "&key=" + md5key)
+                    $http.get("http://shop10k.vn/web_api.php?r=user&check=" + obj.email + "&password=" + obj.password + "&detail=true" + "&key=" + md5key)
                         .then(function (resp) {
                             if (!resp.data.error) {
                                 deferred.resolve(resp.data);
@@ -60,7 +60,7 @@ module.exports = angular.module('registerLogin.services', [])
 
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&register=true&firstname=" + obj.firstname + "&lastname=" + obj.lastname + "&password=" + obj.password + "&email=" + obj.email + "&key=" + md5key)
+                    $http.get("http://shop10k.vn/web_api.php?r=user&register=true&firstname=" + obj.firstname + "&lastname=" + obj.lastname + "&password=" + obj.password + "&email=" + obj.email + "&key=" + md5key)
                         .then(function (resp) {
                             if (!resp.data.error) {
                                 deferred.resolve();
@@ -97,7 +97,7 @@ module.exports = angular.module('registerLogin.services', [])
             var promise = deferred.promise;
             $localstorage.getKeyTime().then(
                 function (md5key) {
-                    $http.get("http://shop10k.qrmartdemo.info/web_api.php?r=user&login=" + obj.email + "&password=" + obj.password + "&key=" + md5key)
+                    $http.get("http://shop10k.vn/web_api.php?r=user&login=" + obj.email + "&password=" + obj.password + "&key=" + md5key)
                         .then(function (resp) {
                             $ionicHistory.clearHistory();
                             $ionicHistory.clearCache();

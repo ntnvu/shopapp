@@ -31,7 +31,7 @@ module.exports = angular.module('user.service', [])
 
                 LoginService.splitUsername(this.currentUser);
 
-                var api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=user";
+                var api_url = "http://shop10k.vn/web_api.php?r=user";
 
                 $http.get(api_url + "&updateinfo=" + encodeURIComponent(JSON.stringify(this.currentUser)))
                     .then(function (resp) {
@@ -65,7 +65,7 @@ module.exports = angular.module('user.service', [])
             signOut: function () {
                 var deferred = $q.defer();
                 var promise = deferred.promise;
-                var api_url = "http://shop10k.qrmartdemo.info/web_api.php?r=logout";
+                var api_url = "http://shop10k.vn/web_api.php?r=logout";
                 $http.get(api_url)
                     .then(function (resp) {
                         if (resp.data.logout) {
