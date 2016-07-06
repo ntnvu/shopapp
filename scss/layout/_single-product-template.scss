@@ -39,13 +39,15 @@
   }
   .related-product {
     font-size: 1px;
-    .slick-slide, .wide-as-needed .scroll > div  {
-      border-radius: 5px;
+    .wide-as-needed .scroll > div  {
       display: inline-block;
       margin: 0 3px;
-      overflow: hidden;
       width: 32%;
+      > a{
+        text-decoration: none;
+      }
       img {
+        border-radius: 5px;
         width: 100%;
         opacity: 0;
         min-height: 90px;
@@ -54,6 +56,12 @@
           transition: all 0.8s;
         }
       }
+    }
+    .price-wrap {
+      display: block;
+      font-size: 14px;
+      line-height: 27px;
+      text-align: center;
     }
   }
 

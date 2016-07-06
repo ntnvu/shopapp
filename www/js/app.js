@@ -14,7 +14,7 @@ require("./layout/wishlist/wishlist");
 require("./layout/user/user");
 require("./app_service");
 
-module.export = angular.module('starter', ['ionic', 'akoenig.deckgrid', 'ng-mfb',
+module.export = angular.module('starter', ['ionic', 'akoenig.deckgrid',
         //functions
         'registerLogin',
         'contact',

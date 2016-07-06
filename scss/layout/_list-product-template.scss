@@ -71,7 +71,7 @@
   .info-wrap {
     font-size: 1px;
     line-height: 0;
-    padding: 7px 0 4px;
+    padding: 0;
     text-align: justify;
     @include display_inline_block();
     > * {
@@ -116,6 +116,10 @@
     //    }
     //  }
     //}
+    button{
+      line-height: 40px;
+      min-height: 40px;
+    }
   }
   ion-spinner {
     bottom: 0;
@@ -126,5 +130,16 @@
     right: 0;
     top: 0;
     width: 28px;
+  }
+}
+
+
+@media screen and (max-width: 360px) {
+  .platform-android{
+    #list-product-template {
+      .info-inner-r {
+        width: 80px;
+      }
+    }
   }
 }

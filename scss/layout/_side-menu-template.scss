@@ -41,6 +41,30 @@
 
   }
 
+  .list-filter {
+    margin: 0;
+  }
+
+  .button-wrap {
+    padding: 16px 32px;
+  }
+
+  .button-wrap > * {
+    border-radius: 100%;
+    color: #fff;
+    display: inline-block;
+    font-size: 0;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    text-align: center;
+    width: 50px;
+  }
+  .button-wrap > * > i::before {
+    line-height: 50px;
+    margin: 0;
+  }
+
   .item-radio {
     .item-content {
       padding-bottom: 10px;
@@ -105,7 +129,7 @@
     }
   }
 
-  .item-radio input:checked + .radio-content .item-content{
+  .item-radio input:checked + .radio-content .item-content {
     background-color: transparent;
   }
 }

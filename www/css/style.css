@@ -9812,6 +9812,9 @@ button.button-cus.button {
 .no-radius {
   border-radius: 0; }
 
+ion-infinite-scroll {
+  position: relative; }
+
 .deckgrid[deckgrid]::before {
   /* Specifies that the grid should have a maximum of 4 columns. Each column will have the classes 'column' and 'column-1-4' */
   content: '2 .column.column-1-2';
@@ -9949,19 +9952,25 @@ button.button-cus.button {
 
 #single-product-template .related-product {
   font-size: 1px; }
-  #single-product-template .related-product .slick-slide, #single-product-template .related-product .wide-as-needed .scroll > div {
-    border-radius: 5px;
+  #single-product-template .related-product .wide-as-needed .scroll > div {
     display: inline-block;
     margin: 0 3px;
-    overflow: hidden;
     width: 32%; }
-    #single-product-template .related-product .slick-slide img, #single-product-template .related-product .wide-as-needed .scroll > div img {
+    #single-product-template .related-product .wide-as-needed .scroll > div > a {
+      text-decoration: none; }
+    #single-product-template .related-product .wide-as-needed .scroll > div img {
+      border-radius: 5px;
       width: 100%;
       opacity: 0;
       min-height: 90px; }
-      #single-product-template .related-product .slick-slide img.loaded, #single-product-template .related-product .wide-as-needed .scroll > div img.loaded {
+      #single-product-template .related-product .wide-as-needed .scroll > div img.loaded {
         opacity: 1;
         transition: all 0.8s; }
+  #single-product-template .related-product .price-wrap {
+    display: block;
+    font-size: 14px;
+    line-height: 27px;
+    text-align: center; }
 
 #single-product-template .related-product ion-scroll .scroll-bar {
   display: none; }
@@ -10037,7 +10046,7 @@ button.button-cus.button {
 #list-product-template .info-wrap {
   font-size: 1px;
   line-height: 0;
-  padding: 7px 0 4px;
+  padding: 0;
   text-align: justify;
   font-size: 1px;
   line-height: 0; }
@@ -10061,6 +10070,10 @@ button.button-cus.button {
   #list-product-template .info-inner-l .cross {
     color: #acacac; }
 
+#list-product-template .info-inner-r button {
+  line-height: 40px;
+  min-height: 40px; }
+
 #list-product-template ion-spinner {
   bottom: 0;
   height: 28px;
@@ -10070,6 +10083,10 @@ button.button-cus.button {
   right: 0;
   top: 0;
   width: 28px; }
+
+@media screen and (max-width: 360px) {
+  .platform-android #list-product-template .info-inner-r {
+    width: 80px; } }
 
 #popup-login-register {
   bottom: 0;
@@ -10164,8 +10181,7 @@ button.button-cus.button {
     bottom: 0; }
   #list-product ion-footer-bar {
     bottom: -100px;
-    padding: 0;
-    transition: bottom 0.8s; }
+    padding: 0; }
     #list-product ion-footer-bar.slided {
       bottom: 0; }
   #list-product .button-next-total > *:first-child {
@@ -10447,6 +10463,27 @@ button.button-cus.button {
   padding-bottom: 0;
   padding-left: 40px;
   padding-top: 0; }
+
+#side-menu-template .list-filter {
+  margin: 0; }
+
+#side-menu-template .button-wrap {
+  padding: 16px 32px; }
+
+#side-menu-template .button-wrap > * {
+  border-radius: 100%;
+  color: #fff;
+  display: inline-block;
+  font-size: 0;
+  height: 50px;
+  line-height: 50px;
+  margin-right: 10px;
+  text-align: center;
+  width: 50px; }
+
+#side-menu-template .button-wrap > * > i::before {
+  line-height: 50px;
+  margin: 0; }
 
 #side-menu-template .item-radio .item-content {
   padding-bottom: 10px;

@@ -48,7 +48,15 @@
                             <div data-ng-repeat="item_img in product.related">
                                 <a ui-sref="menu.product({id : item_img.entity_id})">
                                     <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
-                                    <img ng-src="{{item_img.image_url}}" alt="{{item.name}}" ng-class="{loaded : loaded}" spinner-on-load>
+                                    <img ng-src="{{item_img.thumb}}" alt="{{item_img.name}}" ng-class="{loaded : loaded}" spinner-on-load>
+                                    <div class="price-wrap">
+                                        <div class="cross" ng-show="item_img.price_old">
+                                            {{item_img.price_old}}
+                                        </div>
+                                        <div class="orange" ng-hide="item_img.price_old">
+                                            {{item_img.price}}
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </ion-scroll>

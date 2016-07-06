@@ -17,7 +17,8 @@
             <ion-nav-buttons side="right">
                 <div class="view-button">
                     <button class="button button-clear button-icon ion-ios-heart" ui-sref="menu.wishlist">
-                        <span class="badge badge-assertive number-wrap" ng-show="wishlistNumber">{{wishlistNumber}}</span>
+                        <span class="badge badge-assertive number-wrap"
+                              ng-show="wishlistNumber">{{wishlistNumber}}</span>
                     </button>
                     <button class="button button-clear button-icon ion-android-cart" ui-sref="menu.cart">
                         <span class="badge badge-assertive number-wrap" ng-show="cartNumber">{{cartNumber}}</span>
@@ -41,7 +42,8 @@
                     <div class="info">
                         <h2>{{user.name}}</h2>
 
-                        <p>{{user.address}}{{user.ward ? ", phường " + user.ward : ""}}{{user.district ? ", quận " + user.district :
+                        <p>{{user.address}}{{user.ward ? ", phường " + user.ward : ""}}{{user.district ? ", quận " +
+                            user.district :
                             ""}}{{user.city ? ", TP " + user.city : ""}}</p>
                         <a class="signout" ng-click="signout()">Thoát</a>
                     </div>
@@ -64,19 +66,28 @@
                     <a menu-close ng-click="to_login()">Đăng Ký / Đăng Nhập</a>
                 </ion-item>
             </div>
-            <div class="list">
+            <div class="list list-filter">
                 <ion-item class="radio-product-wrap">
                     <ion-radio menu-close ng-model="selected.type" ng-click="getProducts(ftype.type)"
-                               ng-class="{current : type == ftype.type}" ng-value="{{ftype.type}}" ng-repeat="ftype in filterType">{{ftype.name}}
+                               ng-class="{current : type == ftype.type}" ng-value="{{ftype.type}}"
+                               ng-repeat="ftype in filterType">{{ftype.name}}
                     </ion-radio>
                 </ion-item>
             </div>
-            <nav id="float-button" mfb-menu position="bl" effect="zoomin"
-                 active-icon="ion-android-close" resting-icon="ion-ios-help-empty"
-                 toggling-method="click">
-                <button mfb-button icon="ion-ios-telephone" data-ng-click="contact()">Đặt Hàng</button>
-                <button mfb-button icon="ion-android-textsms" data-ng-click="contact()">Góp Ý</button>
-            </nav>
+            <div class="button-wrap">
+                <a class="button button-assertive" href="tel:1900558860">
+                    <i class="icon ion-ios-telephone"></i>
+                    Phone
+                </a>
+                <!--<a class="button button-assertive" data-ng-click="contact()">-->
+                    <!--<i class="icon ion-ios-telephone"></i>-->
+                    <!--Phone-->
+                <!--</a>-->
+                <!--<a class="button button-positive" onclick="window.open('http://www.twitter.com/nraboy', '_blank', 'location=yes'); return false;">-->
+                    <!--<i class="icon ion-social-facebook"></i>-->
+                    <!--Facebook-->
+                <!--</a>-->
+            </div>
         </ion-content>
     </ion-side-menu>
 
