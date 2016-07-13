@@ -3,7 +3,7 @@
 module.exports = angular.module('user.service', [])
     .service('UserService', function ($q, $localstorage, ProductService, $rootScope, $ionicHistory, $state, $ionicLoading, $ionicPopup, $http, LoginService) {
         var current_user = {
-            portrait: "img/portrait.jpg"
+            portrait: "img/icon.png"
         };
 
         return {
@@ -81,7 +81,7 @@ module.exports = angular.module('user.service', [])
 
                 this.currentUser = {
                     login: false,
-                    portrait: "img/portrait.jpg",
+                    portrait: "img/icon.png",
                     logoutCheckout: "logouted"
                 };
 

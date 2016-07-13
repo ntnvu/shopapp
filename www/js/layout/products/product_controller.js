@@ -39,8 +39,7 @@ module.exports = angular.module("product.controller", [])
 
                     $http.get(link_ajax + "/" + $stateParams.id + "/categories" + "?key=" + md5key).then(function (cat) {
                         $scope.product.category = cat.data;
-                        $http.get(link_ajax_new + "?r=category&id=" + $scope.product.category[0].category_id + "&limit=10&key=" + md5key).then(function (relate) {
-                            delete relate.data[$scope.product.detail[0].entity_id];
+                        $http.get(link_ajax_new + "?r=category&id=" + $scope.product.category[0].category_id + "&limit=6&key=" + md5key).then(function (relate) {
                             $scope.product.related = relate.data;
                         });
                     });
@@ -63,13 +62,9 @@ module.exports = angular.module("product.controller", [])
                 ControlModalService.show('js/modules/cart/cart.html', 'CartController', 1, item);
             }
 
-            $scope.slickConfig = {
-                autoplay: true,
-                infinite: true,
-                autoplaySpeed: 1000,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                method: {}
-            };
+            $scope.index_number = 1;
+            $scope.slideHasChanged = function($index){
+                $scope.index_number = $index + 1;
+            }
         }]);
 

@@ -3,18 +3,23 @@
         <div id="single-product-template">
             <ion-list>
                 <ion-item>
-                    <ion-slide-box class="product-images" does-continue="true">
-                        <ion-slide ng-repeat="item in product.images">
-                            <div class="box">
-                                <!--<img ng-src="{{item.url}}" alt="A masonry brick">-->
-                                <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
-                                <img ng-src="{{item.url}}" alt="{{item.name}}" ng-class="{loaded : loaded}" spinner-on-load>
-                            </div>
-                        </ion-slide>
-                    </ion-slide-box>
+                    <div class="ion-slide-box-wrap">
+                        <ion-slide-box class="product-images" does-continue="true" on-slide-changed="slideHasChanged($index)">
+                            <ion-slide ng-repeat="item in product.images">
+                                <div class="box">
+                                    <!--<img ng-src="{{item.url}}" alt="A masonry brick">-->
+                                    <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
+                                    <img ng-src="{{item.url}}" alt="{{item.name}}" ng-class="{loaded : loaded}"
+                                         spinner-on-load>
+                                </div>
+                            </ion-slide>
+                        </ion-slide-box>
+                        <div class="show-slide-number" ng-show="product.images.length > 1"> {{index_number}}/{{product.images.length}} </div>
+                    </div>
                 </ion-item>
                 <ion-item class="item-text-wrap">
                     <h2 class="title-product">{{product.detail[0].name}}</h2>
+
                     <div class="info-wrap">
                         <div class="info-inner-l">
                             <div class="price-wrap">
@@ -42,27 +47,25 @@
                 <div class="bar bar-grey">
                     <h4 class="title">Sản Phẩm Khác</h4>
                 </div>
-                <ion-item class="has-header">
-                    <div class="related-product">
-                        <ion-scroll direction="x" class="wide-as-needed">
-                            <div data-ng-repeat="item_img in product.related">
-                                <a ui-sref="menu.product({id : item_img.entity_id})">
-                                    <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
-                                    <img ng-src="{{item_img.thumb}}" alt="{{item_img.name}}" ng-class="{loaded : loaded}" spinner-on-load>
-                                    <div class="price-wrap">
-                                        <div class="cross" ng-show="item_img.price_old">
-                                            {{item_img.price_old}}
-                                        </div>
-                                        <div class="orange" ng-hide="item_img.price_old">
-                                            {{item_img.price}}
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </ion-scroll>
-                    </div>
-                </ion-item>
             </ion-list>
+            <div class="related-product">
+                <div class="has-header relate-item" data-ng-repeat="item_img in product.related">
+                    <a ui-sref="menu.product({id : item_img.entity_id})">
+                        <ion-spinner ng-show="!loaded" class="spinner-on-load"></ion-spinner>
+                        <img ng-src="{{item_img.thumb}}" alt="{{item_img.name}}" ng-class="{loaded : loaded}"
+                             spinner-on-load>
+
+                        <div class="price-wrap">
+                            <div class="cross" ng-show="item_img.price_old">
+                                {{item_img.price_old}}
+                            </div>
+                            <div class="orange" ng-hide="item_img.price_old">
+                                {{item_img.price}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>
